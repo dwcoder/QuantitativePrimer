@@ -1,0 +1,51 @@
+\begin{subanswer}{arraymissingnumber:a}
+This is a little harder to figure out.
+\index{Tricks!Start with simplest case}
+If you struggle, think about the case with two missing numbers.
+Then think of three.
+This step-by-step thinking should help you to arrive at the general case.
+For many brainteasers, it helps to start with the case of $n=1$ and then generalise, as discussed in appendix \ref{ap:tricks}.
+The general solution to this question is similar to the case of one missing number.
+You have $n-k$ numbers $x_1, x_2, x_3, \ldots , x_{n-k}$.
+To find the $k$ missing values, calculate
+\begin{align*}
+& \sum_{i=1}^{n-k}{ x_i   } \\
+& \sum_{i=1}^{n-k}{ x_i^2 } \\
+& \sum_{i=1}^{n-k}{ x_i^3 } \\
+& \quad\vdots \\
+& \sum_{i=1}^{n-k}{ x_i^k }
+\end{align*}
+and compare these with their theoretical values.
+The result is a system of $k$ equations to solve, with $k$ unknowns.
+The answers represent the missing numbers.
+For instance, say we have three missing numbers, $m_1, m_2$, and $m_3$, then we can set up the following equations,
+\begin{align*}
+ \overbrace{\frac{n(n+1)}{2}}^{ \text{Theoretical} \atop \text{value} }
+ &=
+ \sum_{i=1}^{n-3}{ x_i }
++  m_1 + m_2 + m_3
+\\
+ \frac{n(n+1)(2n + 1)}{6}
+ &=
+ \sum_{i=1}^{n-3}{ x_i^2 }
++ m_1^2 + m_2^2 + m_3^2
+\\
+ \frac{n^2(n+1)^2}{4}
+ &=
+ \sum_{i=1}^{n-3}{ x_i^3 }
++ m_1^3 + m_2^3 + m_3^3
+\text{.}
+\end{align*}
+We have three equations, and three unknowns.
+You will probably have to solve this numerically, possibly by doing an exhaustive search over the integers from $1$ to $n$.
+For the theoretical values, you can use Faulhaber's formula:
+\[
+  \sum_{k=1}^{n}{k^p} = \frac{1}{p+1} \sum_{j=0}^{p}{ (-1)^j \binom{p+1}{j} B_j n^{p+1-j} }
+\]
+where $B_j$ represents the Bernoulli numbers, or you can calculate them numerically.
+
+
+\end{subanswer}
+
+
+

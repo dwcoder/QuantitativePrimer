@@ -1,0 +1,26 @@
+\begin{answer}{iszerocovarianceindependent}
+No. The interviewer gave you the answer in the previous question
+(although with different symbols)
+and is probably checking whether you realised this.
+The current question and the previous question are question \ref{q:iszerocorrelationindependent} split in two.
+Construct the same scenario as in question \ref{q:constructzerocorrelation}, but change the symbols to that of the new question.
+That is, let
+\begin{align*}
+P(Z = -1) &= 0.5  \\
+P(Z =  1) &= 0.5
+\end{align*}
+and
+$X \sim \text{Normal}(0,1)$, and
+$Y = ZX$.
+We can calculate
+\begin{align*}
+\Cov(X,Y)
+&= \Cov(X, ZX) \\
+&= \E(XZX) - \E(X) \E(ZX)  \\
+&= \E(X^2 Z) - \E(X) \E(ZX)  \\
+&= \E(X^2) \E(Z) - \E(X)\E(Z)\E(X)   \quad \text{independence} \\
+&=  0                                \quad \text{since } E(Z)=0
+\text{.}
+\end{align*}
+There is a very clear dependence between $X$ and $Y$, but their covariance is zero.
+\end{answer}

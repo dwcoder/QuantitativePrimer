@@ -1,0 +1,100 @@
+\begin{answer}{romeojuliet}
+This is question 3.24 from \citet{JoshiQA}.
+It is easy to overcomplicate things by thinking in great detail about what happens at the end of the interval.
+For instance, what if Romeo arrives at 08:58? He will wait 15 minutes, but Juliet cannot arrive after 09:00.
+The crux, however, is to realise that they will only meet \emph{if they arrive within 15 minutes of each other}.
+Let the interval $[0,1]$ represent the hour between 08:00 and 09:00, and let $x$ be the time Romeo arrives, and $y$ be the time Juliet arrives.
+They will only meet if
+\[
+  |x - y| < \frac{15}{60} = \frac{1}{4}
+  \text{.}
+\]
+We have
+$x$ and $y$
+independently and identically distributed
+$\text{Uniform}(0,1)$.
+Thus, we need to find $P(\abs{x - y} < \nicefrac{1}{4})$.
+It is almost certain that the interviewer does \emph{not} want you to solve this using integration.
+Rather, they want you to solve the problem visually on the unit square.
+\index{Tricks!Unit square integration}
+This is a usual interview trick described in appendix \ref{ap:tricks}.
+When $x<y$, we are in the top-left half of the square, and we need to consider
+\begin{align*}
+  y-x &< \nicefrac{1}{4} \\
+  y &< x + \nicefrac{1}{4}
+  \text{.}
+\end{align*}
+When $x \geq y$, we are in the bottom-right half of the square, and we need to consider
+\begin{align*}
+  x-y &< \nicefrac{1}{4} \\
+  y  &> x -\nicefrac{1}{4}
+  \text{.}
+\end{align*}
+The answer is the shaded bit of the square, which can be quickly calculated by breaking the square into pieces as shown below to reveal the answer of $\nicefrac{7}{16}$.
+\begin{center}
+
+\begin{tikzpicture}[scale=6, domain=0:1]
+\draw (0,0)     --  (0,1) node[midway, left] {$y$}-- (1,1)  -- (1,0) -- (0,0) node[midway, below] {$x$};
+\filldraw[pattern=dots, pattern color=lightgray]
+(0    , 0.25) --
+(0.75 ,   1 ) node[above,midway, sloped] {$y=x + \nicefrac{1}{4}$} --
+(1    ,  1     ) --
+(1    ,  0.75  ) --
+(0.25 ,  0  ) node[below,midway, sloped] {$y=x - \nicefrac{1}{4}$}
+              node[below] {$\frac{1}{4}$} --
+(0 ,  0  ) --
+(0    , 0.25) node[left] {$\frac{1}{4}$};
+\draw[dashed] (0,0) -- (1,1);
+
+\begin{scope}[xshift=1.5cm, yshift=0.5cm, every node, scale=0.5]
+\filldraw[pattern=dots, pattern color=lightgray]
+(0    , 0.25) --
+(0.75 ,   1 ) --
+(1    ,  1  ) --
+(1    ,  0.75  ) --
+(0.25 ,  0  ) --
+(0 ,  0     ) --
+(0    , 0.25) ;
+\draw[xshift=-1pt, yshift=1pt]
+(0 , 0.25) -- (0,1) -- (0.75, 1) -- (0 , 0.25) ;
+
+\draw[xshift=1pt, yshift=-1pt]
+( 0.25, 0) -- (1,0) -- (1, 0.75) -- (0.25, 0) ;
+
+\draw[xshift=2pt, yshift=-1pt, decorate, decoration={brace, mirror, amplitude=13pt}]
+(1,0) -- (1,0.75) node [midway, xshift=+17pt]{$\frac{3}{4}$};
+\end{scope}
+
+\begin{scope}[xshift=1.2cm, yshift=0.1cm, every node, scale=0.3]
+\filldraw[pattern=dots, pattern color=lightgray]
+(0    , 0.25) --
+(0.75 ,   1 ) --
+(1    ,  1  ) --
+(1    ,  0.75  ) --
+(0.25 ,  0  ) --
+(0 ,  0     ) --
+(0    , 0.25) ;
+
+\node at (1.2, 0.4) {$=$};
+\node at (1.7, 0.4) {$1$  $-$};
+\node at (1.7, -0.8) {
+$ \begin{aligned}
+ &= 1 -\left( \frac{3}{4}\right)^2 \\
+ &= 1 - \frac{9}{16} \\
+ &= \frac{7}{16}
+\end{aligned}$
+};
+\end{scope}
+
+\begin{scope}[xshift=1.8cm, yshift=0.1cm, every node, scale=0.3]
+\draw[xshift=3pt, yshift=-3pt]
+(0 , 0.25) -- (0,1) -- (0.75, 1) -- (0 , 0.25) ;
+\draw[xshift=-3pt, yshift=3pt]
+( 0.25, 0) -- (1,0) -- (1, 0.75) -- (0.25, 0) ;
+\end{scope}
+\end{tikzpicture}
+
+\end{center}
+You can use similar logic to determine what the probability would be if they each waited $t$ minutes or if Romeo waited twice as long as Juliet.
+
+\end{answer}

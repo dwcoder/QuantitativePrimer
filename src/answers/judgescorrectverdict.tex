@@ -1,0 +1,26 @@
+\begin{answer}{judgescorrectverdict}
+The court reaches the correct verdict if either two or three judges are correct.
+We will have to write out all the possibilities.
+One might think the solution is $1 - P(\text{All three wrong})$, but this ignores the scenario in which one judge is correct and the other two are wrong.
+We have to write out all the possible combinations.
+\begin{align*}
+  P(\text{Three correct})  &= p p  (\nicefrac{1}{2}) \\
+  P( \text{Two correct} ) &=
+     p         p     (1-\nicefrac{1}{2}) +
+     p       (1-p)   (\nicefrac{1}{2}) +
+   (1-p)       p     (\nicefrac{1}{2}) \\
+  &= p^2 - (\nicefrac{1}{2})p^2 + p-p^2 \\
+  &= p - (\nicefrac{1}{2})p^2  \\
+   P(\text{Correct verdict reached})
+  &=
+   P(\text{Two or three correct}) \\
+  &= (\nicefrac{1}{2})p^2   + p - (\nicefrac{1}{2})p^2  \\
+  &=  p
+  \text{.}
+\end{align*}
+Note that you cannot use the binomial coefficients,
+$\binom{3}{3}$
+and
+$\binom{3}{2}$,
+as the judges don't all have the same $p$.
+\end{answer}

@@ -1,0 +1,24 @@
+\begin{answer}{nameafewnonlinearmodels}
+  This is a vague question, and I assume the interviewer means non-linear as opposed to linear regression.
+Here are some examples.
+\begin{itemize}
+  \item Survival models. These usually study a hazard rate $h(t)$, which is seldom linear.
+  \item Generalised Linear Model (GLM). Although GLMs have a linear predictor, they can be non-linear in the link function.
+  The logistic regression uses the logit link function, and the Gamma GLM uses the log link function.
+  \item Gaussian processes (and other non-parametric regressions).
+  \item Neural networks. \citet[chap.~15.4]{murphy2012machine} presents the proof for the interesting connection between neural nets and Gaussian processes that was first pointed out by  \citet{neal1996bayesian}: As the number of hidden layers in a neural net goes to infinity, it becomes a Gaussian process.
+\end{itemize}
+In fact, a broad class of non-linear models can be presented in the following way.
+\begin{align*}
+  y \sim
+  \operatorname{MultivariateNormal}( g(X,\theta), \Sigma )
+\end{align*}
+where $g(X,\theta)$ is some non-linear function of the parameters and the inputs.
+We can make this more general by replacing the multivariate normal distribution,
+\begin{align*}
+  y \sim Dist( g(X,\theta) )
+\end{align*}
+where $y$ is assumed to follow some distribution and $g(X, \theta)$ is some function that links the inputs to the parameters of the distribution.
+See \citet{murphy2012machine} for an exhaustive treatment of this idea.
+
+\end{answer}

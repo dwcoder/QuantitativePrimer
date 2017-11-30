@@ -1,0 +1,29 @@
+\begin{answer}{sqlfindcustomerswithchanges}
+We have to look at the table and make an assumption on which columns will give us this information.
+It seems that we need to find the entries in the \verb+Customer ID+ column that appear multiple times.
+When a customer changes their details, they keep the same ID.
+When we want to test conditions on calculated columns, we need to use
+\verb+HAVING+
+instead of
+\verb+WHERE+.
+\begin{minted}{sql}
+SELECT CustomerID
+FROM customers
+GROUP BY CustomerID
+HAVING count(CustomerID) > 1
+\end{minted}
+As with the previous question, appendix \ref{ap:sqlite} contains code to load the table and test this query.
+As is evidence from the questions so far, SQL questions aren't that common.
+During my interview, the interviewer asked me whether I was familiar with SQL before asking these questions (I listed it on my CV).
+If it wasn't on my CV and had I answered ``no'', they probably would have asked me data-cleaning questions in other languages.
+
+Practising SQL is tedious due to the amount of work required to get it working on your system.
+Some installations---like OracleDB or Microsoft SQL server---are prohibitively expensive for someone who just wants to practise.
+Postgresql and MySQL are free and open source, but they require multiple libraries to be installed and access management to be configured (even if you just want to run queries locally).
+It might be worth the effort, however, to get an understanding of the architecture.
+The path of least resistance is certainly sqlite, used with Python.
+Most Python installations come with sqlite as standard, so it doesn't require any other libraries.
+I suggest using the code included in \ref{ap:sqlite} along with a dataset you are familiar with to do some cleaning and munging using queries (as opposed to using R or Pandas data frames).
+Especially if you list SQL on your CV, but haven't used it recently.
+Thereafter, if you want more rigour, try MySQL.
+\end{answer}

@@ -1,0 +1,58 @@
+\documentclass{standalone}
+
+\usepackage{xparse}
+\usepackage{pgfplots}
+ \pgfplotsset{compat=1.10}
+
+\pgfplotsset{
+colormap={whitered}{color(0cm)=(white); color(1cm)=(green!75!blue)}
+}
+
+\NewDocumentCommand{\drawbivnorm}{m}{%
+\begin{tikzpicture}[
+    scale=0.7,
+    declare function={mu1=0;},
+    declare function={mu2=0;},
+    declare function={sigma1=1;},
+    declare function={sigma2=1;},
+    declare function={rho=#1;},
+    declare function={normal(\m,\s)=1/(2*\s*sqrt(pi))*exp(-(x-\m)^2/(2*\s^2));},
+    declare function={bivarrho(\ma,\sa,\mb,\sb,\corr)=
+        1/(2*pi*\sa*\sb*sqrt(1-\corr^2)) * exp(-( (x-\ma)^2/\sa^2 + (y-\mb)^2/\sb^2  - (2*\corr*(x-\ma)*(y-\mb))/(\sa*\sb) ) / (2*(1-\corr^2)) ) ;},
+    declare function={bivarrhox(\ma,\sa,\mb,\sb,\corr)= 1/(2*pi*\sa*\sb*sqrt(1-\corr^2)) * exp(-( (x-\ma)^2/\sa^2 + (x-\mb)^2/\sb^2  - (2*\corr*(x-\ma)*(x-\mb))/(\sa*\sb) ) / (2*(1-\corr^2)) ) ;}
+        ]
+\begin{axis}[
+    colormap name=whitered,
+    width=10cm,
+    view={30}{75},
+    enlargelimits=false,
+%    grid=major,
+    domain=-3:3,
+    y domain=-3:3,
+    samples=24,
+    xlabel=$x$,
+    ylabel=$y$,
+    zlabel={$f(x,y)$}
+]
+
+\addplot3 [surf] {bivarrho(mu1,sigma1,mu2,sigma2,rho)};
+%\addplot3 [domain=-3:3,samples=31, samples y=0, thick, smooth] (x,3,{normal(mu1,sigma1)});
+%\addplot3 [domain=-3:3,samples=31, samples y=0, thick, smooth] (-3,x,{normal(mu2,sigma2)});
+\addplot3 [domain=-3:3,samples=31, samples y=0, thin, smooth] (x,x,{bivarrhox(mu1,sigma1,mu2,sigma2, rho)});
+\node at (axis cs:3,3,0) [pin=105:{$y=x$}] {};
+\end{axis}
+\end{tikzpicture}
+}
+
+
+
+
+\begin{document}
+
+
+\drawbivnorm{0}
+\drawbivnorm{0.7}
+\drawbivnorm{-0.7}
+
+
+\end{document}

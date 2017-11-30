@@ -1,0 +1,229 @@
+\begin{answer}{normalfourthmoment}
+Let's do some integration and see where we end up.
+We need to derive the fourth moment,
+\begin{align}
+\E(X^4)
+&= \int_{-\infty}^{\infty}{
+          x^4
+          f(x)
+          dx} \nonumber \\
+&= \int_{-\infty}^{\infty}{
+          x^4
+          \frac{1}{\sqrt{2 \pi} \sigma }
+          \exp{\left( -\frac{x^2}{2\sigma^2}  \right)}
+          dx}
+\label{eq:normalfourthmoment:integraltosolve}
+\text{.}
+\end{align}
+There doesn't appear to be a quick way to do this integral, so we will have to use integration by parts:
+\[
+\int_{-\infty}^{\infty}{ u dv }
+=
+uv\Big\vert_{x=-\infty}^{x=\infty} - \int_{-\infty}^{\infty}{ v du }
+\text{.}
+\]
+We will require some trial and error to determine the best way to rewrite
+(\ref{eq:normalfourthmoment:integraltosolve}) in order to choose $u$ and $v$.
+Be sure to tell the interviewer what you are doing; write out the formula for integration by parts and mention you are trying to find the best candidates for $u$ and $v$.
+The only candidate that gives us something \emph{easier} to deal with after the integration by parts is
+\begin{align*}
+\E(X^4)
+&=
+          \frac{1}{\sqrt{2 \pi} \sigma }
+          \int_{-\infty}^{\infty}{
+          x^3
+          \;
+          x
+          \exp{\left( -\frac{x^2}{2\sigma^2}  \right)}
+          dx}
+\text{.}
+\end{align*}
+Then we have
+\begin{align*}
+u   &= x^3      \\
+dv  &=
+        x
+        \exp{\left( -\frac{x^2 }{2\sigma^2} \right)}
+        dx
+        \\
+%
+du  &= 3 x^2 dx \\
+v   &=
+       - \sigma^2
+        \exp{\left( -\frac{x^2}{2\sigma^2}  \right)}
+\end{align*}
+giving
+\begin{equation}
+\begin{aligned}
+\label{eq:fourthmoment:nearlythere}
+\frac{1}{\sqrt{2 \pi} \sigma }
+\int\limits_{-\infty}^{\infty}{
+  x^3
+  \;
+  x \exp{\left( -\frac{x^2}{2\sigma^2}  \right)}
+}
+=
+-&\frac{1}{\sqrt{2 \pi} \sigma }
+x^3
+\sigma^2
+\exp{\left( -\frac{x^2}{2\sigma^2}  \right)} \bigg|_{x=-\infty}^{x=\infty}
+\\
+&+
+\frac{1}{\sqrt{2 \pi} \sigma }
+\int\limits_{-\infty}^{\infty}{
+  \sigma^2
+  \exp{\left( -\frac{x^2}{2\sigma^2}   \right)}
+ 3 x^2
+  dx
+}
+\text{.}
+\end{aligned}
+\end{equation}
+The first term on the right hand side is equal to zero.
+We can use L'Hôpital's rule to prove it.%
+\footnote{But be wary:
+I once got reprimanded during an interview at a hipster hedge fund for suggesting
+L'Hôpital's rule as a solution to a problem that had the form $\nicefrac{\infty}{\infty}$.
+The interviewer had never heard of L'Hôpital, and snidely enquired whether it was some sort of food.
+I was impressed that someone managed to graduate with a physics degree without ever encountering L'Hôpital.
+The interviewer must have been great at brainteasers to get hired.}
+We need to apply the rule three times:
+\begin{equation}
+\label{eq:fourthmoment:lhopital}
+\begin{aligned}
+\lim_{x \rightarrow \infty}
+-x^3
+\sigma^2
+\exp{\left( -\frac{1}{2\sigma^2} x^2 \right)}
+&=
+\lim_{x \rightarrow \infty}
+\frac{-x^3 \sigma^2 }{ \exp{\left( \frac{1}{2\sigma^2} x^2 \right)} }
+\quad\text{rewrite as fraction}
+\\
+&=
+\lim_{x \rightarrow \infty}
+\frac{
+  - 3 \sigma^{2} x^{2}
+  }{
+  \quad \frac{x}{\sigma^{2}} \exp{\left(\frac{x^{2}}{2 \sigma^{2}}\right)}
+  }
+\quad\text{L'Hôpital 1}
+\\
+&=
+\lim_{x \rightarrow \infty}
+\frac{ - 6 \sigma^{2} x }{
+\frac{1 }{\sigma^{2}} \left(1 + \frac{x^{2}}{\sigma^{2}}\right)
+\exp{\left(\frac{x^{2}}{2 \sigma^{2}}\right)}
+}
+\quad\text{L'Hôpital 2}
+\\
+&=
+\lim_{x \rightarrow \infty}
+\frac{ - 6 \sigma^{2} }{
+\frac{x}{\sigma^{4}} \left(3 + \frac{x^{2}}{\sigma^{2}}\right)
+\exp{\left(\frac{x^{2}}{2 \sigma^{2}}\right)}
+}
+\quad\text{L'Hôpital 3}
+\\
+&= 0
+\end{aligned}
+\end{equation}
+and the same is true for
+${x \rightarrow -\infty}$.
+While I include the elaborate calculations above, you don't have to; it is clear that the denominator will always include a term involving
+\[
+\exp{\left(\frac{x^{2}}{2 \sigma^{2}}\right)}
+\]
+while the nominator will eventually become zero after enough differentiation.
+So now (\ref{eq:fourthmoment:nearlythere}) becomes
+\begin{align*}
+\frac{1}{\sqrt{2 \pi} \sigma }
+\int\limits_{-\infty}^{\infty}{
+  x^4
+  \exp{\left( -\frac{x^2}{2\sigma^2}  \right)}
+  dx
+}
+&=
+3 \sigma^2
+\frac{1}{\sqrt{2 \pi} \sigma }
+\int\limits_{-\infty}^{\infty}{
+  x^2
+  \exp{\left( -\frac{x^2}{2\sigma^2}  \right)}
+  dx
+}
+\text{.}
+\end{align*}
+The right hand side is equal to $3\sigma^2$ multiplied by the second moment of a normal distribution with mean zero and standard deviation $\sigma$.
+Recall that if $X \sim \text{Normal}(\mu, \sigma^2)$ we have
+\begin{align*}
+  \Var(X) &= \E(X^2) - \E(X)^2 \\
+\sigma^2  &= \E(X^2) - \mu^2
+\end{align*}
+meaning
+$ \E(X^2) = \sigma^2 $
+when
+$\mu=0$.
+Thus the fourth moment of
+$X \sim \text{Normal}\left(0, \sigma^2\right)$ is
+\begin{align*}
+\E(X^4)
+&=
+3 \sigma^2 \E(X^2)
+\\&=
+3 \sigma^4
+\text{.}
+\end{align*}
+This was a very long journey to arrive at the answer, and doing the integration may not have been the best approach.
+This approach does, however, allow you to exhibit your integration prowess, which may hurt or help you depending on how the interviewer feels on the day.
+In my case, I wasn't able to arrive at the right answer, but when I reached  (\ref{eq:fourthmoment:nearlythere}) the interviewer said ``there, now we have something familiar'' (referring to the second moment) and went on to the next question.
+A better approach may have been to use the Moment Generating Function of the normal distribution,
+\begin{align*}
+  M(t) =
+  e^{\mu t}
+  e^{\frac{1}{2}\sigma^2 t^2}
+  \text{.}
+\end{align*}
+Then we can calculate any moment using
+\[
+E \left( X^n \right) = M_X^{(n)}(0) = \left. \frac{d^n M_X (t)}{dt^n}\right|_{t=0}
+\]
+where $M_X^{(n)}(t)$ is the $n$th derivative of the function $M(t)$.
+For our case where $\mu=0$,
+\begin{align*}
+  M_X(t) &=
+  e^{\frac{1}{2}\sigma^2 t^2}\\
+M_X^{(1)}(t) &=
+\sigma^{2} t e^{\frac{\sigma^{2} t^{2}}{2}}
+\\
+M_X^{(2)}(t) &=
+\sigma^{2} \left(\sigma^{2} t^{2} + 1\right) e^{\frac{\sigma^{2} t^{2}}{2}}
+\\
+M_X^{(3)}(t) &=
+\sigma^{4} t \left(\sigma^{2} t^{2} + 3\right) e^{\frac{\sigma^{2} t^{2}}{2}}
+\\
+M_X^{(4)}(t) &=
+\sigma^{4} \left(\sigma^{4} t^{4} + 6 \sigma^{2} t^{2} + 3\right) e^{\frac{\sigma^{2} t^{2}}{2}}
+\\
+M_X^{(4)}(0) &=
+3\sigma^{4}
+\text{.}
+\end{align*}
+Still tedious, but perhaps less so than the integration.%
+\footnote{I used Sympy by \citet{Sympy} to generate these, as well as all the differentiation for in (\ref{eq:fourthmoment:lhopital}).}
+Of course, you could just learn the moments of the normal distribution by heart, but I don't think that is what the interviewer wanted.
+They likely wanted to see some mathematics.
+The interviewer also asked me what the fourth moment meant.
+I didn't understand, but they probably wanted me to mention the kurtosis, which is a measure of the ``tailedness'' of a distribution.\
+The fourth moment is used to measure kurtosis,
+the third moment is related to the skewness,
+the second moment to the variance, and the first moment to the mean.
+
+
+In my experience, interviewers from investment banks love questions about the normal distribution.
+This might be in response to interview solution manuals like
+\citet{HeardOnTheStreet} and \citet{JoshiQA},
+and the fact that they don't contain many questions on the theory of the normal distribution.
+Perhaps there is a book called ``Interesting Proofs about the Normal Distribution'' doing the rounds at the banks, or maybe there are internal study groups who meet regularly to make and solve brainteasers about the normal distribution.
+Whatever it is, I cannot guarantee that normal distribution questions will remain popular.
+In any event, I recommend you to know the normal distribution theory well---not only because it might help you during interviews, but also because it is a widely used (nay, overused) distribution that you are sure to encounter in practice.
+\end{answer}

@@ -1,0 +1,39 @@
+\begin{answer}{bagnsockstwored}
+Let $R_i$ indicate the event where the $i$th sock is red.
+Let $r$ be the number of red socks in a bag of $N$ socks.
+We need
+\begin{align*}
+  P(R_1,R_2)     &= \frac{1}{2} \\
+  P(R_1)(R_2|R_1) &= \frac{1}{2} \\
+  \frac{r}{N} \times
+  \frac{r-1}{N-1}
+   &=
+  \frac{1}{2}
+  \text{.}
+\end{align*}
+Use trial and error.
+\index{Tricks!Start with simplest case}
+If $N=2$ both socks will be red with certainty, so this cannot work.
+When $N=3$ we have
+\[
+  \frac{r}{3} \times
+  \frac{r-1}{2}
+   =
+  \frac{r(r-1)}{6}
+   =
+  \frac{1}{2}
+\]
+and there aren't any integer values of $r$ that would make this hold.
+For $N=4$ we have
+\[
+  \frac{r}{4} \times
+  \frac{r-1}{3}
+   =
+  \frac{r(r-1)}{12}
+   =
+  \frac{1}{2}
+\]
+and this works for $r=3$.
+Therefore the smallest possible value of $N$ for the stated scenario is four.
+
+\end{answer}

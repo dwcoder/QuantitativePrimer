@@ -1,0 +1,124 @@
+\begin{answer}{twournsallocateballs}
+Let $B_1$ be the number of blue balls in urn 1, and
+$R_1$ be the number of red balls in urn 1.
+Then
+\begin{equation}
+\label{eq:urns:crux}
+\begin{aligned}
+ P(\text{Win})
+ &=
+  \frac{1}{2}
+  \left(
+  \frac{B_1}{B_1 + R_1}
+  \right)
+  +
+  \frac{1}{2}
+  \left(
+  \frac{B_2}{B_2 + R_2}
+  \right)
+  \\
+ &=
+  \frac{1}{2}
+  \left(
+  \frac{B_1}{B_1 + R_1}
+  \right)
+  +
+  \frac{1}{2}
+  \left(
+  \frac{5 - B_1}{10 - (B_1 +R_1)}
+  \right)
+  \text{.}
+\end{aligned}
+\end{equation}
+We need to find the values for $B_1$ and $R_1$ that minimises this.
+The interviewer wanted me to explain how I would solve the question, and then we went into an online pair-programming room, where we found the solution in Python using ``brute force'': exploration of the whole solution space.
+We can also find the solution by some reasoning.
+If we wanted to maximise the probability of winning in the one bucket, we could put just one red ball in it, and no blue balls.
+Then the probability of winning becomes
+\begin{equation*}
+\begin{aligned}
+ P(\text{Win})
+ &=
+  \frac{1}{2}
+  \left(
+  1
+  \right)
+  +
+  \frac{1}{2}
+  \left(
+  \frac{4}{9}
+  \right)
+  \\
+ &=
+  \frac{1}{2}
+  \left(
+  \frac{13}{9}
+  \right)
+  \\
+ &=
+  \left(
+  \frac{13}{18}
+  \right)
+  \text{,}
+\end{aligned}
+\end{equation*}
+which is near three quarters. In fact, this is a strategy that will have a winning probability approaching $\nicefrac{3}{4}$ as the number of balls approach infinity.
+\begin{align*}
+  \frac{1}{2}
+  \left(
+  1
+  \right)
+  +
+  \frac{1}{2}
+  \left(
+  \frac{\frac{N}{2} - 1}{N - 1}
+  \right)
+  &=
+  \frac{1}{2}
+  \left(
+  \frac{ N-1 + \left( \frac{N}{2} - 1 \right) }{N - 1}
+  \right)
+  \\
+  &=
+  \frac{1}{4}
+  \left(
+  \frac{ 2N-2 +  N - 2  }{N - 1}
+  \right)
+  \\
+  &=
+  \frac{1}{4}
+  \left(
+  \frac{ 3N - 4  }{N - 1}
+  \right)
+  \text{.}
+\end{align*}
+
+The hardest part about this question is coming up with (\ref{eq:urns:crux}).
+Try and understand it well enough to derive it yourself.
+When I did it during the interview, I started with a notation that made the problem much harder than it is (by having variables for the total number of balls in each of the urns as well).
+You have to start somewhere, and my first attempt set me off on the wrong path,
+but the interviewer was interested in the approach and asked me to continue with it.
+I felt that the interview went pretty well, but afterwards I received feedback that the interviewer wanted me to ``intuit'' the answer, rather than solve it using mathematical reasoning.
+In the past (especially with the \emph{Air Force One} question in section \ref{q:airforceone}), I was told the opposite: Use mathematics to solve the question, not intuition and logical reasoning.
+You win some, you lose some.
+
+Online pair-programming interviews are becoming more prevalent with banks betting on automation and competing for programming talent.
+They usually take two forms.
+The first is similar to the above, asking you to solve mathematical problem numerically.
+For instance, an on-site exam once asked me to write code, by hand, to numerically solve the \emph{Stick Breaking} problem from section \ref{subsec:stickbreaking}.
+The second form is that of tech-company interviews.
+That is, programming questions you can expect to get at Google and Facebook, usually involving algorithms and data structures.
+It is worthwhile to review some of them.
+Good websites to practice and find examples are
+\url{https://www.hackerrank.com/} and
+\url{https://www.codewars.com/}.
+Questions about sorting algorithms (see question \ref{q:arrayofintegersfindduplicate}) used to be a favourite, but interviewers have broadened their horizons in recent years.
+Look for problems involving string manipulation (finding anagrams or longest substrings) like question \ref{q:pythonanagrams}.
+Other examples I've encountered are question
+\ref{q:davidbeckhamparty} and the \emph{Friend Circle} problem:
+``A friend circle is any group of people connected by mutual acquaintances. Given an adjacency matrix of $N$ people, write code to count the number of friend circles.''
+These last two examples come from graph theory, which is a well-known source of difficult tech-interview questions.
+\index{Graph theory}
+
+
+\end{answer}

@@ -1,0 +1,236 @@
+
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage[table,usenames,dvipsnames]{xcolor}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage[color=green!10,
+            colorinlistoftodos,
+            linecolor=lightgray,
+            bordercolor=green!10,
+            textsize=footnotesize]{todonotes} % add [disable] to hide notes
+
+\usepackage[noend]{algpseudocode}
+\usepackage{amsmath,amssymb,mleftright}
+\usepackage{mathtools} % For cases environment
+\usepackage[a4paper]{geometry}
+\usepackage[round]{natbib}
+\usepackage{float}
+\usepackage{nicefrac}
+\usepackage[section]{placeins} % This gives the \FloatBarrier command
+\usepackage[minmargin=0.1\textwidth,
+	    labelfont=bf,
+	    font=footnotesize,
+	    labelsep=period,
+	    justification=centering]{caption}
+\usepackage{setspace}
+\usepackage{url}
+\usepackage{ntheorem}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{
+  decorations.pathreplacing,
+  calc,
+  patterns,
+  datavisualization.formats.functions,
+  external}
+
+% Activate pre-compilation of images (see section 50.4 in tikz/pgfmanual
+% This just makes it faster to recompile while editing the book, as it
+% pre-builds all the images.
+% You should remove it and compile the document properly for the final version
+% I use the `list and make` option, which means after compilation I get a
+% make file. Then I need to run:
+% `make -f Maindocument.makefile`
+% on the command line to make all the pics
+\tikzexternalize[mode=list and make]
+
+\usepackage{xparse}
+
+\usepackage{minted}
+% Setup the fancyvrb (which is called by minted)
+\fvset{frame=single}
+
+% This sets the description environment to use itshape rather than bold
+\setlist[description]{font=\normalfont\itshape\textbullet\space}
+
+
+\usepackage[british]{babel}
+\babelhyphenation[english]{pro-gram-ming}
+
+% Define colours first
+\definecolor{linkcolor}{RGB}{0,0,128}
+\definecolor{dwgreen}{RGB}{0,128,0}
+\definecolor{dwred}{RGB}{176,0,64}
+\definecolor{dwblue}{HTML}{0B486B}
+
+
+
+%\usepackage[hidelinks]{hyperref}
+\usepackage[pagebackref,
+	    pdfpagelabels,
+	    plainpages=false,
+	    hypertexnames=true,
+	    colorlinks=true,
+	    linkcolor=linkcolor,
+	    anchorcolor=linkcolor,
+	    citecolor=linkcolor,
+	    filecolor=linkcolor,
+	    menucolor=linkcolor,
+	    runcolor=linkcolor,
+	    urlcolor=linkcolor,
+	    pdfborder={0 0 0}]{hyperref}
+% Got this from the stan manual
+
+
+% File that fixes and activates the line numbers
+\input{fixlinenumbers.tex}
+% File that gives me the nice dice
+\input{plots/dice/dice.tex}
+
+\makeindex
+
+
+
+% \usepackage{showkeys}
+
+
+
+\interfootnotelinepenalty=10000 % to ensure footnotes stay on the same page
+
+\allowdisplaybreaks[1] %{amsmath} -- allows formulas to span multiple pages
+% the number can be 1 to 4, where one allows it but avoids it.
+% you can also force displaybreaks anywhere by putting \displaybreak[4] a formula, [1] is a suggestion, [4] is a command.
+% the default value for both of these is [4]
+
+
+%DW's commands
+\renewcommand{\vec}{\boldsymbol}
+\DeclareMathOperator{\E}{\mathrm{E}}
+\DeclareMathOperator{\Var}{\mathrm{Var}}
+\DeclareMathOperator{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\determinant}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+
+% change marginpar fontsize
+
+\makeatletter
+\renewcommand{\@marginparreset}{%
+  \reset@font\scriptsize
+  \raggedright
+  \@setminipage
+}
+\makeatother
+
+
+% Make some ntheorem environments to hold the questions and answers
+
+\theoremstyle{break}
+\theoremheaderfont{\bfseries}
+\theorembodyfont{}
+\theoremnumbering{arabic}
+\theoremseparator{:}
+\newtheorem{ntquestion}{Question}
+
+\theoremstyle{break}
+\theoremheaderfont{\bfseries}
+\theorembodyfont{}
+\theoremnumbering{alph}
+\theoremseparator{)}
+\newtheorem{ntsubquestion}{}[ntquestion]
+
+\theoremstyle{plain}
+\theoremheaderfont{\bfseries}
+\theorembodyfont{}
+\theoremnumbering{arabic}
+\theoremseparator{}
+\newtheorem*{ntanswer}{Answer}
+
+\theoremstyle{plain}
+\theoremheaderfont{\bfseries}
+\theoremnumbering{alph}
+\theorembodyfont{}
+\theoremseparator{}
+\newtheorem*{ntsubanswer}{Answer}[ntanswer]
+
+
+% Make new environments to ease the labelling
+% use the xparse package, since we need the arguments in the last bit of the environment as well
+\NewDocumentEnvironment{question}{m}%
+{\begin{ntquestion}\label{q:#1}}%
+{\begin{flushright}(\hyperref[a:#1]{Answer on page \pageref*{a:#1}})\end{flushright}\end{ntquestion}}
+
+
+\newenvironment{questionwithnoanswer}%
+{\begin{ntquestion}}{\end{ntquestion}}
+
+\NewDocumentEnvironment{subquestion}{m}%
+{\begin{ntsubquestion}\label{q:#1}}%
+{\begin{flushright}(\hyperref[a:#1]{Answer on page \pageref*{a:#1}})\end{flushright}\end{ntsubquestion}}
+
+\NewDocumentEnvironment{answer}{m}%
+{\begin{ntanswer}\ref*{q:#1}:
+\label{a:#1}\hfill(\hyperref[q:#1]{Question on page \pageref*{q:#1}})
+\\}%
+{\end{ntanswer}}
+
+\NewDocumentEnvironment{subanswer}{m}%
+{\begin{ntsubanswer}\ref*{q:#1}):
+\label{a:#1}\hfill(\hyperref[q:#1]{Question on page \pageref*{q:#1}})
+\\}%
+{\end{ntsubanswer}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Usage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{question}{questionlabelname}
+% Write stuff here
+%\end{question}
+
+%\begin{answer}{questionlabelname}
+% Write stuff here
+%\end{answer}
+
+% this will automatically create the labels called `q:questionlabelname` and `a:questionlabelname`.
+% To change the formatting of the question and answer blocks, change their corresponding ntheorem styles.
+
+
+% Make a nice titlepage
+\providecommand{\HUGE}{\Huge}% if not using memoir
+\newlength{\drop}% for my convenience
+%% select a (FontSite) font by its font family ID
+\newcommand*{\FSfont}[1]{\fontencoding{T1}\fontfamily{#1}\selectfont}
+%% if you don’t have the FontSite fonts either \renewcommand*{\FSfont}[1]{}
+%% or use your own choice of family.
+%% select a (TeX Font) font by its font family ID
+\newcommand*{\TXfont}[1]{\fontencoding{T1}\fontfamily{#1}\selectfont}
+%% Generic publisher’s logo
+\newcommand*{\plogo}{\fbox{$\mathcal{PL}$}}
+
+
+\newcommand*{\titleDB}{
+\begingroup% AW, Design of Books
+\FSfont{ppl} % FontSite URW Palladio (Palatino)
+\drop = 0.14\textheight
+\centering
+\vspace*{\drop}
+{\Large A}\\[\baselineskip]
+{\Huge PRIMER OF INTERVIEWING}\\[\baselineskip]
+{\Large FOR}\\[\baselineskip]
+{\LARGE QUANTITATIVE FINANCE}\par
+\vfill
+{BY DIRK BESTER}\\%\\[8\baselineskip]
+{\small 2017}\par
+{\small \docversion}\par
+\vfill
+\endgroup
+}
+
+

@@ -1,0 +1,20 @@
+\begin{subanswer}{sqladdaveragesalary}
+
+\begin{minted}{sql}
+SELECT
+    Employee_name,
+    a.Department,
+    Salary,
+    avg_dept_sal
+from salaries as a
+INNER JOIN
+(   SELECT
+        Department,
+        avg(Salary) as avg_dept_sal
+    from salaries
+    GROUP BY Department
+) as b
+where a.Department = b.Department
+\end{minted}
+I include code to create the table and execute this query in appendix \ref{ap:sqlite}.
+\end{subanswer}

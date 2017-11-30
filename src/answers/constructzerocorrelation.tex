@@ -1,0 +1,27 @@
+\begin{answer}{constructzerocorrelation}
+This is the same as question \ref{q:iszerocorrelationindependent}.
+Here is the proof again, with the symbols updated to match the current question.
+We want to determine the distribution of $Z$,
+\begin{align*}
+F_Z(x)  &= P(Z<x)  \\
+&=
+P( XY<x| Y = 1)P(Y=1) +
+P( XY<x| Y = -1)P(Y=-1) \\
+&=
+P( X<x)(0.5) + P(-X<x)(0.5) \\
+&=  (0.5)( P( X<x) + P(X \geq -x)) \\
+&=  (0.5)( P( X<x) + P(X < x)) \quad \text{symmetry} \\
+&=   P(X < x) \\
+&=   F_X(x) \\
+&=   \Phi(x)
+\text{,}
+\end{align*}
+which means $Z \sim \text{Normal}(0, 1)$.
+
+Intuitively this makes sense.
+We have a normal distribution multiplied by a variable that takes -1 and 1 with equal probability.
+So we are drawing from a normal distribution, and then randomly mirroring the value in the y-axis.
+Since the Normal$(0,1)$ distribution is symmetric about zero, this operation should not affect its distribution and thus the resulting distribution is also Normal$(0,1)$.
+
+
+\end{answer}

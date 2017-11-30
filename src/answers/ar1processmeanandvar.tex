@@ -1,0 +1,191 @@
+\begin{answer}{ar1processmeanandvar}
+There is a long answer and a short answer.
+If you know the short answer, it is probably best to give it first.
+If your interviewer is unsatisfied, you can give the long solution.
+We start by assuming
+\begin{equation}
+\label{eq:e_and_pi:constantassumption}
+\begin{aligned}
+\E(Y_i) &= \E(Y_j) \\
+    &\text{and}    \\
+\Var(Y_i) &= \Var(Y_j)
+\end{aligned}
+\end{equation}
+for all $i = j$.
+This is something we would have to prove rigorously in a formal setting, but the interviewer might be happy to let us use this assumption for now; especially since their question implies it.
+You can also point out that, for an AR(1) process, we know it is wide-sense stationary when
+$|\alpha_1| < 1$,
+but the interviewer might still want proof.
+One way to prove it is through the long answer, which we will come to in a moment.
+Using our assumption in (\ref{eq:e_and_pi:constantassumption}), we can write
+$\E(Y_i) = \E(Y_j) = \mu$, then we solve for $\mu$
+\begin{align*}
+  \E(Y_t) &= \E(\alpha_0 + \alpha_1 Y_{t-1} + \varepsilon_{t}) \\
+  \E(Y_t) &= \alpha_0 + \alpha_1 \E(Y_{t-1}) + \E(\varepsilon_{t}) \\
+   \mu    &= \alpha_0 + \alpha_1   \mu \\
+   \mu    &= \frac{ \alpha_0}{1-\alpha_1}
+   \text{.}
+\end{align*}
+Similarly, for the variance,
+$\Var(Y_i) = \Var(Y_j) = \sigma^2$ and
+\begin{align*}
+  \Var(Y_t) &= \Var(\alpha_0 + \alpha_1 Y_{t-1} + \varepsilon_{t}) \\
+  \Var(Y_t) &=  \alpha_1^2 \Var(Y_{t-1}) + \Var(\varepsilon_{t}) \\
+  \sigma^2  &=  \alpha_1^2 \sigma^2 + \sigma^2_{\varepsilon_{t}} \\
+  \sigma^2  &=  \frac{ \sigma^2_{\varepsilon_{t}}}{1- \alpha_1^2}
+\end{align*}
+
+During my interview I was not aware of the short way, but the interviewer seemed content with the answer I provide below---which is the long answer.
+We have to expand the process,
+\begin{align*}
+  Y_t &=
+  \alpha_0 + \alpha_1
+  \textcolor{blue}{Y_{t-1}} + \varepsilon_{t} \\
+      &=
+  \alpha_0 + \alpha_1
+  \textcolor{blue}{(
+  \alpha_0 + \alpha_1 Y_{t-2} + \varepsilon_{t-1}
+  )}
+                       + \varepsilon_{t} \\
+      &=
+  \alpha_0 + \alpha_1
+  \alpha_0 + \alpha_1^2 \textcolor{dwred}{Y_{t-2}} + \alpha_1\varepsilon_{t-1}
+                       + \varepsilon_{t} \\
+      &=
+  \alpha_0 + \alpha_1
+  \alpha_0 + \alpha_1^2
+  \textcolor{dwred}{(
+  \alpha_0 + \alpha_1 Y_{t-3} + \varepsilon_{t-2}
+  )
+  }
+                         + \alpha_1\varepsilon_{t-1}
+                        + \varepsilon_{t} \\
+      &=
+  \alpha_0 + \alpha_1
+  \alpha_0 + \alpha_1^2
+  \alpha_0 + \alpha_1^3 \textcolor{dwgreen}{Y_{t-3}} + \alpha_1^2\varepsilon_{t-2}
+                        + \alpha_1\varepsilon_{t-1}
+                        + \varepsilon_{t} \\
+      &=
+  \alpha_0 + \alpha_1
+  \alpha_0 + \alpha_1^2
+  \alpha_0 + \alpha_1^3
+  \textcolor{dwgreen}{(\ldots)} + \alpha_1^2\varepsilon_{t-2}
+                        + \alpha_1\varepsilon_{t-1}
+                        + \varepsilon_{t} \\
+      &=
+  \alpha_0
+  \sum_{k=0}^{\infty}
+  {\alpha_1^k}
+  +
+  \sum_{k=0}^{\infty}{
+    \alpha_1^k
+    \varepsilon_{t-k}
+    }
+    \text{.}
+\end{align*}
+We only had to work to
+$Y_{t-3}$
+To notice the pattern.
+Taking the expectation yields
+\begin{align*}
+\E(Y_t)
+&=
+\E\left(
+  \alpha_0
+  \sum_{k=0}^{\infty}
+  {\alpha_1^k}
+  +
+  \sum_{k=0}^{\infty}{
+    \alpha_1^k
+    \varepsilon_{t-k}
+    }
+    \right) \\
+&=
+  \alpha_0
+  \sum_{k=0}^{\infty}
+  {\alpha_1^k}
+  +
+  \sum_{k=0}^{\infty}{
+    \alpha_1^k
+\E\left(
+    \varepsilon_{t-k}
+    \right)
+    } \\
+&=
+  \alpha_0
+  \sum_{k=0}^{\infty}
+  {\alpha_1^k}
+  \text{.}
+\end{align*}
+This is a geometric series, which converges to
+\begin{align*}
+\E(Y_t)
+&=
+  \frac{\alpha_0}{1-\alpha_1}
+\end{align*}
+if
+$|\alpha_1| < 1$.
+Likewise, for the variance we have
+\begin{align*}
+\Var(Y_t)
+&=
+\Var\left(
+  \alpha_0
+  \sum_{k=0}^{\infty}
+  {\alpha_1^k}
+  +
+  \sum_{k=0}^{\infty}{
+    \alpha_1^k
+    \varepsilon_{t-k}
+    }
+    \right) \\
+&=
+  \sum_{k=0}^{\infty}{
+    (\alpha_1^k)^2
+\Var\left(
+    \varepsilon_{t-k}
+    \right)
+    } \\
+&=
+  \sum_{k=0}^{\infty}{
+    (\alpha_1^2)^k
+    \sigma^2_{\varepsilon}
+    } \\
+&= \frac{ \sigma^2_{\varepsilon_{t}}}{1- \alpha_1^2}
+\end{align*}
+since the series converges if
+$|\alpha_1^2| < 1$,
+which will be the case if
+$|\alpha_1| < 1$.
+
+This question allows the interviewer to test your algebra, and also your familiarity with the AR(1) process, arguably the simplest of the ARIMA class of models.
+If you mentioned time series on your CV---or if the role requires knowledge about time series---make
+sure you can write down the equations for a AR(p),  MA(q), and ARMA(p,q) processes.
+For ARMA(p, q), memorise:
+\[
+ Y_t = \alpha_0 +
+ \underbrace{
+  \sum_{i=1}^{p}{ \alpha_i Y_{t-i} }
+  }_{\text{Autoregressive}}
+  +
+ \overbrace{
+  \sum_{i=1}^{q}{ \beta_i \varepsilon_{t-i} }
+  }^{\text{Moving average}}
+  + \varepsilon_{t}
+  \text{.}
+\]
+Make sure you can write down the GARCH(p,q) process as well,
+\begin{align*}
+ Y_t &= \sigma_t Z_t  \quad \text{ where } Z_t \sim N(0,1) \\
+ \sigma^2_{t}
+ &=
+ \alpha_0 +
+  \sum_{i=1}^{p}{ \alpha_i Y^2_{t-i} }
+  +
+  \sum_{i=1}^{q}{ \beta_i \sigma^2_{t-i} }
+  \text{.}
+\end{align*}
+Ensure you are comfortable with this question and its answer.
+It looks bad if you list time series on your CV yet struggle with this AR(1) theory.\footnote{Actually, there is no reason to believe a good time-series practitioner will necessarily be able to recall all these elementary proofs at a moment's notice. Unless they are interviewing, of course.}
+\end{answer}

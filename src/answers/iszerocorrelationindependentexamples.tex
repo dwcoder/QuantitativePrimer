@@ -1,0 +1,47 @@
+\begin{answer}{iszerocorrelationindependentexamples}
+Let $Z$ have the probability mass function
+\begin{align*}
+p(z) =
+\begin{cases}
+  0.5 & \text{ if } z = -1 \\
+  0.5 & \text{ if } z = 1
+\end{cases}
+\end{align*}
+or equivalently
+\begin{align*}
+P(Z = -1) &= 0.5  \\
+P(Z =  1) &= 0.5
+\text{.}
+\end{align*}
+Let $X \sim \text{Normal}(0,1)$
+and
+$Y = ZX$.
+We derive the distribution of $Y$ using its cumulative distribution function.
+\begin{align*}
+P(Y<x) &=
+P( ZX<x| Z = 1)P(Z=1) +
+P( ZX<x| Z = -1)P(Z=-1) \\
+&=
+P( X<x)(0.5) + P(-X<x)(0.5) \\
+&=  (0.5)( P( X<x) + P(X \geq -x)) \\
+&=  (0.5)( P( X<x) + P(X < x)) \quad \text{symmetry} \\
+&=   P(X < x)
+\end{align*}
+meaning $Y$ has the same distribution as $X$.
+Now we need to check whether $\rho=0$,
+\begin{align*}
+\rho
+&= \frac{\Cov(X,Y)}{\sigma_X \sigma_Y}  \\
+&= \Cov(X,Y) \\
+&= \Cov(X, ZX) \\
+&= \E(XZX) - \E(X) \E(ZX)  \\
+&= \E(X^2 Z) - \E(X) \E(ZX)  \\
+&= \E(X^2) \E(Z) - \E(X)\E(Z)\E(X)   \quad \text{independence} \\
+&=  0                                \quad \text{since } E(Z)=0
+\text{.}
+\end{align*}
+We have successfully constructed a situation where
+there is a clear defined dependence between $Y$ and $X$, but
+they are both distributed $\text{Normal}(0,1)$ with correlation coefficient
+$\rho = 0$.
+\end{answer}

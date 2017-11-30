@@ -1,0 +1,36 @@
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\tikzset{
+  dot hidden/.style={},
+  line hidden/.style={},
+  dot colour/.style={dot hidden/.append style={color=#1}},
+  dot colour/.default=black,
+  line colour/.style={line hidden/.append style={color=#1}},
+  line colour/.default=black
+}
+
+\usepackage{xparse}
+\NewDocumentCommand{\drawdie}{O{}m}{%
+\begin{tikzpicture}[x=1em,y=1em,radius=0.1,#1]
+  \draw[rounded corners=0.5,line hidden] (0,0) rectangle (1,1);
+  \ifodd#2
+    \fill[dot hidden] (0.5,0.5) circle;
+  \fi
+  \ifnum#2>1
+    \fill[dot hidden] (0.2,0.2) circle;
+    \fill[dot hidden] (0.8,0.8) circle;
+   \ifnum#2>3
+     \fill[dot hidden] (0.2,0.8) circle;
+     \fill[dot hidden] (0.8,0.2) circle;
+    \ifnum#2>5
+      \fill[dot hidden] (0.8,0.5) circle;
+      \fill[dot hidden] (0.2,0.5) circle;
+     \ifnum#2>7
+       \fill[dot hidden] (0.5,0.8) circle;
+       \fill[dot hidden] (0.5,0.2) circle;
+      \fi
+    \fi
+  \fi
+\fi
+\end{tikzpicture}%
+}

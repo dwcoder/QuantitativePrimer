@@ -1,0 +1,95 @@
+\begin{answer}{arrayofintegersfindduplicate}
+ Without sorting, we have to keep track of the numbers we have seen.
+ You could mention using a hashtable, or some other container with key-value pairs.
+ The Python \verb+dict+ is an example.
+ That way we can quickly check whether each number is already in the dictionary, and stop looking if we find one that is.
+ If the number isn't in the dictionary, add it.
+ The Python \verb+defaultdict+ will be even better, as it handles the key error when the key is not yet in the dictionary.
+ Another way to do it is to add the values into a list in such a way that the list remains sorted.
+ For each integer, you then do a binary search on the list to see whether the integer is already there.
+ This is the basic idea of a binary tree.
+ Think of a few ways to do this using various containers in your favourite language, and think of the benefits of each of them.
+ This question has many solutions, and there are no wrong answers (unless the interviewer is very opinionated and prejudiced against your container of choice).
+
+
+ With sorting it is trivial.
+ Sort the numbers, go through them one by one, and ask ``Is the next value equal to the current value?''
+ As soon as the answer is ``yes'' we can stop the search.
+ The question about your favourite sorting algorithm is a loaded one.
+ The interviewer is likely to ask you to explain how it works, about its complexity, and to write it in actual or pseudocode.
+ Therefore, ensure you do have a favourite sorting algorithm and make sure you know its details.
+ Also ensure your favourite isn't Bubblesort.
+ It is inefficient and acts only as an example to get new programmers thinking about algorithms.
+ It is also overused by people doing interviews.
+Your favourite sorting algorithm should be Mergesort, for the following reasons.
+\index{Mergesort}
+ \begin{enumerate}
+   \item Mergesort is efficient. It has $O(n \log n)$ complexity, which is on par with the best sorting algorithms used in production.
+   \item Mergesort is actually used in production, albeit usually as part of more efficient algorithms such as Timsort. The toy-example algorithms like Bubblesort are only used in classroom examples (and by interviewees).
+   \item Due to its divide-and-conquer strategy it can easily be parallelised, which has obvious benefits when used with computing clusters and GPU programming.
+   \item It allows you to show that you understand recursion. Bonus points.
+   \item For all its strengths, it is surprisingly simple to code. The main workings require only six lines of code---as shown in the example Python code below.
+ \end{enumerate}
+The basic idea of Mergesort is to split the list into two parts, sort each part, and combine them back into single, sorted list.
+Since the second step requires sorting, we can do it recursively.
+The workings are given in the below pseudocode, were we assume that we have a function called
+\verb+merge_sorted_vectors+,
+which receives two sorted vectors as arguments and combines them into one sorted vector.
+
+\begin{algorithmic}[1]
+  \Statex
+  \Function{MergeSort}{$\vec{x}$}
+  \State
+        $n$ = length($\vec{x}$)
+    \If{n is 1}
+      \State
+      \Return $\vec{x}$
+      \Comment{ Recursion base case}
+     \EndIf
+  \State
+  $m$ = round($\nicefrac{n}{2}$) \Comment Vector middle index
+  \State
+  firsthalf = $\{x_1, x_2, \ldots ,x_m\}$
+  \State
+  secondhalf = $\{x_{m+1}, x_{m+2}, \ldots, x_n \}$
+  \State
+  firsthalf\_sorted = MergeSort(firsthalf)
+  \Comment Recursive call
+  \State
+  secondhalf\_sorted = MergeSort(secondhalf)
+      \State \Return{ MergeTwoSortedVectors(firsthalf\_sorted, secondhalf\_sorted) }
+  \EndFunction
+\end{algorithmic}
+The code is simple since most of the tricky workings is hidden in the MergeTwoSortedVectors() function.
+It is still, however, easier to write than Bubblesort.
+
+The Python implementation of Mergesort below is even easier to read than the pseudocode.
+The function has only six lines of code to remember, which you can reduce further at the cost of readability.
+\begin{minted}[samepage=true]{python}
+def mergesort(unsortedlist):
+    if (len(unsortedlist)==1):
+        return unsortedlist
+
+    mid = len(unsortedlist)/2
+    firsthalf = unsortedlist[0:mid]
+    secondhalf = unsortedlist[mid:]
+    return merge(mergesort(firsthalf), mergesort(secondhalf))
+\end{minted}
+Here is one way to do the merge function.
+\begin{minted}[samepage=true]{python}
+# These two lists will already be sorted from small to large
+def merge(list1, list2):
+    sortedlist = []
+    while ((len(list1)>0) or (len(list2) > 0)):
+        if (len(list1)==0):
+            return list2 + list(reversed(sortedlist))
+        elif (len(list2)==0):
+            return list1 + list(reversed(sortedlist))
+        else:
+            if (list1[-1] >= list2[-1]):
+                sortedlist.append(list1.pop())
+            else:
+                sortedlist.append(list2.pop())
+
+\end{minted}
+\end{answer}

@@ -1,0 +1,16 @@
+\begin{answer}{derivativeofinverse}
+  This is a question about the relationship between the derivative and the inverse of a function.
+  The answer is simple, if you start right.
+  I didn't, so I struggled with it, and after using $x$ instead of $z$ in the previous derivation---to the chagrin of the interviewer---probably didn't leave a good impression.
+  I produce the correct answer here,
+\begin{align*}
+  x &= x \\
+  g(g^{-1}(x)) &= x \\
+ \frac{d}{dx} g(g^{-1}(x)) &= \frac{d}{dx} x \\
+  g'(g^{-1}(x))   \frac{d}{dx} g^{-1}(x) &= 1  \qquad (\text{chain rule})\\
+ \frac{d}{dx} g^{-1}(x) &= \frac{1}{g'(g^{-1}(x))}
+    \text{.}
+\end{align*}
+The crux is knowing to start with the first two lines, and to differentiate on both sides.
+If you try solving this with integrals, as I did, you are going to have a bad time.
+\end{answer}

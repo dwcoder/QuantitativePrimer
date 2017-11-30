@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+
+
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,mleftright}
+\usepackage{mathtools} % For cases environment
+\usepackage[round]{natbib}
+\usepackage{microtype}
+
+\usepackage[british]{babel}
+
+% Make a title for your question and provide your name (or a pseudonymn)
+\title{Slope and correlation}
+\author{C. Andidate}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Question}
+When is the slope of a straight-line fit through a set of points $(x_i,y_i)$ equal to the correlation between $x$ and $y$?
+
+\section{Answer}
+
+When we fit
+\[
+  y_i = \alpha + \beta x_i
+\]
+we know that the least square estimates are
+\begin{align*}
+  \hat{\alpha} &= \bar{y} - \hat\beta \bar{x}  \\
+  \hat{\beta} &=
+  \frac
+  {\operatorname{Cov}(x, y)}
+  {\operatorname{Var}(x)} \\
+  &= \rho_{xy} \frac{s_y}{s_x}
+\end{align*}
+where
+$  \bar{y} = \frac{1}{n}\sum_{i=1}^{n}{y_i} $,
+$  \bar{x} = \frac{1}{n}\sum_{i=1}^{n}{x_i} $,
+and $\operatorname{Var}$ and $\operatorname{Cov}$ are the variance and covariance, respectively.
+Likewise,
+$\rho_{xy}$,
+$s_y$, and
+$s_x$ are the sample correlation coefficient and sample standard deviations of the $y_i$s and $x_i$s, respectively.
+So the slope is equal to the correlation when $x$ and $y$ have the same variance,
+\begin{align*}
+  \rho_{xy} &= \rho_{xy} \frac{s_y}{s_x} \\
+  s_y       &=  s_x
+  \text{.}
+\end{align*}
+
+
+%% Uncomment this if you need references
+%\bibliography{references.bib}
+%\bibliographystyle{chicago}
+
+
+\end{document}

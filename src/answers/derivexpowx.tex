@@ -1,0 +1,33 @@
+\begin{answer}{derivexpowx}
+These questions with the appearance of pure-mathematics usually test two things.
+\begin{enumerate}
+  \item Rewrite trick: Rewrite the problem to something easier
+  \item Solve using integration or differentiation
+\end{enumerate}
+The first one is the hardest part and if you don't know the specific trick for the specific question, you have to get lucky.
+As long as you try \emph{something} to show the interviewer you have the potential to solve the question they should give you some hints to arrive at the rewrite trick.
+The second part requires calculus from a year-one mathematics course.
+That is a lot of theory to brush up on, but the few rules highlighted in appendix \ref{ap:cribsheet} should be sufficient for most interview questions.
+
+The wrong answer is $(x-1) x^{x-1}$.
+Here is the rewrite trick that will put us on the right track,
+\begin{align*}
+  x^x &= e^{ \ln(x^x )} \\
+      &= e^{x \ln(x )}
+      \text{.}
+\end{align*}
+And now we need to use the chain rule and the product rule. Let
+\begin{align*}
+      e^{x \ln(x )} &=  e^{u} \\
+      u &= x \ln(x) \\
+     du &= 1 + \ln(x) \quad (\text{Product rule})
+\end{align*}
+then
+\begin{align*}
+\frac{d}{dx} e^{x \ln(x )} &= \frac{d}{du} e^{u}  \frac{du}{dx} \\
+                           &=  e^{u} (1 + \ln(x)) \\
+                           &=  e^{x \ln(x)} (1 + \ln(x)) \\
+                           &=  x^x (1 + \ln(x))
+\text{.}
+\end{align*}
+\end{answer}

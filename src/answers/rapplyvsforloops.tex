@@ -1,0 +1,24 @@
+\begin{answer}{rapplyvsforloops}
+ To the user, the main difference is in the syntax.
+ To the machine, there are many differences in the implementation regarding memory allocation and optimisations.
+ The question specifies \verb+lapply+, which applies a function over a list and returns a list.
+ Here is some code that will take every item in a list of integers, and apply a function to multiply it by two.
+ We also give the for loop for the same action.
+
+\begin{minted}{r}
+mult2 <- function(x) return(x*2)
+
+listofintegers <- list(1,2,3)
+ans1 <- lapply( listofintegers , mult2)
+
+ans2 <- list() # initialize empty list
+for (i in 1:length(listofintegers)){
+  ans2[[i]] <- mult2(listofintegers[[i]])
+}
+\end{minted}
+There might be better ways to write the for loop, but this suffices to highlight the difference.
+As for the question about preference; you should prefer \verb+lapply+ due to all the optimisation that comes with vectorisation.
+The developers of the R created these functions for a reason.
+It is also easy to parallelise code written with \verb+lapply+.
+The biggest caveat of these functions, however, is readability.
+\end{answer}

@@ -1,0 +1,40 @@
+\begin{answer}{pythonanagrams}
+The interviewer will likely explain what an anagram is before asking you this.
+Two words are anagrams if they have the same set of letters, like \emph{toned} and \emph{noted}.
+You can re-arrange the letters of the one to spell the other.
+The easiest way to check whether two strings are anagrams is to sort them and check whether they are the same.
+Also, we can catch a trivial case at the beginning of the function: If the strings don't have the same length, they are definitely not anagrams.
+\begin{minted}{python}
+def IsAnagram(string1, string2):
+    if len(string1) is not len(string2):
+      return False
+
+    return sorted(string1) == sorted(string2)
+\end{minted}
+%
+To do it without sorting requires a trick.
+We assign
+the integers 1--26
+to
+the letters A--Z.
+Then we loop over the two strings, and we add up all the letters in the first string, and subtract all the letters of the second string.
+If the two strings are anagrams the final answer will be zero, since every number will be added and subtracted from the total exactly once.
+Python 2.7 actually has the function \verb+ord+ that converts characters into their ASCII equivalent numbers, so we can use it.
+\begin{minted}{python}
+def IsAnagramNoSort(string1, string2):
+    if len(string1) is not len(string2):
+      return False
+
+    sum = 0
+
+    for letter in string1:
+        sum += ord(letter)
+    for letter in string2:
+        sum -= ord(letter)
+
+    return (sum == 0)
+\end{minted}
+We would prefer a version without sorting if the strings are very long, or if this is an operation we have to do often.
+Sorting is expensive, the best sorting algorithms have $O(n\log{n})$ complexity.
+For the algorithm that doesn't sort, we only need to access each of the letters once so the complexity is $O(n)$.
+\end{answer}
