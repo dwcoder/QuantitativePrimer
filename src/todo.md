@@ -3,8 +3,8 @@
  - [x] Stick Breaking
    Make sure all instances are the same. Should always be:
    \emph{Stick Breaking} problem
- - [x] Romeo and Juliet
-   Make sure all instances are the same.
+ - [x] Romeo and Juliet (should be emphasized, like the above)
+   Make sure all instances are the same. Use script 4.
    Should always be:
    \emph{Romeo and Juliet} (nothing else in emphasis)
  - [x] A sentence should never start with "Which".
@@ -14,6 +14,8 @@
  - [x] Air force one --> Air Force One
  - [x] roll vs role
  - [x] minimise vs minimize. Prefer the former
+ - [ ] Like the above, but more general check page 148 (dp 155) of economist style guide. Use script 5 to find possible errors.
+ - [x] Practice vs practise. The former is a noun, the latter is a verb. Econ Style guide page 147. Use script 6.
  - [x] normal distribution, check capitalisation. (Murphy and BUGS book say "normal distribution"
  - [x] log-normal, check capitalisation. (Murphy and BUGS) (no instances)
  - [x] multivariate normal (ibid)
@@ -38,3 +40,10 @@
 
 # Things to think about
  - [x] Should I move the tricks an regression theory out of the appendix and into the main text?
+
+
+# Final
+
+ - [ ] Rebuild images
+ - [ ] Make sure index is there
+ - [ ] Squash all git commits
