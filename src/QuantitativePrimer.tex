@@ -890,9 +890,9 @@ Recall that $A$ is the event where the last person to board the plane gets their
 \begin{align*}
   p_3
   &=
-                         P(A|B_3 = 1)P(B_3=1) + {}\\
-      &\phantom{{} = {}} P(A|B_3 = 2)P(B_3=2) + {}\\
-      &\phantom{{} = {}} P(A|B_3 = 3)P(B_3=3)
+       \phantom{{} + {}}    P(A|B_3 = 1)P(B_3=1) \\
+      &\phantom{{} = {}} +  P(A|B_3 = 2)P(B_3=2) \\
+      &\phantom{{} = {}} +  P(A|B_3 = 3)P(B_3=3)
   \\
   &=
   (1)   \frac{1}{3}  +
@@ -920,10 +920,10 @@ He sits in seat 4          & $\nicefrac{1}{4}$  &  The last person is doomed    
 \end{center}
 \begin{align*}
   p_4
-      &=                 P(A|B_4 = 1)P(B_4=1)  + {}\\
-      &\phantom{{} = {}} P(A|B_4 = 2)P(B_4=2) + {}\\
-      &\phantom{{} = {}} P(A|B_4 = 3)P(B_4=3) + {}\\
-      &\phantom{{} = {}} P(A|B_4 = 4)P(B_4=4)
+      &=  \phantom{{} + {}} P(A|B_4 = 1)P(B_4=1) \\
+      &\phantom{{} = {}} +  P(A|B_4 = 2)P(B_4=2) \\
+      &\phantom{{} = {}} +  P(A|B_4 = 3)P(B_4=3) \\
+      &\phantom{{} = {}} +  P(A|B_4 = 4)P(B_4=4)
   \\
  & =
   (1)   \frac{1}{4} +
@@ -960,19 +960,19 @@ He sits in seat $n  $      & $\nicefrac{1}{n}$  &  The last person is doomed    
 \begin{align*}
   p_n
   &=
-                         P(A|B_n = 1)P(B_n=1) + {}\\
-  &\phantom{{} = {}} P(A|B_n = 2)P(B_n=2) +{} \\
-  &\phantom{{} = {}} P(A|B_n = 3)P(B_n=3) +{} \\
-  &\phantom{{} = {}} \ldots  \\
-  &\phantom{{} = {}} P(A|B_n = i)P(B_n=i) +{} \\
-  &\phantom{{} = {}} \ldots  \\
-  &\phantom{{} = {}} P(A|B_n = n)P(B_n=n) \\
+   \phantom{{} + {}}     P(A|B_n = 1)P(B_n=1) \\
+  &\phantom{{} = {}} + P(A|B_n = 2)P(B_n=2) \\
+  &\phantom{{} = {}} + P(A|B_n = 3)P(B_n=3) \\
+  &\phantom{{} = {}}\phantom{{} + {}} \vdots  \\
+  &\phantom{{} = {}} +  P(A|B_n = i)P(B_n=i) \\
+  &\phantom{{} = {}}\phantom{{} + {}} \vdots  \\
+  &\phantom{{} = {}} +  P(A|B_n = n)P(B_n=n) \\
 &= (1)       \frac{1}{n}  +
    (p_{n-1}) \frac{1}{n}  +
    (p_{n-2}) \frac{1}{n}  +
-  \ldots
+  \ldots +
   (p_{n-i+1})\frac{1}{n} +
-  \ldots
+  \ldots +
   (0)        \frac{1}{n}  \\
 &=\frac{1}{n}\left(1 +  \frac{1}{2} + \frac{1}{2} + \ldots + \frac{1}{2} + \ldots + 0\right) \\
 &=\frac{1}{n}\left(\frac{2}{2} + \frac{n-2}{2} + 0\right) \\
