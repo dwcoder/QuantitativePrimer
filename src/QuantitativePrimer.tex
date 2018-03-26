@@ -134,7 +134,7 @@ The minimum amount of preparation required will depend on how much you currently
 Of course, you'll want to do more than the minimum.
 I suggest you begin with the text you are reading now, starting with a review of the calculus mentioned in appendix \ref{ap:cribsheet}.
 If you can successfully do all the questions on your first try, you are probably ready.
-In that case, read through the solutions and pay attention to how the interviewers expect you to present the answers and to get an idea of how interviews usually progress.
+In that case, read through the solutions and pay attention to how the interviewers expect you to present the answers and to get an idea of how interviews progress.
 
 If you struggle with some of the questions, work through similar questions in \citep{JoshiQA}.
 Also, make sure you work through some of \citet{HeardOnTheStreet}, but allocate more time to \citet{JoshiQA}.
@@ -727,7 +727,6 @@ Which do you prefer?
 
 \begin{question}{grownup}
 Received a few case-study questions about problems the team was currently facing.
-I will not discuss them here.
 \end{question}
 
  \clearpage
@@ -761,7 +760,7 @@ where $k < l$?
 \clearpage
 \section{Old friends}
 Two questions stood out.
-I got the \emph{Air Force One} question three times in 2014, and I got the \emph{Stick Breaking} question more than three times during 2017.\footnote{I never got \emph{Air Force One} in 2017, nor did I get \emph{Stick Breaking} in 2014. Questions seem to go in and out of fashion and also show signs of cross-pollination.}
+I got the \emph{Air Force One} question three times in 2014, and I got the \emph{Stick Breaking} question more than three times during 2017.\footnote{I never got \emph{Air Force One} in 2017, nor did I get \emph{Stick Breaking} in 2014. Questions seem to go in and out of fashion and there is evidence of cross-pollination.}
 Getting a question multiple times allows you to repeatedly sample the experience, and that way you learn more about the uncertainty in the demeanour of interviewers.\footnote{See question \ref{q:twopiecesofwood}.}
 Like stand-up comedians who find that different crowds laugh at different parts of the same joke, different interviewers didn't always approve of the same answer.
 Some are looking for an intuitive answer  while others want you to grind through the mathematics, rigorously proving every step.
@@ -815,7 +814,7 @@ two seats is equal.
 \end{quote}
 Simple! You think nothing more of it and give this answer when prompted. Then the interviewer says ``I don't understand your answer, could you give a different one?''
 Even though you trust and believe the simple solution, chances are that the interviewer wants to see \emph{some} mathematics.
-The first two times I got this question I got stuck after giving a simple answers and not knowing how to convince the interviewer I understood the principles behind it.
+The first two times I got this question I got stuck after giving a simple answer and not knowing how to convince the interviewer that I understood the principles behind it.
 Before we do the algebra, let's see what \citet{WilmottFAQ} has to say. (Note that he calls the confused passenger GW, who is about to board Air Force One, but cannot read and therefore ignores his ticket.)
 \begin{quote}
 Sounds really complicated, because of all the people
@@ -844,13 +843,13 @@ His suggestion to start with the case of one passenger is a good idea, and it is
 The notation can be tricky, so it is good to work through this beforehand so you don't struggle in a live interview.
 Note that any person who gets on the plane and finds his seat occupied \emph{becomes the drunkard.}
 This means that if there are 100 seats, and the drunk passenger sits in seat 50, people 2--49 will just sit in their assigned seats.
-When person 50 finds the seat occupied, he becomes the drunkard and we now have the same problem as before, but with 51 people instead of 100. The open seats will be
+When person 50 finds his seat occupied, he becomes the drunkard and we now have the same problem as before, but with 51 people instead of 100. The open seats will be
 $1, 51,52,\ldots,99,100$
 and passenger 50 can choose any of them randomly. For simplicity, we can relabel seat $1$ and call it seat $50$, and then we pretend it is the allocated seat for passenger 50 (since it is the ``correct'' choice that makes everyone else get their assigned seats).
 This allows us to solve the problem using induction.
 
 Let $p_n$ be the probability that the last person sits in their seat when there are $n$ seats on the plane.
-We want to determine $p_{100}$, which gives us the answer to the question.
+We want to determine $p_{100}$, since it is what the question requires.
 Let $A$ be the event that the last person sits in their own seat, and $B_i$ be the seat number chosen by a person who gets on when there are $i$ seats left.
 It has a discrete uniform distribution from $1$ to $i$, so $P(B_i = k) = \frac{1}{i}$ since there are $i$ seats and the person randomly chooses one.
 We start with the trivial case of $n=1$ where
@@ -1027,9 +1026,10 @@ It is best to draw pictures of the three possible cases.
 \begin{enumerate}
   \item When the longest piece is less than the sum of the other two
   \item When the longest piece is equal to the sum of the other two
-  \item When the longest piece is more than the sum of the other two
+  \item When the longest piece is greater than the sum of the other two
 \end{enumerate}
-You will find that only the first case allows you to draw a triangle (The second case is a degenerate case where the triangle you draw becomes a line).
+You will find that only the first case allows you to draw a triangle.
+The second case is a degenerate case where the triangle you draw becomes a line, and the third case doesn't allow for a triangle to be formed.
 The next part of their answer is a bit of brilliant intuition.
 He correctly realised that the largest piece will be less that the other two if and only if precisely one of $x$ and $y$ is less than $\frac{1}{2}$, and $|x-y|<\frac{1}{2}$.
 Thereafter, he uses the trick to integrate a bivariate uniform distribution by using the unit square (see appendix \ref{ap:tricks}).
