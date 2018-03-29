@@ -1,7 +1,7 @@
 \begin{answer}{bivariatenormalmax}
 Contrary to the above, there isn't always a pretty solution, sometimes we will have to do all the calculations.
 This question is particularly nasty since it requires some niche definitions.
-Doing the whole question isn't possible in the 10 minutes you will be allocated, so the interviewer is probably testing how well you perform under pressure,
+Doing the whole question isn't possible in the 10 minutes you will be allocated, so the interviewer is testing how well you perform under pressure,
 how you approach a difficult problem by breaking it into smaller parts,
 and what notation you use.
 
@@ -80,18 +80,23 @@ They want to see how you think.
 At some hedge funds I saw the opposite: They ask moderately difficult questions and snidely remark that you seem unable to do the ``simple proof'' which is quite trivial to them (especially after checking the solution just before the interview) if you don't start off on the right track immediately.
 You win some, you lose some.
 
-I will give the rest of the answer here for the sake of completeness, and then I will present a smart solution that a friend of mine provided.
+I will give the rest of the answer here for the sake of completeness, and then I will present a smart solution that a friend provided.
 You will notice that the solution is complicated and requires a fair amount of textbook theory, like the properties of a truncated normal distribution.
 Even if you are able to recall all the required properties during an interview, doing a rigorous proof will take longer than the time allocated.
 Again, the interviewer probably isn't looking for the whole proof, but rather the steps you would take during it.
 
 The quantity $\E(X|X > Y)$ isn't immediately recognisable.
-However, if we write it as
+However, if we let
+\begin{align*}
+W_1 &= X \\
+W_2 &= X-Y
+\end{align*}
+and write the expectation as
 \begin{align*}
 \E(X|X-Y > 0) = \E(W_1|W_2 > 0)
 \end{align*}
 it becomes a conditional expectation of two random variables that are a linear combination of our original bivariate normal distribution.
-To see this, let
+To see this, use a matrix
 \[B =
 \begin{bmatrix}
   1   &  0 \\
@@ -174,11 +179,13 @@ as
 \text{.}
 \end{equation*}
 This conditional expectation is difficult to evaluate.
-If we partition
+In general, if we partition a $p$-dimensional multivariate normal vector
 \[
 \vec{x} \sim \operatorname{MultivariateNormal}(\vec{\mu}, \vec{\Sigma})
 \]
-into
+into $\vec{x} = [\vec{x_1}, \vec{x_2} ]^{T}$ where
+$x_1 \in \mathbb{R}^k$ and
+$x_2 \in \mathbb{R}^{p-k}$ such that
 \[
 \begin{bmatrix}
 \vec{x}_1 \\ \vec{x}_2
@@ -215,7 +222,7 @@ we know from the theory of the multivariate normal distribution that
   \right)
 \text{.}
 \]
-In our example, this means
+In our example the partitioning is simple as it doesn't involve block matrices, and we have
 \begin{align*}
 \E(W_1|W_2 = w_2) &=  \frac{(1-\rho)}{2(1-\rho)} w_2 \\
                   &=  \frac{1}{2}w_2
@@ -244,7 +251,7 @@ This is $\nicefrac{1}{2}$ multiplied by the expected value of a truncated normal
 &=  \frac{ 2 \sqrt{ 1- \rho}  }{ \sqrt{ \pi} } \nonumber
 \text{.}
 \end{align}
-Putting it all together we finally arrive at the answer.
+Putting it all together we finally arrive at the answer,
 \begin{align*}
 \E(Z) &=  \E(X|X > Y)  \\
       &= \E(W_1|W_2 > 0 ) \\
@@ -258,7 +265,7 @@ You can use Monte Carlo integration to convince yourself of this; I include an R
 
 
 
-The solution provided by my friend starts out different.
+My friend's solution starts out different.
 It uses the identity
 \[
   \max(x,y) = \frac{x + y + |x-y|}{2}
