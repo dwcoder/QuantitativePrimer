@@ -1,17 +1,18 @@
 \begin{answer}{rdatastructures}
+I was asked these questions since I indicated R as my language of choice.
+If you display a preference for Python, adjust the questions accordingly.
 \begin{itemize}
-  \item Lists, which are like Python dictionaries, but don't necessarily require its contents to be named.
+  \item Lists, which are like Python dictionaries, but don't necessarily require their contents to be named.
   They can contain multiple data types, and can contain other containers like vectors, matrices, or further nested lists.
-  They can also contain functions.
+  They can also contain functions:
   \begin{minted}{r}
 mylist <- list(key1=c(1,2,3),
                key2="hello world",
                list(a=1, b="2"))
   \end{minted}
-  \item Vectors, which don't have a dimension until you coerce it into an array or matrix.
-  That means they aren't considered to be row or column vectors.
-  They can only contain data of one type.
-  They cannot contain other data structures like lists or vectors.
+  \item Vectors, which don't have a dimension until you coerce them into an array or matrix;
+  this means they aren't considered to be row or column vectors.
+  They can only contain data of one type, and not other data structures like lists or vectors.
   \begin{minted}{r}
 myvec1 <- c(1,2,3)
 myvec2 <- 1:10
@@ -22,19 +23,19 @@ myvec3 <- c("one","two", "three")
   They can be ordered, for instance \verb+c("high", "medium", "low")+.
   These form an important part of the R language since all the estimation and fitting libraries contain procedures to deal with them, like assigning dummy variables automatically.
   They also reduce storage, since long strings are stored as numbers.
-  \item Matrices and arrays.
-  These are multidimensional vectors.
+  \item Matrices and arrays,
+  which are multidimensional vectors.
   While matrices are two-dimensional arrays, it is important to have them as a distinct type to allow for matrix arithmetic.
   \begin{minted}{r}
 mymatrix <- matrix(1:100, 10, 10)
 myarray <-  array(1:1000, dim=c(10,10,10))
   \end{minted}
-  \item Data frames. This is R's native ``table data'' format.
+  \item Data frames, which are R's native ``table data'' format.
   Each column is a vector with one data type, and each row represents an observation in the dataset.
-  \item Data tables. This is a relatively new library for R, written by \citet{datatables}.
-  The library has a powerful C++ back end, and allow users to handle big datasets in R.
-  Most of the operations occur in memory, as opposed to data frames which have a tendency to create copies.
+  \item Data tables, which are relatively new in R, written by \citet{datatables}.
+  The library has a powerful C++ back end, and allows users to handle big datasets in R.
+  Most of the operations occur in memory, in contrast to data frames, which have a tendency to create copies.
   These can be thought of as R's answer to the \verb+pandas+ library in Python.
-  They have a wholly different syntax than that of data frames.
+  They have a wholly different syntax than do data frames.
 \end{itemize}
 \end{answer}

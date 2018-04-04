@@ -1,33 +1,33 @@
 \begin{answer}{cppvirtualfunctionwhy}
 This is question 7.10 from \citet{JoshiQA}
-and their wording is probably better than my own.
+and their wording is probably better than mine.
 Virtual functions allow us to defer the implementation of a function.
 When we define a virtual function in a base class, we don't have to specify its workings; we can do that later in the classes that inherit from it.
 
-For instance, I might have a base class called \verb+ContinuousDistribution+ with a virtual function  called \verb+simulateRandomVariable+.
-This way, I don't have to implement the function that does the simulation in the base class, I can define it for each of the distributions I implement.
-You can also implement a general, inefficient function the base class and override it in the derived classes with more appropriate functions for each distribution.
+For instance, you might have a base class called \verb+ContinuousDistribution+ with a virtual function  called \verb+simulateRandomVariable+.
+This way, you don't have to implement the function that does the simulation in the base class, instead you can define it for each of the implemented distributions.
+You can also implement a general, inefficient function in the base class and override it in the derived classes with more appropriate functions for each distribution.
 The example I give is different from
 \citet[question 7.10]{JoshiQA},
-and I suggest you think of an example to use which is relevant to you and your background.
-It is much easier to remember your own example in an interview than learning someone else's.
+and I suggest that you think of an example to use which is germane to your background.
+It is much easier to remember your own example in an interview than remembering someone else's.
 It also conveys actual working knowledge rather than prepared responses---whether merited or not.
 
 
 The second part of the question is harder to answer and interviewers are likely to have different views.
-I got asked why we need virtual functions if we can probably use function pointers and other C++ tricks to mimic their behaviour.
+I was asked why we need virtual functions if we can probably use function pointers and other C++ tricks to mimic their behaviour.
 In truth, virtual functions aren't only used to defer implementation.
-The academic answer is ``It is used to give Run Time Polymorphism,'' but  make sure you know what this means if you want to use it.
+The academic answer is ``It is used to give run time polymorphism,'' but  make sure you know what this means if you want to use it.
 It is best explained through an example, like the one given in appendix \ref{ap:virtualfunctions}.
 We can use a base-class pointer to point to a base class (Car, in the example), as well as a derived class (ElectricCar, in the example).
 When we call a function using the base-class pointer, the compiler decides at run time which function to call, and in the case of a virtual function it will prefer the derived-class version.
 This ability is hard to mimic without virtual functions---we would have to overload a lot of  functions outside of the classes themselves.
-With virtual functions, the programmer only has to worry about specifying all the correct functions in their class, rather than also deal with an additional list of external functions to overload.
+With virtual functions, the programmer only has to worry about specifying all the correct functions in their class, rather than also dealing with an additional list of external functions to overload.
 
 If you mentioned C++ on your CV you should be able to answer all the questions in
 \citet[chap.~7]{JoshiQA}.
-Study them even if you think you know the language well; it has all the important questions along with the answers \emph{as the interviewers want to hear them}.
-I can also wholly suggest \citet{joshi2008cpp}, for a tutorial on some C++ design patterns and how they apply to derivative pricing.
+Study it even if you think you know the language well; it has all the important questions along with the answers \emph{as the interviewers want to hear them}.
+I suggest familiarising \citet{joshi2008cpp} for a tutorial on some C++ design patterns and how they apply to derivative pricing.
 At the very least, be ready to answer questions about virtual functions, polymorphism, and some design patterns in C++.
 Questions about differences between Python and C++ are also popular.
 \end{answer}

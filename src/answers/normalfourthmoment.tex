@@ -24,7 +24,7 @@ uv\Big\vert_{x=-\infty}^{x=\infty} - \int_{-\infty}^{\infty}{ v du }
 \]
 We will require some trial and error to determine the best way to rewrite
 (\ref{eq:normalfourthmoment:integraltosolve}) in order to choose $u$ and $v$.
-Be sure to tell the interviewer what you are doing; write out the formula for integration by parts and mention you are trying to find the best candidates for $u$ and $v$.
+Be sure to tell the interviewer what you are doing while you are writing out the formula for integration by parts, and mention you are trying to find the best candidates for $u$ and $v$.
 The only candidate that gives us something \emph{easier} to deal with after integration by parts is
 \begin{align*}
 \E(X^4)
@@ -130,7 +130,7 @@ We need to apply the rule three times:
 \end{equation}
 and the same is true for
 ${x \rightarrow -\infty}$.
-While I include the elaborate calculations above, you don't have to; it is clear that the denominator will always include a term involving
+While I include the elaborate calculations above, you don't have to, because it is clear that the denominator will always include a term involving
 \[
 \exp{\left(\frac{x^{2}}{2 \sigma^{2}}\right)}
 \]
@@ -174,9 +174,9 @@ $X \sim \text{Normal}\left(0, \sigma^2\right)$ is
 \text{.}
 \end{align*}
 This was a very long journey to arrive at the answer, and doing the integration may not have been the best approach.
-This approach does, however, allow you to exhibit your integration prowess, which may hurt or help you depending on how the interviewer feels on the day.
+This approach does, however, allow you to exhibit your integration prowess, which may hurt or help you depending on how the interviewer feels.
 In my case, I wasn't able to arrive at the right answer, but when I reached  (\ref{eq:fourthmoment:nearlythere}) the interviewer said ``there, now we have something familiar'' (referring to the second moment) and went on to the next question.
-A better approach may have been to use the Moment Generating Function of the normal distribution,
+A better approach might have been to use the Moment Generating Function of the normal distribution,
 \begin{align*}
   M(t) =
   e^{\mu t}
@@ -210,9 +210,8 @@ M_X^{(4)}(0) &=
 \end{align*}
 Still tedious, but perhaps less so than the integration.%
 \footnote{I used Sympy by \citet{Sympy} to generate these, as well as all the differentiation for in (\ref{eq:fourthmoment:lhopital}).}
-Of course, you could just learn the moments of the normal distribution by heart, but I don't think that is what the interviewer wanted.
-They likely wanted to see some mathematics.
-The interviewer also asked me what the fourth moment meant.
+Of course, you could just learn the moments of the normal distribution by heart, but I don't think that's what interviewers want---they want to see some mathematics.
+In my case, the interviewer also asked me what the fourth moment meant.
 I didn't understand, but they probably wanted me to mention the kurtosis, which is a measure of the ``tailedness'' of a distribution.\
 The fourth moment is used to measure kurtosis,
 the third moment is related to the skewness,
@@ -225,5 +224,5 @@ This might be in response to interview solution manuals like
 and the fact that they don't contain many questions on the theory of the normal distribution.
 Perhaps there is a book called ``Interesting Proofs about the Normal Distribution'' doing the rounds at the banks, or maybe there are internal study groups who meet regularly to make and solve brainteasers about the normal distribution.
 Whatever it is, I cannot guarantee that these questions will remain popular.
-I nonetheless recommend you know the normal distribution well---not only because it might help you during interviews, but also because it is a widely used (nay, overused) distribution that you are sure to encounter in practice.
+I nonetheless recommend that you know the normal distribution well---not only because it might help you during interviews, but also because it is, by now, an overused distribution that you are sure to encounter in practice.
 \end{answer}

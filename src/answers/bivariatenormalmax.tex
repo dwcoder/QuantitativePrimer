@@ -1,16 +1,16 @@
 \begin{answer}{bivariatenormalmax}
-Contrary to the above, there isn't always a pretty solution, sometimes we will have to do all the calculations.
+Sometimes there isn't a quick and easy solution, and you have to do the tedious calculations.
 This question is particularly nasty since it requires some niche definitions.
 Doing the whole question isn't possible in the 10 minutes you will be allocated, so the interviewer is testing how well you perform under pressure,
 how you approach a difficult problem by breaking it into smaller parts,
 and what notation you use.
 
-Get started in a direction, and try to think out loud:
+Start solving the problem with the method that seems most appropriate to you, and try to think aloud:
 ``We want to evaluate an expectation, so we have to do an integral.''
 Don't be afraid to ask the interviewer things like ``Do you think I'm on the right track?''
 They will often offer little hints to help you along.
 The last thing you want to do is get started on the wrong track and struggle with it for ten minutes while the interviewer sits there watching in silence.\footnote{During one of my interviews the interviewer started doing something on his phone while I was attempting the problem. No matter how I prodded, I couldn't get the guy interested in the interview. You win some, you lose some.}
-Try to get the interviewer involved, but not to such an extent that it looks like you want them to hold your hand.
+Try to get the interviewer involved, but not to such an extent that you need your hand held.
 This is something that takes practise.
 For our current problem, we have to write it into something easier first,
 \[
@@ -22,7 +22,7 @@ For our current problem, we have to write it into something easier first,
   \end{dcases*}
 \]
 Now we can use the Law of Total Expectation:
-\index{Tricks!Law of Total Expectation}
+\index{tricks!Law of Total Expectation}
 If $ A_1, A_2, A_3, \ldots, A_n$ are mutually disjoint and exhaustive, then
 \[
   \E(Z) = \sum_{i=1}^{n}{
@@ -39,13 +39,13 @@ In our case, let $Z=\max(X,Y)$, with the expectation expanded as
 +          \E(Y|X \leq Y)P(X \leq Y)
   \text{.}
 \end{align*}
-Now the interviewer will point out that the two terms on the right-hand side are symmetric, thus they must be the same:
+Now, the interviewer will point out that the two terms on the right-hand side are symmetric, thus they must be the same:
 \[
   \E(Z) = 2 \E(X|X > Y)P(X>Y)
   \text{.}
 \]
-Here, $P(X>Y) = \nicefrac{1}{2}$ and doesn't depend on $\rho$.
-The integration that proves this is tedious and again it is easier to draw a picture; below is a contour plot of the bivariate normal distribution with
+Here, $P(X>Y) = \nicefrac{1}{2}$ and doesn't depend on $\rho$---the integration that proves this is tedious and, again, it is easier to draw a picture.
+Below is a contour plot of the bivariate normal distribution with
 \[
 \vec{\mu}=
 \begin{bmatrix}
@@ -60,30 +60,30 @@ The integration that proves this is tedious and again it is easier to draw a pic
 \end{bmatrix}
 \]
 for different values of $\rho$.
-The contour plot is something you can quickly draw by hand in an interview.
-The three-dimensional plot that appears under it is not, but it is included for clarity.
+The contour plot is something you can quickly draw up.
+Refer to the three-dimensional plots below for clarity.
 \begin{center}
   \includegraphics[width=\textwidth]{./plots/mvtnorm/mvrnorm.pdf}
   % mvrnorm.pdf: 0x0 pixel, 300dpi, 0.00x0.00 cm, bb=
   \includegraphics[width=\textwidth]{./plots/bivariatenorm/bivariatenorm.pdf}
 \end{center}
-The line shows $y=x$, and it is not hard to see that the area under the distribution where $x>y$ will be equal to \nicefrac{1}{2} for any value of $\rho$.
+The line shows $y=x$; the area under the distribution where $x>y$ will be equal to \nicefrac{1}{2} for any value of $\rho$.
 Thus we have reduced the problem to
 \[
 \E(Z) =  \E(X|X > Y)
 \]
-and we just need to find a smart way to evaluate it.
-If you have gotten this far, the interviewer will probably be convinced of your ability to solve the problem and (hopefully) end it here and move on to the next question.
-Some firms  ask really difficult questions, but they don't expect you to get the correct answer.
+and we just need to find a clever way to evaluate it.
+If you have got this far, the interviewer will probably be convinced of your ability to solve the problem, and move on to the next question.
+Some firms  ask really difficult questions, but they don't expect you to get the correct answers.
 (This is especially the case with Goldman Sachs.)
 They want to see how you think.
-At some hedge funds I saw the opposite: They ask moderately difficult questions and snidely remark that you seem unable to do the ``simple proof'' which is quite trivial to them (especially after checking the solution just before the interview) if you don't start off on the right track immediately.
+At some hedge funds I saw the opposite: they ask moderately difficult questions and snidely remark that you seem unable to do the ``simple proof'' which they pretend to know (especially silly, given that they checked the solution just before you walked in) if you don't start off on the right foot.
 You win some, you lose some.
 
-I will give the rest of the answer here for the sake of completeness, and then I will present a smart solution that a friend provided.
-You will notice that the solution is complicated and requires a fair amount of textbook theory, like the properties of a truncated normal distribution.
+I will give the rest of the answer here for the sake of completeness, and then I will present a clever solution provided by a friend.
+You will notice that the solution is complicated and requires a fair amount of textbook theory (like the properties of a truncated normal distribution, for example).
 Even if you are able to recall all the required properties during an interview, doing a rigorous proof will take longer than the time allocated.
-Again, the interviewer probably isn't looking for the whole proof, but rather the steps you would take during it.
+Again, the interviewer probably isn't looking for the whole proof, but rather the steps you would take along the way.
 
 The quantity $\E(X|X > Y)$ isn't immediately recognisable.
 However, if we let
@@ -260,17 +260,17 @@ Putting it all together we finally arrive at the answer,
       &=  \sqrt{\frac{ 1- \rho  }{ \pi }}
 \text{.}
 \end{align*}
-You can use Monte Carlo integration to convince yourself of this; I include an R script in appendix \ref{ap:mvtnormproof} to do just that.
+You can use Monte Carlo integration to convince yourself of this; I've included an R script in appendix \ref{ap:mvtnormproof} to do just that.
 
 
 
 
-My friend's solution starts out different.
+My friend's solution begins differently.
 It uses the identity
 \[
   \max(x,y) = \frac{x + y + |x-y|}{2}
+  \text{.}
 \]
-which we can also refer to as a trick.
 Using this, the expectation becomes
 \begin{align*}
   \E(\max(X,Y))
@@ -289,12 +289,12 @@ Using this, the expectation becomes
     \E(X-Y |X-Y > 0 ) \frac{1}{2}
 \text{.}
 \end{align*}
-The random variable $W_2 = X-Y$ has a $\text{Normal}(0, 2(1-\rho))$ distribution.
+The random variable $W_2 = X-Y$ has a $\text{normal}(0, 2(1-\rho))$ distribution.
 To see this, use a matrix $B=
 \begin{bmatrix}
         1 &    -1 \\
 \end{bmatrix}
-$ for an affine transformation as before, or consider that the sum of two random variables each from a normal distribution is itself a normal distribution, where you have to find
+$ for an affine transformation as above, or consider that the sum of two random variables each from a normal distribution is itself a normal distribution, where you have to find
 $\E(W_2) = \E(X-Y)$
 and
 $\Var(W_2) = \Var(X-Y)$.

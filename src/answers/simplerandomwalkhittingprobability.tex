@@ -1,19 +1,18 @@
 \begin{answer}{simplerandomwalkhittingprobability}
 This deceptively simple-looking question is difficult and requires specialist theory to solve.
-During an interview, never say you do not know.
-Even if you are certain you do not know the theory required, use the first trick in appendix \ref{ap:tricks} and start with the trivial case.
-\index{Tricks!Start with simplest case}
+If you don't know the theory required, use the first trick in appendix \ref{ap:tricks} and start with the trivial case.
+\index{tricks!start with simplest case}
 Here, it means we start the process at $k=1$ and let $l=2$.
-Then the process can go either way with probability $\frac{1}{2}$.
+Then, the process can go either way with probability $\frac{1}{2}$.
 Next, consider $l=3$ where the process can be at $k=1$ or $k=2$.
-Let $A_k$ be the event that the process currently at $k$ reaches three before it reaches zero.
-The process has two places it can be and they depend on each other in the following manner,
+Let $A_k$ be the event that a process---which is currently at $k$---reaches three before it reaches zero.
+The process can only be in two places and they depend on each other in the following manner:
 \begin{align*}
 P(A_2) &= (0.5)(1) + (0.5)P(A_1)  \\
 P(A_1) &= (0.5)(0) + (0.5)P(A_2)
 \text{.}
 \end{align*}
-Write everything in terms of $P(A_1)$ to solve it,
+Write everything in terms of $P(A_1)$ to solve it:
 \begin{align*}
 P(A_1) &= 0 + (0.5) \Big((0.5)(1) + (0.5) P(A_1)\Big) \\
 P(A_1) &= \frac{1}{4} + \frac{1}{4}P(A_1) \\
@@ -21,25 +20,25 @@ P(A_1) \left(\frac{3}{4}\right)&= \frac{1}{4} \\
 P(A_1) &= \frac{1}{3}
 \text{.}
 \end{align*}
-Then we can also solve for $P(A_2)$,
+Then we can also solve for $P(A_2)$:
 \begin{align*}
 P(A_2) &= \frac{1}{2} + \frac{1}{2} P(A_1)  \\
        &= \frac{1}{2} + \frac{1}{2}\left(\frac{1}{3}\right) \\
        &= \frac{2}{3}
 \text{.}
 \end{align*}
-This is how I started attempting the question and the interviewer seemed content before I reached a clear answer, then moved on to questions about my current role.
+This is how I started attempting the question and the interviewer seemed happy before I reached a clear answer, then moved on.
 
 For the sake of completeness, let us solve one more case where $l=4$ to see whether a pattern emerges.
-Let $A_k$ be the event that the process currently at $k$ reaches four before it reaches zero.
-The process now has three places it can be,
+Let $A_k$ be the event that a process---which is currently at $k$---reaches four before it reaches zero.
+The process can now be in one of three places:
 \begin{align*}
 P(A_3) &= (0.5)(1) + (0.5)P(A_2)  \\
 P(A_2) &= (0.5)P(A_3) + (0.5)P(A_1) \\
 P(A_1) &= (0.5)(0) + (0.5)P(A_2)
 \text{.}
 \end{align*}
-Let's write everything in terms of $P(A_3)$,
+Write everything in terms of $P(A_3)$:
 \begin{align*}
 P(A_2) &= (0.5)P(A_3) + (0.5)\Big(0 + (0.5) P(A_2) \Big)  \\
 P(A_2) &= (0.5) P(A_3)  + (0.25) P(A_2)  \\
@@ -51,13 +50,13 @@ P(A_3) &= (0.5)(1) + (0.5) P(A_2)   \\
             P(A_3) &= \frac{3}{4}
 \text{.}
 \end{align*}
-Use this result to get $P(A_2)$,
+Use this result to get $P(A_2)$:
 \begin{align*}
 P(A_2) &= \frac{2}{3} P(A_3)  \\
        &= \frac{2}{3}\left(\frac{3}{4}\right) \\
        &= \frac{1}{2}
 \end{align*}
-and finally $P(A_1)$
+and finally $P(A_1)$:
 \begin{align*}
 P(A_1) &= \frac{1}{2} P(A_2)        \\
        &= \frac{1}{2}\left( \frac{1}{2} \right) \\
@@ -65,14 +64,14 @@ P(A_1) &= \frac{1}{2} P(A_2)        \\
 \text{.}
 \end{align*}
 It is clear that using this method to find a general solution for $k$ and $l$ would be tedious.
-For the case where $l=4$ we ended up with the formula
+The case where $l=4$, gave the formula
 \begin{align*}
 P(A_k) &= \frac{k}{4}
 \text{.}
 \end{align*}
-It is alluring to suggest general answer should be
+It is appealing to suggest general answer should be
 $P(A_k) = \nicefrac{k}{l}$.
-If we write down the equations for the general case we have
+If you write down the equations for the general case, you get
 \begin{align*}
 P(A_1) &= (0.5)(0)      + (0.5) P(A_2)  \\
 P(A_2) &= (0.5) P(A_1)  + (0.5) P(A_3)  \\
@@ -81,7 +80,7 @@ P(A_3) &= (0.5) P(A_2)  + (0.5) P(A_4)  \\
 P(A_{l-2}) &= (0.5) P(A_{l-3})  + (0.5) P(A_{l-1})  \\
 P(A_{l-1}) &= (0.5) P(A_{l-2})  + (0.5)(1)
 \end{align*}
-which we can rewrite as
+which can be rewritten as
 \begin{align*}
 0 &= (0.5)(0) - P(A_1)   + (0.5)(P(A_2)) \\
 0 &= (0.5) P(A_1)  - P(A_2)  + (0.5) P(A_3)  \\
@@ -91,7 +90,7 @@ which we can rewrite as
 0 &= (0.5) P(A_{l-2})  - P(A_{l-1}) + (0.5)(1)
 \text{.}
 \end{align*}
-Then we have something that can also be expressed in matrix form
+You are left with something that can also be expressed in matrix form
 \begin{align*}
 \vec{B}\vec{x} &= \vec{c} \\
   \begin{bmatrix}
@@ -115,7 +114,7 @@ Then we have something that can also be expressed in matrix form
     0 \\ 0 \\ 0 \\ \vdots \\ 0 \\ -\frac{1}{2} \\
   \end{bmatrix}
 \end{align*}
-and we can use it to solve for the vector $\vec{x}$ with the probabilities
+which can then be used to solve for the vector $\vec{x}$ with the probabilities
 \begin{align*}
 \vec{x} &= \vec{B}^{-1}\vec{c} \\
   \begin{bmatrix}
@@ -140,7 +139,7 @@ and we can use it to solve for the vector $\vec{x}$ with the probabilities
   \end{bmatrix}
 \text{.}
 \end{align*}
-For the case where $l=7$, for example, we have the following,
+For the case where $l=7$, for example, you have:
 \begin{align*}
 \vec{B} &=
 (-1)
@@ -156,29 +155,25 @@ For the case where $l=7$, for example, we have the following,
 \left[\begin{matrix}\frac{1}{7} & \frac{2}{7} & \frac{3}{7} & \frac{4}{7} & \frac{5}{7} & \frac{6}{7}\end{matrix}\right]^{T}
 \text{.}
 \end{align*}
-The matrix $B$ is nearly diagonal, and I expect there would be a way to prove the expected result using matrix theory; albeit not one that is quick enough to use during an interview.
+The matrix $B$ is nearly diagonal, and I expect there would be a way to prove the expected result using matrix theory, though probably not one that is quick enough to use during an interview.
 
 Martingale theory provides the elegant proof.
 The theory is quite heavy and it is unlikely that you will be able to solve questions using martingales without substantial practise.
-In my experience interviewers are happy if you attempt the brute force solution; it allows you to show them how you would break a very difficult problem into simpler parts (and they get to see your algebra).
-If you mention anything about martingales on your CV, be ready to use it to solve questions of this type as well as all the questions involving martingales in \citet{JoshiQA} and \citet{HeardOnTheStreet}.
+In my experience interviewers are happy if you attempt the brute force solution; doing this allows you to show how you would break a very difficult problem into simpler parts (and they get to see your algebra).
+If you mention anything about martingales on your CV, be ready to use them to solve questions of this type as well as all the questions involving martingales in \citet{JoshiQA} and \citet{HeardOnTheStreet}.
 
-For this question, realise that $X_t$ is a martingale.
-This allows us two things.
-First, we can define
-the times at which the process reaches each of the bounds as stopping times,
+For this question, you must realise that $X_t$ is a martingale, because doing so allows you to do two things: first, to define the times at which the process reaches each of the boundaries as stopping times,
 \begin{align*}
   T_0 &= \inf\{ n \geq 0: X_n = 0\} \\
   T_l &= \inf\{ n \geq 0: X_n = l\}
-  \text{.}
+  \text{,}
 \end{align*}
-Second, let $T$ be the first time we hit either $0$ or $l$, meaning $T = \min(T_0 , T_l)$.
-Then since $X_t$ is a martingale we have
+and second, because $X_t$ is a martingale, and you let $T$ be the first time we hit either $0$ or $l$ (and therefore meaning $T = \min(T_0 , T_l)$), you get
 \[
 E(X_T) =  E(X_0) = k
 \text{.}
 \]
-We further have
+You also have
 $X_T=0$ if $T_0 < T_l$
 and
 $X_T=l$ if $T_0 > T_l$.
@@ -189,5 +184,5 @@ k = E(X_T) &=  0 P(T_0 < T_l) + l P(T_0 > T_l) \\
 P(T_0 > T_l) &= \frac{k}{l}
 \text{.}
 \end{align*}
-The probability $P(T_0 > T_l)$ is the one we are interested in and we see the result is the one we expected.
+The probability $P(T_0 > T_l)$ is the one you are interested in and you get the result that you expected.
 \end{answer}

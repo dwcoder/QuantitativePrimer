@@ -1,8 +1,8 @@
 \begin{answer}{davidbeckhamparty}
-The best way to solve this is to draw an adjacency matrix.
-That is, a matrix filled with zeros and ones, where
+The best way to solve this is to draw an adjacency matrix,
+that is, a matrix filled with zeros and ones, where
 row $i$ contains a one in column $j$ if person $i$ knows person $j$.
-We let $\text{knows}(i,i)=0$, so the matrix has zeros on its diagonal.
+Let $\text{knows}(i,i)=0$, so the matrix has zeros on its diagonal.
 
 \begin{center}
 \begin{tikzpicture}[scale=2]
@@ -22,8 +22,8 @@ We let $\text{knows}(i,i)=0$, so the matrix has zeros on its diagonal.
 \end{tikzpicture}
 \end{center}
 Think about what this matrix would look like given the conditions of the party in the question.
-I draw a $9 \times 9$ matrix here, but you can quickly draw a smaller one to get the just of it.
-The important thing to realise is that David Beckham’s row will be empty, and his columns would be filled with ones (except for the diagonal element).
+I draw a $9 \times 9$ matrix here, but you can quickly draw a smaller one to get the gist of it.
+The important thing to realise is that David Beckham’s row will be empty, and his columns will be filled with ones (except for the diagonal element).
 \begin{center}
 \begin{tikzpicture}[scale=0.6]
 % Draw the numbers outside the matrix
@@ -68,24 +68,24 @@ The important thing to realise is that David Beckham’s row will be empty, and 
 \draw (n96) node{1};
 \end{tikzpicture}
 \end{center}
-We can use the function to fill in values until we find David Beckham.
-But filling the whole matrix is expensive. For $n$ people, we would need $n^2$ evaluations of the function.
-We need to find a smarter way to find Beckham's row.
+You can use the function to fill in values until you find David Beckham,
+but filling the whole matrix is expensive. For $n$ people, you would need $n^2$ evaluations of the function.
+You need to find a smarter way to find Beckham's row.
 
-Start with person 1 and located the first non-zero entry for their row.
-We have now learned two things:
+Start with person 1 and find the first non-zero entry for their row.
+You have now learned two things:
 \begin{enumerate}
-  \item Person 1 is not David Beckham (since David Beckham doesn't know anyone at the party).
-  \item None of the people who person 1 doesn't know can be David Beckham. (Everyone at the party knows David Beckham, so if person 1 doesn't know you, you \emph{can't} be David Beckham.)
+  \item Person 1 is not David Beckham, because Beckham doesn't know anyone at the party
+  \item All the people who person 1 doesn't know can be disregarded: they are not Beckham (Everyone at the party knows David Beckham, so if person 1 doesn't know you, you \emph{can't} be David Beckham)
 \end{enumerate}
-The second point is nuanced and it is the crux.
-If you don't identify it yourself, talk through the problem and hopefully the interviewer will nudge you in the right direction.
-We will use this knowledge to rapidly discount whole blocks of people as ``not Beckham''.
+The second point is the crux.
+If you don't identify it immediately, talk through the problem and hopefully the interviewer will nudge you in the right direction.
+You will use this knowledge to rapidly discount whole blocks of people as ``not Beckham''.
 Start at person 1 and check their row.
-When we find a 1, we jump to that person (who might be David Beckham).
-For all the zeros we find, we can discount those people as not being David Beckham, and as soon as we find a one, we know the current person also isn't David Beckham.
-If we get to the end of any row, that person is David Beckham.
-This method only requires $n$ evaluations of the function since we just need to traverse all the columns, as indicated by the following picture.
+When you find a one, we jump to that person (who might be David Beckham).
+Every zero you find discounts its corresponding person as not being Beckham; conversely, when you find a one, you know the current person is also not Beckham.
+If you get to the end of any row, that row represents David Beckham.
+This method only requires $n$ evaluations of the function since we just need to traverse all the columns, as seen in the diagram below:
 
 \begin{center}
 \begin{tikzpicture}[scale=0.6]
@@ -139,7 +139,7 @@ This method only requires $n$ evaluations of the function since we just need to 
 \end{tikzpicture}
 \end{center}
 
-If Victoria Beckham is also at a party with nine people, the matrix might look like the following example, where David and Victoria are individuals 4 and 6.
+If Victoria Beckham is also at a party with nine people, the matrix might look like the following example, where David and Victoria are individuals 4 and 6:
 \begin{center}
 \begin{tikzpicture}[scale=0.6]
 % Draw the numbers outside the matrix
@@ -188,11 +188,11 @@ If Victoria Beckham is also at a party with nine people, the matrix might look l
 \end{tikzpicture}
 \end{center}
 The same logic as before applies.
-We start at the first person, and ask whether they know person $2, 3, 4, \ldots, n$.
-Each individual they don't know can be discounted as \emph{not} Victoria \emph{nor} David.
+Start at the first person, and ask whether they know person $2, 3, 4, \ldots, n$.
+Each individual they don't know can be discounted as \emph{neither} Victoria \emph{nor} David.
 The last two people we visit using this method are David and Victoria Beckham.
 (We cannot identify which is which, but we weren't asked to.)
-Below, the final picture shows how we will traverse the matrix.
+Below, the final diagram shows how to traverse the matrix:
 \begin{center}
 \begin{tikzpicture}[scale=0.6]
 % Draw the numbers outside the matrix
@@ -251,14 +251,11 @@ Below, the final picture shows how we will traverse the matrix.
 
 \end{tikzpicture}
 \end{center}
-The topic tested here comes from graph or network theory.
-\index{Graph theory}
-It has more to do with computer algorithms than mathematics.
-While these kinds of questions aren't that prevalent, they are becoming more common with some hedge funds and high-frequency trading firms who place high emphasis on algorithms and programming skills.
+This question tests your knowledge of applied graph or network theory, and it has more to do with computer algorithms than mathematics.
+\index{graph theory}
+While these kinds of questions aren't that prevalent, they are increasingly common at some hedge funds and high-frequency trading firms who emphasise algorithms and programming skills.
 If you are required to do a pre-interview coding test, chances are you will see a graph theory problem.
 They used to be popular in Google interviews back when they still asked brainteasers.
-Google have since stopped doing it after discovering that brainteaser performance was a bad predictor of actual job performance.\footnote{See, for instance, this newspaper article by \citet{GoogleBrainteasers}.}
-It would be prudent of readers not to assume finance houses will come to the same conclusion any time soon.
-
+Google has since stopped doing it after discovering that brainteaser performance was a bad predictor of actual job performance.\footnote{See, for instance, this newspaper article by \citet{GoogleBrainteasers}.}
 
 \end{answer}
