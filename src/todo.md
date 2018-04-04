@@ -44,6 +44,7 @@
 
 # Final
 
- - [ ] Rebuild images
- - [ ] Make sure index is there
- - [ ] Squash all git commits
+ - [x] Rebuild images
+ - [x] Make sure index is there
+ - [x] Squash git commits
+ - [ ] Add hyperlink to git repo
