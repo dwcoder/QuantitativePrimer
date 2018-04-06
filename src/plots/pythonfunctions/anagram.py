@@ -5,30 +5,41 @@ def IsAnagram(string1, string2):
         return False
     return sorted(string1) == sorted(string2)
 
+def LetterToNumber(letter):
+    return ord(letter)-ord('a')
+
 def IsAnagramNoSort(string1, string2):
     if len(string1) is not len(string2):
         return False
-    sum = 0
+
+    lettercounts = [0 for i in range(26)]
 
     for letter in string1:
-        sum += ord(letter)
+        lettercounts[LetterToNumber(letter)] += 1
     for letter in string2:
-        sum -= ord(letter)
+        lettercounts[LetterToNumber(letter)] -= 1
 
-    return (sum == 0)
+    for count in lettercounts:
+        if count != 0:
+            return False
+
+    return True
 
 
 
 
 if __name__=='__main__':
+    for letter in 'abcdefghijklmnopqxyz':
+        print '{} : {}'.format(letter, LetterToNumber(letter))
+
     s1a = 'asdf'
     s2a = 'fasd'
 
     s1b = 'asdfasdfasdf'
     s2b = 'asdfasdfasdfasdf'
 
-    print IsAnagram(s1a, s2a)
-    print IsAnagram(s1b, s2b)
+    assert(IsAnagram(s1a, s2a))
+    assert(not(IsAnagram(s1b, s2b)))
 
-    print IsAnagramNoSort(s1a, s2a)
-    print IsAnagramNoSort(s1b, s2b)
+    assert(IsAnagramNoSort(s1a, s2a))
+    assert(not(IsAnagramNoSort(s1b, s2b)))

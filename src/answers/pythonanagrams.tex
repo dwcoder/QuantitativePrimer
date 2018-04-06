@@ -12,28 +12,39 @@ def IsAnagram(string1, string2):
     return sorted(string1) == sorted(string2)
 \end{minted}
 %
-To do it without sorting requires a trick.
+To do it without sorting we need to keep track of the character counts in each word.
 We assign
-the integers 1--26
+the integers 0--25
 to
-the letters A--Z.
-Then we loop over the two strings, and we add up all the letters in the first string, and subtract all the letters of the second string.
-If the two strings are anagrams the final answer will be zero, since every number will be added and subtracted from the total exactly once.
+the letters a--z, and we initialise an array with 26 zeros in which we will store the character counts.
+Then we loop over the first word and for each character we encounter, we increment its counter in the array by one.
+Thereafter we loop over the second word, but this time we decrement the characters' counters.
+If the two strings are anagrams, the array will contain only zeros since the letters will have perfectly cancelled each other out.
+This method requires only one array, rather than one for each word.
 Python 2.7 actually has the function \verb+ord+ that converts characters into their ASCII equivalent numbers, so we can use it.
 \begin{minted}{python}
+def LetterToNumber(letter):
+    return ord(letter)-ord('a')
+
 def IsAnagramNoSort(string1, string2):
     if len(string1) is not len(string2):
-      return False
+        return False
 
-    sum = 0
+    lettercounts = [0 for i in range(26)]
 
     for letter in string1:
-        sum += ord(letter)
+        lettercounts[LetterToNumber(letter)] += 1
     for letter in string2:
-        sum -= ord(letter)
+        lettercounts[LetterToNumber(letter)] -= 1
 
-    return (sum == 0)
+    for count in lettercounts:
+        if count != 0:
+            return False
+
+    return True
 \end{minted}
+
+The last part of the question asks why we might need a version without sorting.
 We would prefer a version without sorting if the strings are very long, or if this is an operation we have to do often.
 Sorting is expensive, the best sorting algorithms have $O(n\log{n})$ complexity.
 For the algorithm that doesn't sort, we only need to access each of the letters once so the complexity is $O(n)$.

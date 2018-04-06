@@ -1816,11 +1816,13 @@ But we don't want to burden the author of the
 \verb+ElectricCar+
 class with a list of external functions to maintain.
 The solution is to use a virtual function.
-Below, the only change we make is to add
+Below, the only changes we make is to add
 \verb+virtual+
 to the function in the
 \verb+Car+
-class.
+class and
+\verb+override+
+to the function in the child class.
 \inputminted{cpp}{./plots/virtualfunction/WithVirtual.cpp}
 Now the output becomes:
 \VerbatimInput{./plots/virtualfunction/WithVirtual.txt}

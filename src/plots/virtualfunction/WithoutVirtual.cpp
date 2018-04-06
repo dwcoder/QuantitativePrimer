@@ -1,29 +1,31 @@
 #include <iostream>
 
+using namespace std;
+
 class Car
 {
 public:
-void emissions() { std::cout << "I probably burn fuel." << std::endl; }
+void emissions() const { cout << "I probably burn fuel." << "\n"; }
 };
 
 class ElectricCar : public Car
 {
 public:
-void emissions() { std::cout << "I have zero emissions!" << std::endl; }
+void emissions() const { cout << "I have zero emissions!" << "\n"; }
 };
 
-void queryEmissionsForTax(Car *ccc) { ccc->emissions(); }
+void queryEmissionsForTax(Car const&  ccc) { ccc.emissions(); }
 
 int main(int argc, char ** argv)
 {
-    Car * car = new Car;
-    ElectricCar * tesla = new ElectricCar;
+    Car car;
+    ElectricCar tesla;
 
-    car->emissions();
-    tesla->emissions();
+    car.emissions();
+    tesla.emissions();
 
     queryEmissionsForTax(car);
     queryEmissionsForTax(tesla);
 
-    return 1;
+    return 0;
 }

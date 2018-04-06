@@ -20,11 +20,20 @@ def product(number_list):
 
     return prod
 
-def nCr_norecur(n,k):
+def nCr_norecur_bad(n,k):
     nominator = product(list(range(k+1,n+1)))
     denominator = product(range(1,n-k+1))
 
     return nominator/denominator
+
+
+def nCr_norecur(n,k):
+    r = 1
+    for i in range(k):
+        r *= n-i
+        r = r // (i+1)
+
+    return r
 
 
 if __name__=='__main__':

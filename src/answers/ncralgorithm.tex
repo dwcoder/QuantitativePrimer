@@ -16,10 +16,12 @@ def nCr(n,k):
     return factorial(n)/(factorial(k) * factorial(n-k))
 \end{minted}
 For big numbers, this is expensive.
-We can come up with a smarter solution.
+It is not necessary to call the factorial function three times.
+Numerical overflow is also likely to occur if the nominator and denominator are both large.
+We can devise a smarter solution.
 Consider the following example with small integers.
 \begin{align*}
-\binom{8}{5} &= \frac{8!}{ (8-5)! 5! } \\
+\binom{8}{5} &= \frac{8!}{ (8-3)! 3! } \\
              &= \frac{(8 \times 7 \times 6 )}{3!} \\
              &= \frac{8 \times 7 \times 6 }{  3 \times 2 \times 1 }
 \text{.}
@@ -27,28 +29,20 @@ Consider the following example with small integers.
 Likewise, the general case will be
 \begin{align*}
 \binom{n}{k}
-             &= \frac{n \times (n-1) \times  \ldots \times (k+1) }{ (n-k) \times (n-k-1) \times \ldots \times 1 }
+             &= \frac
+             { n \times (n-1) \times  \ldots \times (n-k+1) }
+             { k \times (k-1) \times \ldots \times 1 }
 \text{.}
 \end{align*}
-It is not necessary to call the factorial function three times,
-we can evaluate the nominator and denominator separately.
-
+Since many of the integers in the nominator and denominator will cancel out, our function can exploit this, as the function below does. It also has improved numerical stability.
 \begin{minted}{python}
-def product(number_list):
-    prod = 1
-    for number in number_list:
-        prod = prod*number
+def nCr_norecur(n,k):
+    r = 1
+    for i in range(k):
+        r *= n-i
+        r = r // (i+1)
 
-    return prod
-
-def nCr_smart(n,k):
-    nominator = product(list(range(k+1,n+1)))
-    denominator = product(range(1,n-k+1))
-
-    return nominator/denominator
+    return r
 \end{minted}
-By sheer luck, the product function will also work for $0$.
-The hardest thing is using the \verb+range+ function of Python correctly; it starts at the first number, and iterates to one less than the second number.
-If the second number is smaller than the first, it returns an empty list \verb+[]+.
-We can further optimise by noting that $\binom{n}{k}=\binom{n}{n-k}$ and always choosing to evaluate the one that is less work (for the function above, we prefer large values of $k$).
+We can further optimise by noting that $\binom{n}{k}=\binom{n}{n-k}$ and always choosing to evaluate the one that is less work (for the function above, we prefer small values of $k$).
 \end{answer}
