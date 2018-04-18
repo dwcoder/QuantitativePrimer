@@ -1,11 +1,11 @@
 \begin{answer}{ncralgorithm}
-Let's use Python again.
-Since we want to evaluate
+The question requires us to evaluate
 \[
 \binom{n}{k} = \frac{n!}{ (n-k)! k! }
+\text{,}
 \]
-we need a function to calculate the factorial.
-The  following code uses recursion to calculate it.
+thus we need a function to calculate the factorial.
+The following code uses recursion to calculate it:
 \begin{minted}{python}
 def factorial(n):
     if n==0:
@@ -15,11 +15,10 @@ def factorial(n):
 def nCr(n,k):
     return factorial(n)/(factorial(k) * factorial(n-k))
 \end{minted}
-For big numbers, this is expensive.
+For big numbers, this is expensive---a smarter solution exists.
 It is not necessary to call the factorial function three times.
-Numerical overflow is also likely to occur if the nominator and denominator are both large.
-We can devise a smarter solution.
-Consider the following example with small integers.
+Also, numerical overflow is likely to occur if the nominator and denominator are both large.
+Consider the following example with small integers:
 \begin{align*}
 \binom{8}{5} &= \frac{8!}{ (8-3)! 3! } \\
              &= \frac{(8 \times 7 \times 6 )}{3!} \\
@@ -34,7 +33,7 @@ Likewise, the general case will be
              { k \times (k-1) \times \ldots \times 1 }
 \text{.}
 \end{align*}
-Since many of the integers in the nominator and denominator will cancel out, our function can exploit this, as the function below does. It also has improved numerical stability.
+Since many of the integers in the nominator and denominator will cancel out, our function can exploit this, as the function below does. It also has improved numerical stability:
 \begin{minted}{python}
 def nCr_norecur(n,k):
     r = 1

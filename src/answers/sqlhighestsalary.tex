@@ -3,7 +3,7 @@ There are many ways to do this, involving merges, sorts and joins.
 I find the easiest and clearest way to do this is to use \verb+LIMIT+ and \verb+OFFSET+, which exist in all SQL implementations.
 The logic is to sort descending by salary, then offset the rows by one, and return only one entry.
 The result will be the second highest entry.
-We can easily change the offset to return the $n$th highest salary.
+You can easily change the offset to return the $n$th highest salary:
 \begin{minted}{sql}
 SELECT
     Employee_name,

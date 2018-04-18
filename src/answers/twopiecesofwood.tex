@@ -1,16 +1,14 @@
 \begin{answer}{twopiecesofwood}
-This is a great question.
-Start with the naive approach.
-If we measure $a$ and $b$ on their own, we get
+If you measure $a$ and $b$ on their own, you get
 \begin{align*}
 \E(a)   &= a \\
 \Var(a) &= \sigma^2 \\
 \E(b)   &= b \\
 \Var(b) &= \sigma^2
 \end{align*}
-We've measured each one with an error of $\sigma^2$.
-We can do better.
-We can measure the sum of the two sticks, $s = a+b$, and the difference between the two $d = a-b$.
+Using \pounds 2, you've measured each one with an error of $\sigma^2$.
+You can do better.
+You can measure the sum of the two sticks, $s = a+b$, and the difference between the two $d = a-b$.
 \begin{center}
 
 \begin{tikzpicture}
@@ -26,7 +24,7 @@ We can measure the sum of the two sticks, $s = a+b$, and the difference between 
 \end{tikzpicture}
 
 \end{center}
-Let us solve for $a$ and $b$ in terms of $s$ and $d$, and see what the mean and variance of our estimates are.
+Solve for $a$ and $b$ in terms of $s$ and $d$, and see what the mean and variance of the estimates are.
 \begin{align*}
 a   &= \frac{s - d}{2} \\
 \E(a)  &= \E\left(\frac{s - d}{2}\right)
@@ -41,7 +39,8 @@ b   &= \frac{s + d}{2} \\
 \Var(b) &= \Var\left(\frac{s + d}{2} \right) \\
         &= \frac{1}{2}\sigma^2
 \end{align*}
-What happened here? As if by magic, we were able to reduce our variance by half.
-The trick is that we used our tools to measure $a$ and $b$ twice.
-Each additional measurement will reduce the variance of our estimator.
+Using \pounds 2 and the new strategy, you've measured each stick with an error of $\nicefrac{\sigma^2}{2}$.
+What happened here? As if by magic, the variance has been reduced by half.
+The trick is that you used the tools to get two measurements of $a$ and $b$ each.
+Each additional measurement will reduce the variance of the estimator.
 \end{answer}

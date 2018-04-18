@@ -1,18 +1,16 @@
 \begin{answer}{epiandpie}
 This is similar to the previous question as it also requires a rewrite trick followed by some calculus.
-First, allow me to convince you that there is no easy, intuitive solution.
+There is no intuitive solution.
 If you evaluate
 $e^\pi$
 and
 $\pi^e$
-numerically one of them is
+numerically, one of them is
 $22.46$
 and the other one is
-$23.14$
-(in no particular order).
-This makes it beautiful a question, but the beauty can quickly evaporate if your first encounter is during an interview.
-Now for the trick.
-We have two expressions,
+$23.14$.
+This makes it a beautiful question, but the beauty can quickly evaporate if your first encounter is during an interview.
+Now for the trick: we have two expressions,
 \begin{align*}
 &
 e^\pi
@@ -29,7 +27,7 @@ and we can take the natural logarithm of both without affecting their relative o
 \log(\pi^e)
 \text{.}
 \end{align*}
-We can also divide both expressions with $\pi e$ without influencing their order, since $\pi e$ is positive,
+We can also divide both expressions by $\pi e$ without influencing their order, since $\pi e$ is positive,
 \begin{align*}
 \frac{\log(e^\pi)}{e \pi}
 &=
@@ -51,7 +49,7 @@ Now we have changed the original question into one about the behaviour of the fu
 \end{equation}
 in the region near $e$ and $\pi$.
 Specifically, we want to know whether (\ref{eq:eandpi:logxoverx}) is increasing or decreasing over this region.
-So we take its derivative, using the product rule,
+So we take its derivative, using the product rule
 \begin{align*}
 \frac{d}{dx}
 \frac{\log{x}}{x}
@@ -110,7 +108,7 @@ where k is some small positive quantity.
 Then
 $(1 - \log \pi) =
 (1 - (1 + k) ) = - k $ which is negative.
-Writing it with the $k$ like in (\ref{eq:eandpi:epower1plusk}) actually helps us solve the problem.
+Writing it with the $k$ as in (\ref{eq:eandpi:epower1plusk}) actually helps us solve the problem.
 At $e$, the derivative is 0, so we know it has a critical point there.
 For all the values thereafter, $k$ will be increasing so the derivative will be negative, implying the function $f(x)=\nicefrac{\log(x)}{x}$ is decreasing after $e$.
 Below is a plot of the function with the important points highlighted.
@@ -137,7 +135,7 @@ e^\pi
 &>
 \pi^e
 \end{align*}
-an a calculator confirms this,
+and a calculator confirms this,
 \begin{align*}
 e^\pi &= 23.14
 \\

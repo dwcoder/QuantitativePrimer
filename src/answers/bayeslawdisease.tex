@@ -1,10 +1,8 @@
 \begin{answer}{bayeslawdisease}
-Bayes law questions are extremely common, both in phone and face-to-face interviews.
+Bayes' law questions are extremely common, both in phone and face-to-face interviews.
 The hardest part is turning the words into their respective conditional probabilities.
-Start with what you want.
-``You go for the test, and the results are positive.
-What is the probability that you actually have the disease?''
-In other words, given that the test was positive, what is the probability that you have the disease, or $P(D_\text{yes}|\text{Test}_+)$, where
+Start with what you want---the probability that you actually have the disease if your rest results are positive.
+Put differently, $P(D_\text{yes}|\text{Test}_+)$, where
 $D_\text{yes}$ means you have the disease,
 $D_\text{no}$ means you are disease-free,
 and
@@ -47,18 +45,19 @@ P(D_\text{yes}|\text{Test}_+)
 \end{align*}
 
 Now we consider the information the interviewer gave us, and hope that we have all the bits we need. (This doesn't always happen, and it can either indicate that you have some more work to do, or that the interviewer got the question wrong.)
-``One out of 100 people in the world have this disease.''
+``One percent of people in the world have this disease.''
 \begin{align*}
   P( D_\text{yes} ) & = 0.01 \\
   P( D_\text{no} ) & = 0.99
   \text{.}
 \end{align*}
-``If you have the disease, the test has a 80\% chance of showing positive.''
+``The test has an 80\% chance of showing positive if you have the disease,''
 \[
   P( \text{Test}_+ | D_\text{yes} ) = 0.8
-  \text{.}
+  \text{,}
 \]
-``If you do not have the disease, the test has a 10\% chance of showing positive.''
+``\ldots if you do not have the disease,
+there is a 10\% chance of showing a false positive.''
 \[
   P( \text{Test}_+ | D_\text{no} ) = 0.1
   \text{.}
@@ -83,7 +82,7 @@ We can represent the situation in a picture to get an intuitive understanding.
 In the unit square below, the shaded area represents everyone who tested positive for the disease.
 The people in the little square on the bottom left (which is 1\% of the square's area) are the ones who actually have the disease.
 If you tested positive, you fall in the shaded area.
-The question is asking ``given that you fall somewhere in the shaded area, what is the probability that you fall in the shaded region in the square with people who have the disease.''
+The question is asking ``given that you fall somewhere in the shaded area, what is the probability that you are also in the little square with people who have the disease.''
 \begin{center}
 
 \begin{tikzpicture}[scale=0.08]
@@ -108,9 +107,9 @@ As a fraction, that is
 &= \frac{ (0.8)(0.01) }{ (0.8)(0.01) + (0.1)(0.99)  }
 \end{align*}
 which is the same as before.
-The picture reveals the nuance in Bayes law questions and the reason for their unintuitive answers.
+The picture reveals the nuance in Bayes' law questions and the reason for their unintuitive answers.
 We have a low prevalence of the disease, together with a high false-positive rate.
-Ten percent may not seem high for a false-positive rate, but it results in a large section of the non-diseased population testing positive relative to the few people who actually have the disease.
+Ten percent might not seem high for a false-positive rate, but it results in a large section of the non-diseased population testing positive relative to the few people who actually have the disease.
 
 
 

@@ -1,6 +1,6 @@
 \begin{answer}{coin100flipsgamble}
 This can be solved by using the Central Limit Theorem, or the normal approximation the binomial distribution.
-\index{Tricks!Central Limit Theorem}
+\index{tricks!Central Limit Theorem}
 We have
 \begin{align*}
   Y \sim \text{Binomial}(p=0.5, n=100)
@@ -29,9 +29,9 @@ In order to evaluate whether the gamble is worthwhile we have to calculate its e
                     \text{.}
 \end{align*}
 Since we are in an interview, we need to evaluate $P(Y>60)$ without a calculator.
-\index{Tricks!Normal probabilities in your head}
+\index{tricks!normal probabilities in your head}
 With the normal distribution, approximately 95\% of the data lies within two standard deviations of the mean.
-For our problem, two standard deviations from the mean is conveniently located at 60, as the following graph indicates.
+For our problem, two standard deviations from the mean is conveniently located at 60, as the following graph indicates:
 \begin{center}
   \includegraphics[width=0.8\textwidth]{./plots/prettynorm/prettynorm.pdf}
 \end{center}
@@ -48,9 +48,9 @@ The fair price, denoted $\pounds_{\text{fair}}$, occurs where the gamble breaks 
   \pounds_{\text{fair}}        &=  0.25
 \end{align*}
 and this is the highest price at which a
-rational and risk-neutral person should start agreeing to partake in it.
+rational and risk-neutral person should start agreeing to play.
 The assumptions of rationality and risk neutrality are very important.
-If a billionaire gets immeasurable physical pleasure from engaging in risky gambles (meaning they aren't risk neutral), the rational course of action for them is probably to spend all of their excess money on unfair gambles.
-Conversely, risk-neutral people might not always act rational.
+If a billionaire gets immeasurable physical pleasure from engaging in risky gambles---and therefore are not risk neutral---the rational course of action is probably to spend all of their excess money on unfair gambles.
+Conversely, risk-neutral people might not always act rationally.
 
 \end{answer}
