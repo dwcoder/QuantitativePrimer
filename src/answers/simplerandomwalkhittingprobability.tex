@@ -69,7 +69,10 @@ The case where $l=4$, gave the formula
 P(A_k) &= \frac{k}{4}
 \text{.}
 \end{align*}
-It is appealing to suggest general answer should be
+
+This is question 3.23 from \citet{JoshiQA}, but their question only considers $l=5$.
+They solve it using the above method.
+It is appealing to suggest that the general answer should be
 $P(A_k) = \nicefrac{k}{l}$.
 If you write down the equations for the general case, you get
 \begin{align*}
@@ -168,7 +171,7 @@ For this question, you must realise that $X_t$ is a martingale, because doing so
   T_l &= \inf\{ n \geq 0: X_n = l\}
   \text{,}
 \end{align*}
-and second, because $X_t$ is a martingale, and you let $T$ be the first time we hit either $0$ or $l$ (and therefore meaning $T = \min(T_0 , T_l)$), you get
+and second, because $X_t$ is a martingale, and if you let $T$ be the first time we hit either $0$ or $l$ (therefore meaning $T = \min(T_0 , T_l)$), you get
 \[
 E(X_T) =  E(X_0) = k
 \text{.}
@@ -179,7 +182,8 @@ and
 $X_T=l$ if $T_0 > T_l$.
 The crux is to realise that these two probabilities partition the entire probability space, such that
 \begin{align*}
-k = E(X_T) &=  0 P(T_0 < T_l) + l P(T_0 > T_l) \\
+k = E(X_T) &=  0 P(X_T =  0 ) + l P(X_T = l  ) \\
+           &=  0 P(T_0 < T_l) + l P(T_0 > T_l) \\
            &=  l P(T_0 > T_l)  \\
 P(T_0 > T_l) &= \frac{k}{l}
 \text{.}
