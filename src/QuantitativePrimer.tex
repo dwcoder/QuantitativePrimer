@@ -1195,7 +1195,7 @@ Here, $Y$ is the variate, is $X$ the vector of covariates, and $\beta$ is the ve
     \text{.}
   \]
   If we need to further relax the assumption, we are better off using non-linear modelling (see answer \ref{a:nameafewnonlinearmodels} for some examples).
-  \item[Constant variance:] the simplest is to do a variance-stabilising formula on the data. Assuming a constant coefficient of variation, rather than a constant mean could also work. Some estimation libraries (such as the \verb+glm+ package in R) allow specifying the variance as a function of the mean.
+  \item[Constant variance:] the simplest is to do a variance-stabilising transformation on the data. Assuming a constant coefficient of variation, rather than a constant mean could also work. Some estimation libraries (such as the \verb+glm+ package in R) allow specifying the variance as a function of the mean.
   \item[Independence of errors:] this is dangerous because in the financial world things are usually highly correlated in times of crisis. The most important thing is to understand how risky this assumption is for your setting. If necessary, add a correlation structure to your model, or do  a multivariate regression. Both of these require significant resources to estimate parameters, not only in terms of computational power but also in the amount of data required.
   \item[No multicollinearity:] if the covariates are correlated, they can still be used in the regression, but numerical problems might occur depending on how the fitting algorithms invert the matrices involved.
   The t-tests that the regression produces can no longer be trusted. All the covariates must be included regardless of what their significance tests say.
@@ -1238,7 +1238,7 @@ They can largely be grouped into the following:
     \text{.}
   \]
   But inverting the matrix might be numerically troublesome in the case of high multicollinearity.
-  Ordinary least squares implies the assumption of the normal distribution, and if you believe there is more variance in our data than the normal distribution can explain, you are better off using robust least-squares or likelihood-based techniques.
+  Ordinary least squares implies the assumption of the normal distribution, and if you believe there is more variance in our data than the normal distribution can explain, you are better off using robust least-squares or likelihood-based techniques along with the student's t-distribution.
   \item[Techniques based on the likelihood.]
   This necessitates assuming a statistical distribution on the data.
   To the frequentist, it then means maximising the likelihood.
@@ -1509,7 +1509,6 @@ Both the logistic regression and linear regression are GLMs, as introduced by \c
 The techniques have different names in different fields, a phenomenon that has been made worse by the recent ``rediscovery'' of linear regression and logistic regression in Machine Learning.
 It would be prudent to know some specialist theory and important results  about each of the three regressions discussed in this section, using the terminology that pertains to finance.
 
-I will present the logistic regression from the perspective of a GLM.
 The assumptions for the logistic regression from the perspective of a GLM are identical to those of the linear regression, except that you are assuming linearity on the logit scale.
 Let the variate of interest $y$ be a binary variable taking values of $0$ and $1$, then
 \begin{align*}
@@ -1549,7 +1548,7 @@ where $\beta_0$ is a hypothesised value, as with the linear regression.
 Similar to the logistic regression, there are two schools of thought about parameter estimation:
 \begin{description}
   \item[Least squares and related techniques:]
-    unlike the linear regression, you cannot get a closed-form solution and thus you usually have to use some sort of iterative method. Iteratively reweighted least squares are usually employed.
+    unlike the linear regression, you cannot get a closed-form solution and thus you have to use some sort of iterative method. Iteratively reweighted least squares are usually employed.
   \item[Techniques based on the likelihood:]
   a frequentist would need to maximise the likelihood using a numerical technique, whereas a Bayesian would evaluate the posterior distribution numerically, or sample from it using MCMC.
 \end{description}

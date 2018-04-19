@@ -13,7 +13,7 @@ def IsAnagram(string1, string2):
 \end{minted}
 %
 To do this without sorting, keep track of the character counts in each word.
-Assume the words can only contain the lowercase characters a--z. 
+Assume the words can only contain the lowercase characters a--z.
 We assign
 the integers 0--25
 to
@@ -44,7 +44,7 @@ def IsAnagramNoSort(string1, string2):
     return True
 \end{minted}
 
-If the strings are long, or if this is an operation you have to do often, the bester version is one without sorting.
+If the strings are long, or if this is an operation you have to do often, the best version is one without sorting.
 Sorting is expensive: the best sorting algorithms have $O(n\log{n})$ complexity.
 For the algorithm that doesn't sort, we only need to access each of the letters once so the complexity is $O(n)$.
 \end{answer}
