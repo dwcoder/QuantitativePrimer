@@ -1,6 +1,6 @@
 \begin{answer}{normalfourthmoment}
-Let's do some integration and see where we end up.
-We need to derive the fourth moment,
+Begin by integrating.
+Derive the fourth moment,
 \begin{align}
 \E(X^4)
 &= \int_{-\infty}^{\infty}{
@@ -15,17 +15,17 @@ We need to derive the fourth moment,
 \label{eq:normalfourthmoment:integraltosolve}
 \text{.}
 \end{align}
-There doesn't appear to be a quick way to do this integral, so we will have to use integration by parts:
+There doesn't appear to be a quick way to do this integral, so use integration by parts:
 \[
 \int_{-\infty}^{\infty}{ u dv }
 =
 uv\Big\vert_{x=-\infty}^{x=\infty} - \int_{-\infty}^{\infty}{ v du }
 \text{.}
 \]
-We will require some trial and error to determine the best way to rewrite
-(\ref{eq:normalfourthmoment:integraltosolve}) in order to choose $u$ and $v$.
-Be sure to tell the interviewer what you are doing while you are writing out the formula for integration by parts, and mention you are trying to find the best candidates for $u$ and $v$.
-The only candidate that gives us something \emph{easier} to deal with after integration by parts is
+The best way to rewrite
+(\ref{eq:normalfourthmoment:integraltosolve}) in order to choose $u$ and $v$ is by trial and error.
+Be sure to tell the interviewer what you are doing while you are writing out the formula for integration by parts, and mention that you are trying to find the best candidates for $u$ and $v$.
+The only candidate that gives you something \emph{easier} to deal with after integration by parts is
 \begin{align*}
 \E(X^4)
 &=
@@ -38,7 +38,7 @@ The only candidate that gives us something \emph{easier} to deal with after inte
           dx}
 \text{.}
 \end{align*}
-Then we have
+Then you have
 \begin{align*}
 u   &= x^3      \\
 dv  &=
@@ -80,14 +80,14 @@ x^3
 \end{aligned}
 \end{equation}
 The first term on the right hand side is equal to zero.
-We can use L'Hôpital's rule to prove it.%
+Use L'Hôpital's rule to prove it.%
 \footnote{But be wary:
 I once got reprimanded during an interview at a hipster hedge fund for suggesting
 L'Hôpital's rule as a solution to a problem that had the form $\nicefrac{\infty}{\infty}$.
 The interviewer had never heard of L'Hôpital, and snidely enquired whether it was some sort of food.
 I was impressed that someone managed to graduate with a physics degree without ever encountering L'Hôpital.
 The interviewer must have been great at brainteasers to get hired.}
-We need to apply the rule three times:
+Apply the rule three times:
 \begin{equation}
 \label{eq:fourthmoment:lhopital}
 \begin{aligned}
@@ -154,7 +154,7 @@ So now (\ref{eq:fourthmoment:nearlythere}) becomes
 \text{.}
 \end{align*}
 The right hand side is equal to $3\sigma^2$ multiplied by the second moment of a normal distribution with mean zero and standard deviation $\sigma$.
-Recall that if $X \sim \text{Normal}(\mu, \sigma^2)$ we have
+Recall that if $X \sim \text{Normal}(\mu, \sigma^2)$ you have
 \begin{align*}
   \Var(X) &= \E(X^2) - \E(X)^2 \\
 \sigma^2  &= \E(X^2) - \mu^2
@@ -183,12 +183,12 @@ A better approach might have been to use the Moment Generating Function of the n
   e^{\frac{1}{2}\sigma^2 t^2}
   \text{.}
 \end{align*}
-Then we can calculate any moment using
+Then you can calculate any moment using
 \[
 E \left( X^n \right) = M_X^{(n)}(0) = \left. \frac{d^n M_X (t)}{dt^n}\right|_{t=0}
 \]
 where $M_X^{(n)}(t)$ is the $n$th derivative of the function $M(t)$.
-For our case where $\mu=0$,
+In the current case where $\mu=0$,
 \begin{align*}
   M_X(t) &=
   e^{\frac{1}{2}\sigma^2 t^2}\\

@@ -1,7 +1,6 @@
 \begin{answer}{pythonanagrams}
 The interviewer will likely explain what an anagram is before asking you this.
-Two words are anagrams if they have the same set of letters, like \emph{toned} and \emph{noted}.
-You can re-arrange the letters of the one to spell the other.
+Two words are anagrams if they have the same set of letters, like \emph{toned} and \emph{noted}---you can re-arrange the letters of the one to spell the other.
 The easiest way to check whether two strings are anagrams is to sort them and check whether they are the same.
 We can catch a trivial case at the beginning of the function: if the strings don't have the same length, they are definitely not anagrams.
 \begin{minted}{python}
@@ -14,14 +13,14 @@ def IsAnagram(string1, string2):
 %
 To do this without sorting, keep track of the character counts in each word.
 Assume the words can only contain the lowercase characters a--z.
-We assign
+Assign
 the integers 0--25
 to
-the letters a--z, and we initialise an array with 26 zeros in which we will store the character counts.
-Then we loop over the first word and for each character we encounter, we increment its counter in the array by one.
-Thereafter, we loop over the second word, but this time we decrement the characters' counters.
+the letters a--z, and initialise an array with 26 zeros in which to store the character counts.
+Then, loop over the first word and for each character encountered, increment its counter in the array by one.
+After this, loop over the second word, but this time, decrement the characters' counters.
 If the two strings are anagrams, the array will contain only zeros since the letters will have perfectly cancelled each other out.
-Python 2.7 actually has the function \verb+ord+ that converts characters into their ASCII equivalent numbers, so we can use that.
+Python 2.7 actually has the function \verb+ord+ that converts characters into their ASCII equivalent numbers, so you can use that.
 \begin{minted}{python}
 def LetterToNumber(letter):
     return ord(letter)-ord('a')
@@ -46,5 +45,5 @@ def IsAnagramNoSort(string1, string2):
 
 If the strings are long, or if this is an operation you have to do often, the best version is one without sorting.
 Sorting is expensive: the best sorting algorithms have $O(n\log{n})$ complexity.
-For the algorithm that doesn't sort, we only need to access each of the letters once so the complexity is $O(n)$.
+For the algorithm that doesn't sort, you only need to access each of the letters once so the complexity is $O(n)$.
 \end{answer}

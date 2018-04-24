@@ -37,6 +37,7 @@
   patterns,
   datavisualization.formats.functions,
   external}
+\usepackage[hang,flushmargin]{footmisc} % remove the footnoteindex.
 
 % Activate pre-compilation of images (see section 50.4 in tikz/pgfmanual
 % This just makes it faster to recompile while editing the book, as it
@@ -144,6 +145,7 @@
 \theorembodyfont{}
 \theoremnumbering{alph}
 \theoremseparator{)}
+\theoremindent=0.6cm
 \newtheorem{ntsubquestion}{}[ntquestion]
 
 \theoremstyle{plain}
@@ -151,6 +153,7 @@
 \theorembodyfont{}
 \theoremnumbering{arabic}
 \theoremseparator{}
+\theoremindent=0cm
 \newtheorem*{ntanswer}{Answer}
 
 \theoremstyle{plain}
@@ -158,6 +161,7 @@
 \theoremnumbering{alph}
 \theorembodyfont{}
 \theoremseparator{}
+\theoremindent=0cm
 \newtheorem*{ntsubanswer}{Answer}[ntanswer]
 
 
@@ -240,3 +244,4 @@
 \def\parsedate #1:20#2#3#4#5#6#7#8\empty{20#2#3-#4#5-#6#7\empty }
 \def\moddate#1{\expandafter\parsedate\pdffilemoddate{#1}\empty}
 %% This gives the \moddate{\jobname.tex}} command
+

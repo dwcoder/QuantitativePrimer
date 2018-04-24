@@ -1,11 +1,11 @@
 \begin{subanswer}{arraymissingnumber:b}
 Finding one missing number in a sorted array is a trivial exercise.
-We simply check that the array starts at one, then go through it checking that each number is one more than the previous one.
+Simply check that the array starts at one, then go through it checking that each number is one more than the previous one.
 Any gaps represent missing numbers.
-The complexity of this is $O(n)$, as we have to go through each value in the array.
+The complexity of this is $O(n)$, as you have to go through each value in the array.
 This is the same complexity as the problem with one missing number in an unsorted array, which is suspicious; knowing that the array is sorted gives much more information.
-Of course, we can do better.
-We can check the number in the middle of the array against the expected one and then we know whether the missing value is in the top or bottom half of the array.
-Repeat until we find the offending value.
+Of course, you can do better.
+You can check the number in the middle of the array against the expected one and then you know whether the missing value is in the top or bottom half of the array.
+Repeat until you find the offending value.
 This approach is known as binary search and has complexity of $O(\log_2(n))$.
 \end{subanswer}

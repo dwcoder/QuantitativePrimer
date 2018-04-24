@@ -1,8 +1,8 @@
 \begin{answer}{arrayofintegersfindduplicate}
- Without sorting, we have to keep track of the numbers we have seen.
+ Without sorting, you have to keep track of the numbers you have seen.
  You could mention using a hashtable, or some other container with key-value pairs.
  The Python \verb+dict+ is an example.
- That way we can quickly check whether each number is already in the dictionary, and stop looking if we find that it is.
+ That way you can quickly check whether each number is already in the dictionary, and stop looking if you find that it is.
  If the number isn't in the dictionary, add it.
  The Python \verb+defaultdict+ is even better, as it handles the key error when the key is not yet in the dictionary.
  You can also  add the values into a list in such a way that the list remains sorted.
@@ -17,22 +17,21 @@
  The question about your favourite sorting algorithm is a loaded one.
  The interviewer is likely to ask you to explain how it works, about its complexity, and to write it in actual or pseudocode.
  Therefore, ensure you do have a favourite sorting algorithm and make sure you know its details.
- Also ensure your favourite isn't Bubblesort.
- It is inefficient and acts only as an example to get new programmers thinking about algorithms.
+ Also, ensure your favourite isn't Bubblesort---it is inefficient and acts only as an example to get new programmers thinking about algorithms.
  It is also overused by people doing interviews.
 Your favourite sorting algorithm should be Mergesort, for the following reasons:
 \index{mergesort}
  \begin{enumerate}
-   \item Efficiency---it has $O(n \log n)$ complexity, which is on par with the best sorting algorithms used in production.
-   \item Practicality---it is actually used in production, though usually as part of more efficient algorithms such as Timsort.
-   \item Parallelisation---its divide-and-conquer strategy has obvious benefits when used with computing clusters and GPU programming.
+   \item Efficiency---it has $O(n \log n)$ complexity, which is on par with the best sorting algorithms used in production
+   \item Practicality---it is actually used in production, though usually as part of more efficient algorithms such as Timsort
+   \item Parallelisation---its divide-and-conquer strategy has obvious benefits when used with computing clusters and GPU programming
    \item Simplicity---the main workings only require six lines of code. See the example below.
  \end{enumerate}
-The basic idea of Mergesort is to split the list into two parts, sort each part, and combine them back into single, sorted list.
+The basic idea of Mergesort is splitting the list into two parts, sorting each part, and re-combining them into single, sorted list.
 Since the second step requires sorting, you can do it recursively.
-The workings are given in the below pseudocode, were the assumption is that a function exists called
+The workings are given in the below pseudocode, where the assumption is that a function exists called
 MergeTwoSortedVectors()
-which receives two sorted vectors as arguments and combines them into one sorted vector.
+which receives two sorted vectors as arguments and combines them into one sorted vector:
 \begin{algorithmic}[1]
   \Statex
   \Function{MergeSort}{$\vec{x}$}
@@ -59,7 +58,7 @@ which receives two sorted vectors as arguments and combines them into one sorted
 \end{algorithmic}
 The code is simple since most of the tricky workings are hidden in the MergeTwoSortedVectors() function.
 
-The Python implementation of Mergesort below is even easier to read than the pseudocode.
+The Python implementation of Mergesort below is even easier to read than the pseudocode:
 \begin{minted}[samepage=true]{python}
 def mergesort(unsortedlist):
     if (len(unsortedlist)==1):

@@ -3,17 +3,17 @@ This is question 3.24 from \citet{JoshiQA}.
 It is easy to overcomplicate things by thinking in great detail about what happens at the end of the interval.
 For instance, what if Romeo arrives at 08:58? He will wait 15 minutes, but Juliet cannot arrive after 09:00.
 The crux, however, is to realise that they will only meet \emph{if they arrive within 15 minutes of each other}.
-Let the interval $[0,1]$ represent the hour between 08:00 and 09:00, and let $x$ be the time Romeo arrives, and $y$ be the time Juliet arrives.
+Let the interval $[0,1]$ represent the hour between 08:00 and 09:00, let $x$ be the time Romeo arrives, and $y$ be the time Juliet arrives.
 They will only meet if
 \[
   |x - y| < \frac{15}{60} = \frac{1}{4}
   \text{.}
 \]
-We have
+You have
 $x$ and $y$
 independently and identically distributed
 $\text{Uniform}(0,1)$.
-Thus, we need to find $P(\abs{x - y} < \nicefrac{1}{4})$.
+Thus, you need to find $P(\abs{x - y} < \nicefrac{1}{4})$.
 It is almost certain that the interviewer does \emph{not} want you to solve this using integration,
 but rather visually on the unit square.
 \index{tricks!unit square integration}
@@ -24,7 +24,7 @@ When $x<y$, you are in the top-left half of the square, and you need to consider
   y &< x + \nicefrac{1}{4}
   \text{.}
 \end{align*}
-When $x \geq y$, we are in the bottom-right half of the square, and we need to consider
+When $x \geq y$, you are in the bottom-right half of the square, and you need to consider
 \begin{align*}
   x-y &< \nicefrac{1}{4} \\
   y  &> x -\nicefrac{1}{4}

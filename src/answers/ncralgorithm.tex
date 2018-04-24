@@ -1,10 +1,10 @@
 \begin{answer}{ncralgorithm}
-The question requires us to evaluate
+The question requires you to evaluate
 \[
 \binom{n}{k} = \frac{n!}{ (n-k)! k! }
 \text{,}
 \]
-thus we need a function to calculate the factorial.
+thus you need a function to calculate the factorial.
 The following code uses recursion to calculate it:
 \begin{minted}{python}
 def factorial(n):
@@ -33,7 +33,7 @@ Likewise, the general case will be
              { k \times (k-1) \times \ldots \times 1 }
 \text{.}
 \end{align*}
-Since many of the integers in the nominator and denominator will cancel out, our function can exploit this, as the function below does. It also has improved numerical stability:
+Since many of the integers in the nominator and denominator will cancel out, the function can exploit this, as the function below does. It also has improved numerical stability:
 \begin{minted}{python}
 def nCr_norecur(n,k):
     r = 1
@@ -43,5 +43,5 @@ def nCr_norecur(n,k):
 
     return r
 \end{minted}
-We can further optimise by noting that $\binom{n}{k}=\binom{n}{n-k}$ and always choosing to evaluate the one that is less work (for the function above, we prefer small values of $k$).
+You can further optimise by noting that $\binom{n}{k}=\binom{n}{n-k}$ and always choosing to evaluate the one that is less work (for the function above, we prefer small values of $k$).
 \end{answer}

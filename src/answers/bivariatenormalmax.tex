@@ -12,7 +12,7 @@ They will often offer little hints to help you along.
 The last thing you want to do is get started on the wrong track and struggle with it for ten minutes while the interviewer sits there watching in silence.\footnote{During one of my interviews the interviewer started doing something on his phone while I was attempting the problem. No matter how I prodded, I couldn't get the guy interested in the interview. You win some, you lose some.}
 Try to get the interviewer involved, but not to such an extent that you need your hand held.
 This is something that takes practise.
-For our current problem, we have to write it into something easier first,
+For the current problem, write it into something easier first:
 \[
   \max(X, Y) =
   \begin{dcases*}
@@ -21,7 +21,7 @@ For our current problem, we have to write it into something easier first,
   \text{.}
   \end{dcases*}
 \]
-Now we can use the Law of Total Expectation:
+Now, use the Law of Total Expectation:
 \index{tricks!Law of Total Expectation}
 If $ A_1, A_2, A_3, \ldots, A_n$ are mutually disjoint and exhaustive, then
 \[
@@ -31,7 +31,7 @@ If $ A_1, A_2, A_3, \ldots, A_n$ are mutually disjoint and exhaustive, then
   \text{.}
 \]
 You've probably never had to use it in this form before, but it comes in handy for this brainteaser.
-In our case, let $Z=\max(X,Y)$, with the expectation expanded as
+In the current case, let $Z=\max(X,Y)$, with the expectation expanded as
 \begin{align*}
   \E(Z) &= \E(Z|X > Y)P(X>Y)
 +          \E(Z|X \leq Y)P(X \leq Y) \\
@@ -68,11 +68,11 @@ Refer to the three-dimensional plots below for clarity.
   \includegraphics[width=\textwidth]{./plots/bivariatenorm/bivariatenorm.pdf}
 \end{center}
 The line shows $y=x$; the area under the distribution where $x>y$ will be equal to \nicefrac{1}{2} for any value of $\rho$.
-Thus we have reduced the problem to
+Thus, the problem has been reduced to
 \[
 \E(Z) =  \E(X|X > Y)
 \]
-and we just need to find a clever way to evaluate it.
+and you just need to find a clever way to evaluate it.
 If you have got this far, the interviewer will probably be convinced of your ability to solve the problem, and move on to the next question.
 Some firms  ask really difficult questions, but they don't expect you to get the correct answers.
 (This is especially the case with Goldman Sachs.)
@@ -86,7 +86,7 @@ Even if you are able to recall all the required properties during an interview, 
 Again, the interviewer probably isn't looking for the whole proof, but rather the steps you would take along the way.
 
 The quantity $\E(X|X > Y)$ isn't immediately recognisable.
-However, if we let
+However, if you let
 \begin{align*}
 W_1 &= X \\
 W_2 &= X-Y
@@ -95,7 +95,7 @@ and write the expectation as
 \begin{align*}
 \E(X|X-Y > 0) = \E(W_1|W_2 > 0)
 \end{align*}
-it becomes a conditional expectation of two random variables that are a linear combination of our original bivariate normal distribution.
+it becomes a conditional expectation of two random variables that are a linear combination of the original bivariate normal distribution.
 To see this, use a matrix
 \[B =
 \begin{bmatrix}
@@ -168,7 +168,7 @@ X \\ X - Y
 \end{bmatrix}
   \right)
 \]
-and we can use the conditional properties of the multivariate normal distribution to evaluate
+and you can use the conditional properties of the multivariate normal distribution to evaluate
 \begin{equation}
 \label{eq:bivariatenormalmax:conditional_expecation}
 \E(X|X-Y > 0)
@@ -179,7 +179,7 @@ as
 \text{.}
 \end{equation*}
 This conditional expectation is difficult to evaluate.
-In general, if we partition a $p$-dimensional multivariate normal vector
+In general, if you partition a $p$-dimensional multivariate normal vector
 \[
 \vec{x} \sim \operatorname{MultivariateNormal}(\vec{\mu}, \vec{\Sigma})
 \]
@@ -203,7 +203,7 @@ $x_2 \in \mathbb{R}^{p-k}$ such that
 \end{bmatrix}
   \right)
 \]
-we know from the theory of the multivariate normal distribution that
+you know from the theory of the multivariate normal distribution that
 \[
   (\vec{x}_1 | \vec{x}_2 =  \vec{a})
   \sim
@@ -222,7 +222,7 @@ we know from the theory of the multivariate normal distribution that
   \right)
 \text{.}
 \]
-In our example the partitioning is simple as it doesn't involve block matrices, and we have
+In the current question the partitioning is simple as it doesn't involve block matrices, and you have
 \begin{align*}
 \E(W_1|W_2 = w_2) &=  \frac{(1-\rho)}{2(1-\rho)} w_2 \\
                   &=  \frac{1}{2}w_2
@@ -234,7 +234,7 @@ Using (somewhat liberally) the tower property of the Law of Total Expectation,
 \E( \E(X\,|\,Y) \; | \; f(Y))
 \text{,}
 \end{align*}
-we can write
+you can write
 \begin{align*}
 \E(W_1|W_2 > 0 )
 &=
@@ -251,7 +251,7 @@ This is $\nicefrac{1}{2}$ multiplied by the expected value of a truncated normal
 &=  \frac{ 2 \sqrt{ 1- \rho}  }{ \sqrt{ \pi} } \nonumber
 \text{.}
 \end{align}
-Putting it all together we finally arrive at the answer,
+Putting it all together you finally get the answer:
 \begin{align*}
 \E(Z) &=  \E(X|X > Y)  \\
       &= \E(W_1|W_2 > 0 ) \\
@@ -302,7 +302,7 @@ So now we have
 \begin{align*}
 \E(X-Y|X-Y > 0) &=  \E(W_2|W_2 > 0)
 \end{align*}
-which is the same expectation we had in (\ref{eq:bivariatenormalmax:conditional_expecation2}), thus
+which is the same expectation as in (\ref{eq:bivariatenormalmax:conditional_expecation2}), thus
 \begin{align*}
 \E(X-Y|X-Y > 0) =
  \frac{ 2 \sqrt{ 1- \rho}  }{ \sqrt{ \pi} }
@@ -312,7 +312,7 @@ and
 \E(\max(X, Y)) = \sqrt{\frac{  1- \rho  }{  \pi }}
 \text{,}
 \]
-corroborating our earlier answer.
+corroborating the earlier answer.
 
 \end{answer}
 

@@ -17,9 +17,9 @@
 
 
 \begin{center}
-This work is licensed under a \\
-\href{http://creativecommons.org/licenses/by-sa/4.0/}{Creative Commons Attribution-ShareAlike 4.0}\\
-International License.
+This work is licensed under a
+\href{http://creativecommons.org/licenses/by-sa/4.0/}{Creative Commons Attribution-ShareAlike 4.0}
+\\ International License.
 \end{center}
 
 
@@ -50,12 +50,16 @@ Under the following terms:
 
 \vfill
 \begin{center}
-\texttt{Last updated on \moddate{\jobname.tex}} \\
 For errors, comments, or suggestions, contact Dirk Bester\\
 \href{mailto:bester.dirkw@gmail.com}{bester.dirkw@gmail.com}\\
-\href{https://www.linkedin.com/in/dwbester}{www.linkedin.com/in/dwbester}\\
-Visit the GitHub page to contribute and to find the latest version
+\href{https://www.linkedin.com/in/dwbester}{www.linkedin.com/in/dwbester}.\\
+Visit the GitHub page to contribute and to find the latest version. \\
+\texttt{Last updated on \moddate{\jobname.tex}.} \\
 \end{center}
+
+\vfill
+\noindent
+Special thanks to Luke Miller for some clever solutions, Iztok Pizorn for corrections in the code, Nita Bester for proofreading and support, and Joshua Curk for editing.
 
 
 \clearpage
@@ -125,7 +129,7 @@ Assume you will get one out of ten jobs you interview for and act accordingly, b
 Don't get too sentimental about any one team or role, and don't take rejection as a comment on your abilities.
 During my 2014 interview spate I received an offer from a hedge fund who told me I was one of the strongest candidates in their graduate pool.
 A day later I received a first-round rejection from another hedge fund who derided my abilities to do basic mathematics.
-Rather than pick sides, I implore the reader to accept that it is difficult for someone to judge your ability by asking you a few brainteasers or proofs---of which they already know the answer---with only ten minutes to answer it.
+Rather than pick sides, I implore the reader to accept that it is difficult for someone to judge your ability by asking you a few brainteasers or proofs---to which they already know the answer---with only ten minutes allowed for the exercise.
 
 \phantomsection
 \addcontentsline{toc}{subsection}{How to prepare}
@@ -141,7 +145,7 @@ If you struggle with some of the questions, work through similar questions in \c
 Also, make sure you work through some of \citet{HeardOnTheStreet}, but allocate more time to \citet{JoshiQA}.
 The former text is a classic, but it is starting to show its age---the first version was published in 1995.
 The latter is more up to date and the lead author, Mark Joshi, has written plenty on quantitative-finance interviews, like
-\emph{On becoming a quant}.\footnote{\url{http://www.markjoshi.com/downloads/advice.pdf}}
+\emph{On Becoming a Quant}.\footnote{\url{http://www.markjoshi.com/downloads/advice.pdf}}
 Keep \citet{WilmottFAQ} on your night table---it's excellent both as a general reference work, and as a repository of the nastier brainteasers.
 
 For general bed-time reading---as opposed to hard-core, interview-preparatory reading---I suggest
@@ -172,7 +176,7 @@ In my experience the following points are important.
 Sometimes a recruiter will stop replying to your messages, especially after a failed interview.
 Think about it from their perspective.
 They are probably sending 10 or 20 CVs to each position.
-They don't have time to get sentimental about candidates, it's nothing but a numbers game for them.
+They don't have time to get sentimental about candidates---it's nothing but a numbers game for them.
 They have quotas to match and bosses to keep happy, and thus cannot always give all of their candidates equal amounts of attention.
 
 \emph{Don't be rude to recruiters.}
@@ -204,7 +208,7 @@ This text respects the contractual obligations I am subject to.
 \citet{HeardOnTheStreet},
 \citet{JoshiQA}, and
 \citet{WilmottFAQ} already exist, so I will not attempt to recreate them.
-Instead, I will focus on what to answer and emphasise \emph{how} to answer it.
+Instead, I will focus not only on \emph{what} to answer, but \emph{how} to answer.
 I would often use answers from these texts, only to find that interviewers were unsatisfied.
 They would literally say ``Yes, but could you answer it again, this time in a different way.''
 Not only were they looking for a textbook answer, they were looking for \emph{a specific} textbook answer.
@@ -322,12 +326,11 @@ How would you prove the exact sampling distribution of $\hat{\sigma}_i$?
 \begin{question}{derivativeofinverse}
 \index{questions!derivative of inverse}
 If we have  $g'(x)$,
-what can we say about
+what can you say about
 \[
 \frac{d}{dx} g^{-1}(x)
 \text{?}
 \]
-
 \end{question}
 
 \clearpage
@@ -339,15 +342,14 @@ what can we say about
 \subsection{Phone interview, 45 minutes}
 \begin{question}{coin100flipsgamble}
 \index{questions!coin flip gamble}
-You are presented with the following gamble.
-You flip 100 fair coins.
+You are presented with the following gamble: you flip 100 fair coins.
 If 60 or more land on heads, you win \pounds 10; you win nothing on all other outcomes.
 Should you play this game for \pounds 1?
 \end{question}
 
 \begin{question}{iszerocorrelationindependent}
 \index{questions!correlation and dependence}
-We have $X \sim \text{Normal}(0,1)$ and $Y \sim \text{Normal}(0,1)$.
+You have $X \sim \text{Normal}(0,1)$ and $Y \sim \text{Normal}(0,1)$.
 If the correlation coefficient is $\rho_{XY}=0$, are $X$ and $Y$ independent?
 \end{question}
 
@@ -400,14 +402,14 @@ What is the probability of the court reaching the correct verdict?
 
 \begin{question}{regressiontheory1}
 \index{questions!regression theory}
-Suppose we wanted to model $Y$ using $X$, and we decided to use the linear regression:
+Suppose you wanted to model $Y$ using $X$, and you decided to use the linear regression:
 \[
   Y = X \beta + \varepsilon
   \text{.}
 \]
-What assumptions are we making?
+What assumptions are being made?
 How would you find $\beta$?
-What tests can we do on $\beta$ afterwards?
+What tests can be done on $\beta$ afterwards?
 \end{question}
 
 
@@ -445,14 +447,14 @@ $\pi^e$?
 
 \begin{question}{ar1processmeanandvar}
 \index{questions!AR(1) process}
-We have an AR(1) process
+Given the AR(1) process
 \begin{align*}
   Y_t &= \alpha_0 + \alpha_1 Y_{t-1} + \varepsilon_{t} \\
    & \text{where} \\
    \varepsilon_{t} &\sim \text{Normal}(0,\sigma_{\varepsilon}^2)
-   \text{.}
+   \text{,}
 \end{align*}
-What are
+what are
 $\E(Y_t)$
 and
 $\Var(Y_t)$?
@@ -487,7 +489,7 @@ What is the probability that the three resulting pieces form a triangle?
 \index{questions!Python!anagrams}
 Write a Python function to check whether two strings are anagrams.
 Do a version with and without sorting.
-Why might we want a function that can do this without sorting?
+Why might you want a function that can do this without sorting?
 \end{question}
 
 
@@ -537,7 +539,7 @@ It is not necessarily symmetric:
   \text{.}
 \]
 For instance, I know David Beckham, but he doesn't know me.
-At a party, every guest knows at least one other person, except for David Beckham, who is also at the part---everybody knows him, but he knows no one.
+At a party, every guest knows at least one other person, except for David Beckham, who is also at the party---everybody knows him, but he knows no one.
 Numbering the people at the party from $1$ to $N$ and using the
 $\text{knows}()$
 function, how would you determine Beckham's number?
@@ -550,13 +552,13 @@ How would you determine their numbers?
 \begin{question}{arrayofintegersfindduplicate}
 \index{questions!array find duplicate}
 \index{questions!sorting}
-We have an array of $N$ integers, unsorted:
+You have an array of $N$ integers, unsorted:
 \begin{align*}
   [n_1, n_2, \ldots , n_{N} ]
   \text{.}
 \end{align*}
 All the integers are unique, except two.
-These are $N$ arbitrary integers; they aren't necessarily the numbers from $1$ to $N$.
+These are $N$ arbitrary integers---they aren't necessarily the numbers from $1$ to $N$.
 How would you find the duplicate?
 Give an answer that doesn't rely on sorting.
 Give an answer with sorting, and discuss your favourite sorting algorithm.
@@ -581,15 +583,15 @@ How do you stop them from escaping?
 \begin{question}{regressiontheory2}
 \index{questions!regression theory}
 What are the significance tests used for the parameters estimated in a logistic regression?
-How is it different from a linear regression?
+How are they different than those used for a linear regression?
 \end{question}
 
 
 \begin{question}{twopiecesofwood}
 \index{questions!measure pieces of wood}
-I have two pieces of wood of length $a$ and $b$, where $a<b$.
-I have a measuring apparatus with a variance of $\sigma^2$, due to measurement error, but it costs \pounds 1 per use.
-I only have \pounds2.
+You have two pieces of wood of length $a$ and $b$, where $a<b$, and a measuring apparatus with a variance of $\sigma^2$, due to measurement error.
+It costs \pounds 1 per use.
+You only have \pounds2.
 What is the best strategy to measure $a$ and $b$ with minimal variance?
 \end{question}
 
@@ -598,8 +600,7 @@ What is the best strategy to measure $a$ and $b$ with minimal variance?
 \begin{question}{bagnsockstwored}
 \index{questions!bag of socks}
 A bag contains $N$ socks, some of which are black, and some of which are red.
-If I randomly pick two socks,
-the probability that they are both red is $\nicefrac{1}{2}$.
+If two random socks are picked, the probability that they are both red is $\nicefrac{1}{2}$.
 What is the smallest possible value of $N$ for which this is possible?
 \end{question}
 
@@ -718,6 +719,7 @@ What model will you build to solve it, and why?
  \clearpage
 \input{answers/regressiontheory4.tex}
 \input{answers/rdatastructures.tex}
+\clearpage
 \input{answers/rmergetwodataframes.tex}
 \input{answers/rapplyvsforloops.tex}
 \input{answers/grownup.tex}
@@ -796,7 +798,7 @@ two seats is equal.
 \end{quote}
 Simple! You think nothing more of it and give this answer when prompted. Then the interviewer says ``I don't understand your answer, could you give a different one?''
 Even though you trust and believe the simple solution, chances are that the interviewer wants to see \emph{some} mathematics.
-The first two times I got this question I got stuck after giving a simple answer and not knowing how to convince the interviewer that I understood the principles behind it.
+The first two times I got this question I got stuck after giving a simple answer, not knowing how to convince the interviewer that I understood the principles behind it.
 \citet{WilmottFAQ} has a similar solution, put slightly differently. (Note that he calls the confused passenger GW, who is about to board Air Force One, but cannot read and therefore ignores his ticket.)
 \begin{quote}
 Sounds really complicated, because of all the people
@@ -822,7 +824,7 @@ your allocated seat.
 This answer is a bit more informative, and Wilmott left the algebra as an exercise to the reader.
 His suggestion to start with the case of one passenger is a good idea, and it is the first trick discussed in appendix \ref{ap:tricks}.
 The notation can be tricky, so it is good to work through this beforehand so you don't struggle in a live interview.
-Assume that the passengers have tickets numbered from 1 to 100, and that they board in the order of their assigned tickets.\footnote{This assumption makes the notation easier, but it doesn't affect the answer. We can renumber tickets any way we want, the only thing that matters is the order in which they board and how many seats are left for each passenger.}
+Assume that the passengers have tickets numbered from 1 to 100, and that they board in the order of their assigned tickets.\footnote{This assumption makes the notation easier, but it doesn't affect the answer. You can renumber tickets any way we want, the only thing that matters is the order in which they board and how many seats are left for each passenger.}
 Note that any person who gets on the plane and finds his seat occupied \emph{becomes the drunkard.}
 This means that if there are 100 seats, and the drunk passenger sits in seat 50, people 2--49 will simply sit in their assigned seats.
 When person 50 finds his seat occupied, he becomes the drunkard and the problem still exists, but with 51 people instead of 100. The open seats will be
@@ -834,7 +836,7 @@ Let $p_n$ be the probability that the last person sits in their assigned seat wh
 You want to determine $p_{100}$, since it is what the question requires.
 Let $A$ be the event that the last person sits in their own seat, and $B_i$ be the seat number chosen by a person who gets on when there are $i$ seats left.
 It follows a discrete uniform distribution from $1$ to $i$, so $P(B_i = k) = \frac{1}{i}$ since there are $i$ seats and the person randomly chooses one.
-We start with the trivial case of $n=1$ where
+Start with the trivial case of $n=1$ where
 \[
   p_1 = 1
   \text{,}
@@ -847,7 +849,7 @@ Now consider the case with two people,
   \text{.}
 \end{align*}
 Here, think of  $P(A|B_2 = 1)$ as ``the probability that the last person sits in his own seat if person just before him sits in their own seat.''
-Similarly, think of  $P(A|B_2 = 2)$ as ``the probability that the last person sits in his own seat if person just before him actually took it by mistake'', which is zero.
+Similarly, think of  $P(A|B_2 = 2)$ as ``the probability that the last person sits in his own seat if person just before him actually took it by mistake'', which is zero:
 \begin{align*}
   p_2 &= (1)\frac{1}{2} + (0)\frac{1}{2} \\
   &= \frac{1}{2}
@@ -868,7 +870,8 @@ He sits in seat 3          & $\nicefrac{1}{3}$  &  The last person is doomed    
 \hline
 \end{tabular}
 \end{center}
-Recall that $A$ is the event where the last person to board the plane gets their allocated seat. Express this in our confusing notation:
+Recall that $A$ is the event where the last person to board the plane gets their allocated seat.
+Express this in the confusing notation:
 \begin{align*}
   p_3
   &=
@@ -976,7 +979,7 @@ The question is usually presented as follows:
 \begin{quote}
 Break a 1 metre stick randomly in two places. What is the probability that the three resulting pieces form a triangle?
 \end{quote}
-This is question 3.27 from \citet{JoshiQA}, but they present it with less ambiguity:
+This is question 3.27 from \citet{JoshiQA}, but they provide more information:
 \begin{quote}
 Let $x$,$y$ be uniformly distributed on $[0, 1]$ and separate the
 unit interval $[0,1]$ into three pieces, what is the probability that the three pieces of the
@@ -1008,16 +1011,16 @@ It is best to draw pictures of the three possible cases:
 \begin{enumerate}
   \item When the longest piece is less than the sum of the other two
   \item When the longest piece is equal to the sum of the other two
-  \item When the longest piece is greater than the sum of the other two
+  \item When the longest piece is greater than the sum of the other two.
 \end{enumerate}
 You will find that only the first case allows you to draw a triangle.
 The second case is a degenerate case where the triangle you draw becomes a line, and the third case doesn't allow for a triangle to be formed at all.
 The next part of their answer is a bit of brilliant intuition:
 they correctly realised that the largest piece will be less that the other two if and only if precisely one of $x$ and $y$ is less than $\frac{1}{2}$, and $|x-y|<\frac{1}{2}$.
 They then use the trick to integrate a bivariate uniform distribution by using the unit square (see appendix \ref{ap:tricks}).
-If you think about it, it makes sense, but it is difficult to arrive at this condition by yourself.
-It is even harder to convince an interviewer of the correctness of this condition if they are expecting the long answer.
-As above, let us consider the long answer.
+If you think about it, it makes sense, but it is difficult to arrive at these conditions by yourself.
+It is even harder to convince an interviewer that these conditions are sufficient if they are expecting the long answer.
+As above, consider the long answer.
 
 Use the notation from \citet{JoshiQA}, and let $x$ and $y$ be two random points on the interval $[0,1]$.
 Break the stick at $x$ and $y$ and then define the three resulting lengths as
@@ -1051,7 +1054,7 @@ node[align=right,  below]
 (8.1,-1) -- (11.9,-1)  node (A) [midway, yshift=-20pt]{\small $l_3 = 1-\max(x,y)$};
 \end{tikzpicture}
 \end{center}
-You know that the triangle can only be formed when the largest piece is less than the sum of the other two, but you have to express this as something we can use algebraically.
+You know that the triangle can only be formed when the largest piece is less than the sum of the other two, but you have to express this as something that can be used algebraically.
 Let
 $l_\text{min}$,
 $l_\text{mid}$, and
@@ -1078,7 +1081,7 @@ $\nicefrac{1}{2}$
 then all three of
 $l_1$, $l_2$, and $l_3$
 must be less than $\nicefrac{1}{2}$.
-You have to find
+Thus, you have to find
 \begin{align*}
 &\phantom{=}
 P\left(
@@ -1129,7 +1132,7 @@ which can be plotted as lines on the unit square:
 The area where all the conditions hold is the grey triangle.
 When $y \leq x$, the region of interest will be mirrored in the line $y=x$.
 The answer becomes the area of the square made up by the two triangles shown on the right, which is
-$\frac{1}{2} \times \frac{1}{2} = \frac{1}{4}$, or exactly a quarter of the unit square.
+$\frac{1}{2} \times \frac{1}{2} = \frac{1}{4}$, or exactly one quarter of the unit square.
 
 This square is what \citet{JoshiQA} described in their answer.
 When you need to integrate a bivariate uniform distribution on $[0,1]$, don't.
@@ -1145,7 +1148,7 @@ For this question, I would suggest knowing the method from \citet{JoshiQA}, in c
 \label{sec:regressiontheory}
 \index{regression theory}
 The classic interview texts do not provide much information on regressions, but regression questions have become increasingly prevalent in recent years.
-The first part in this section deals with multiple linear regression (the case where there are multiple explanatory variables), it is a generalisation of simple linear regression (only one explanatory variable) which is discussed later.
+The first part in this section deals with multiple linear regression (the case where there are multiple explanatory variables), which is a generalisation of simple linear regression (only one explanatory variable).
 For simple linear regression there are a few additional results that come in handy during interviews and it is worth looking over those.
 After these two, I also provide some notes about logistic regression.
 Linear and logistic regression make up the most prevalent models encountered not only in interviews, but also in practice.
@@ -1186,20 +1189,20 @@ Here, $Y$ is the variate, is $X$ the vector of covariates, and $\beta$ is the ve
 
 \begin{description}
   \item[Weak exogeneity:] the sensitivity of the model can be tested to the assumption of weak exogeneity by doing bootstrap sampling for the covariates and seeing how the sampling affects the parameter estimates.
-  Covariates measured with error used to be a difficult problem to solve, as it required errors-in-variables models, which have very complicated likelihoods. In addition, there is no universal fitting library to deal with these. But nowadays, with the availability of Markov Chain Monte Carlo (MCMC) estimation through probabilistic programming languages, it is a lot easier to deal with these using Bayesian hierarchical models (or multilevel models, or Bayesian graphical models---these have many names).
-  \item[Linearity:] the linear regression model only assumes linearity in the parameters, not the covariates. Therefore  we could build a regression using non-linear transformations of the covariates, for instance,
+  Covariates measured with error used to be a difficult problem to solve, as they required errors-in-variables models, which have very complicated likelihoods. In addition, there is no universal fitting library to deal with these. But nowadays, with the availability of Markov Chain Monte Carlo (MCMC) estimation through probabilistic programming languages, it is a lot easier to deal with these using Bayesian hierarchical models (or multilevel models, or Bayesian graphical models---these have many names).
+  \item[Linearity:] the linear regression model only assumes linearity in the parameters, not the covariates. Therefore you could build a regression using non-linear transformations of the covariates, for instance,
   \[
     Y = X_1 \beta_1 +
         X_1^2 \beta_2 +
         \log(X_1) \beta_3
     \text{.}
   \]
-  If we need to further relax the assumption, we are better off using non-linear modelling (see answer \ref{a:nameafewnonlinearmodels} for some examples).
-  \item[Constant variance:] the simplest is to do a variance-stabilising transformation on the data. Assuming a constant coefficient of variation, rather than a constant mean could also work. Some estimation libraries (such as the \verb+glm+ package in R) allow specifying the variance as a function of the mean.
+  If you need to further relax the assumption, you are better off using non-linear modelling (see answer \ref{a:nameafewnonlinearmodels} for some examples).
+  \item[Constant variance:] the simplest fix is to do a variance-stabilising transformation on the data. Assuming a constant coefficient of variation rather than a constant mean could also work. Some estimation libraries (such as the \verb+glm+ package in R) allow specifying the variance as a function of the mean.
   \item[Independence of errors:] this is dangerous because in the financial world things are usually highly correlated in times of crisis. The most important thing is to understand how risky this assumption is for your setting. If necessary, add a correlation structure to your model, or do  a multivariate regression. Both of these require significant resources to estimate parameters, not only in terms of computational power but also in the amount of data required.
   \item[No multicollinearity:] if the covariates are correlated, they can still be used in the regression, but numerical problems might occur depending on how the fitting algorithms invert the matrices involved.
   The t-tests that the regression produces can no longer be trusted. All the covariates must be included regardless of what their significance tests say.
-  A big problem with multicollinearity, however, is over fitting.
+  A big problem with multicollinearity, however, is over-fitting.
   Depending on how bad the situation is, the parameter values might have huge uncertainties around them, and if you fit the model using new data their values might change significantly.
   I suggest reading the Wikipedia article on multicollinearity, as it contains useful information: \\
   \url{https://en.wikipedia.org/wiki/Multicollinearity} \\
@@ -1238,7 +1241,7 @@ They can largely be grouped into the following:
     \text{.}
   \]
   But inverting the matrix might be numerically troublesome in the case of high multicollinearity.
-  Ordinary least squares implies the assumption of the normal distribution, and if you believe there is more variance in our data than the normal distribution can explain, you are better off using robust least-squares or likelihood-based techniques along with the student's t-distribution.
+  Ordinary least squares implies the assumption of the normal distribution, and if you believe there is more variance in your data than the normal distribution can explain, you are better off using robust least-squares, or likelihood-based techniques along with the student's t-distribution.
   \item[Techniques based on the likelihood.]
   This necessitates assuming a statistical distribution on the data.
   To the frequentist, it then means maximising the likelihood.
@@ -1271,7 +1274,7 @@ S(\beta) &= \varepsilon^T \varepsilon \\
 &= (Y-X\beta)^T (Y-X\beta)
 \text{.}
 \end{align*}
-For the least-squared-error estimate, you want to find the $\beta$ that minimises the sum of squared errors. Take the derivative and set it equal to zero.
+For the least-squared-error estimate, you want to find the $\beta$ that minimises the sum of squared errors. Take the derivative and set it equal to zero:
 \begin{align*}
   S(\beta)
   &= Y^T Y -\beta^T X^T Y - Y^T X \beta + \beta^T X^T X \beta \\
@@ -1337,7 +1340,7 @@ The likelihood for this multivariate normal distribution is
 }
 \end{align*}
 where $f(Y)$ is the pdf of the multivariate normal distribution.
-The vector $\theta = \{ \beta, \sigma \}$ is the set of all parameters we want to estimate.
+The vector $\theta = \{ \beta, \sigma \}$ is the set of all parameters you want to estimate.
 The maximum likelihood estimate (MLE) is the set of parameters that maximise the likelihood,
 \begin{align}
 \label{eq:regressiontheory:argmax}
@@ -1441,10 +1444,10 @@ In addition, there will seldom be an analytical solution like the one presented.
 For most GLMs you have to maximise the likelihood---or rather, the log likelihood---numerically, using an iterative approach like Newton's method, or similar.
 
 
-\subsection{simple linear regression}
+\subsection{Simple linear regression}
 \index{regression theory!simple linear}
 
-The simple linear regression is the special case of the linear regression with only one covariate
+The Simple linear regression is the special case of the linear regression with only one covariate
 \[
   y = \alpha + x \beta
   \text{,}
@@ -1662,7 +1665,7 @@ The same idea is used in question \ref{q:rolltwodice} for a discreet sum.
 
 \subsection{Recursion}
 This is a trick I never encountered before I started interviewing.
-It appears in section \ref{q:airforceone} with the Air Force One question, as well as question \ref{q:simplerandomwalkhittingprobability}.
+It appears in section \ref{q:airforceone} with the \emph{Air Force One} question, as well as question \ref{q:simplerandomwalkhittingprobability}.
 The idea is to express the answer you want as $P(A_n)$ or $p_n$ and then express $p_n$ in terms of $p_{n-1}$.
 Then you can use recursion until you can solve for the quantity you want.
 The same trick is sometimes used to calculate expectations of interest (using the Law of Total Expectation).
@@ -1676,9 +1679,9 @@ Let $N_n$ be a random variable representing the number of coin flips you have to
 It satisfies the recursion relationship:
 \begin{align*}
   N_n &=
-  \overbrace{ \frac{1}{2} (N_{n-1} + 1)}^{n\text{th throw is head}}
+  \overbrace{ \frac{1}{2} (N_{n-1} + 1)}^{n\text{th throw is heads}}
   +
-  \overbrace{\frac{1}{2} (N_{n-1} + 1 + N_n)}^{n\text{th throw is tail}}
+  \overbrace{\frac{1}{2} (N_{n-1} + 1 + N_n)}^{n\text{th throw is tails}}
   \\
   \frac{1}{2}  N_n &=
    N_{n-1} + 1
@@ -1693,7 +1696,7 @@ Instead, you should solve for the expected value of $N_n$,
   E(N_n) &= 2 E(N_{n-1}) + 2
   \text{.}
 \end{align*}
-The expected number of throws to get one head is $2$, so
+The expected number of throws to get heads once is $2$, so
 $E(N_1) = 2$ (use the negative binomial distribution if you need to prove this),
 \begin{align*}
   E(N_2) &= 2(2) + 2 = 6
@@ -1760,7 +1763,7 @@ For an example, see question \ref{q:bivariatenormalmax}.
 \section{Code}
 \subsection{Expectation of maximum of the bivariate normal distribution}
 \label{ap:mvtnormproof}
-Here is R code for a pseudo proof-by-simulation of question \ref{q:bivariatenormalmax}.
+Here is R code for a pseudo proof-by-simulation of question \ref{q:bivariatenormalmax}:
 
 \inputminted{r}{./plots/mvtnorm/simtest.R}
 
@@ -1770,10 +1773,9 @@ Here is R code for a pseudo proof-by-simulation of question \ref{q:bivariatenorm
 I produce my own take on the answer found at \\
 \url{https://stackoverflow.com/questions/2391679/ddg#2392656}\\
 Say you are working for the tax man, and you want to create a function that assigns the right tax rate to cars.
-If you don't know the type of car, you will assume it burns fuel.
-So let's make a class for generic cars and one for electric cars.
+If you don't know the type of car, you will assume it burns fuel; make a class for generic cars and one for electric cars:
 \inputminted{cpp}{./plots/virtualfunction/WithoutVirtual.cpp}
-When we run this program, the output is:
+When you run this program, the output is:
 \VerbatimInput{./plots/virtualfunction/WithoutVirtual.txt}
 Oh no! The final line is incorrect, because you've accidentally treated the Tesla as a general car.
 You would have to overload the \verb+queryEmssionsForTax+ function to take a
@@ -1789,7 +1791,7 @@ to the function in the
 \verb+Car+
 class and
 \verb+override+
-to the function in the child class.
+to the function in the child class:
 \inputminted{cpp}{./plots/virtualfunction/WithVirtual.cpp}
 Now the output becomes:
 \VerbatimInput{./plots/virtualfunction/WithVirtual.txt}
@@ -1798,7 +1800,7 @@ Now the output becomes:
 \label{ap:sqlite}
 This script loads the tables and gives you the ability to test SQL queries.
 I use the \verb+pandas+ and \verb+sqlite+ libraries, but you probably only need \verb+sqlite3+.
-I use Python since it is easy to install on most operating systems and it comes with sqlite functionality as standard.
+I also use Python since it is easy to install on most operating systems and it comes with sqlite functionality as standard.
 \inputminted{python}{./plots/sql/sql.py}
 
 \clearpage

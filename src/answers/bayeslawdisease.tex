@@ -8,7 +8,7 @@ $D_\text{no}$ means you are disease-free,
 and
 $\text{Test}_+$ or
 $\text{Test}_-$ indicates the result of your test.
-Using Bayes' law we can re-express this as
+Using Bayes' law, re-express this as
 \begin{align*}
 P(D_\text{yes}|\text{Test}_+)
 &=
@@ -44,7 +44,7 @@ P(D_\text{yes}|\text{Test}_+)
 \text{.}
 \end{align*}
 
-Now we consider the information the interviewer gave us, and hope that we have all the bits we need. (This doesn't always happen, and it can either indicate that you have some more work to do, or that the interviewer got the question wrong.)
+Now, consider the information the interviewer gave, and hope that you have all the bits you need. (This doesn't always happen, and it can either indicate that you have some more work to do, or that the interviewer got the question wrong.)
 ``One percent of people in the world have this disease.''
 \begin{align*}
   P( D_\text{yes} ) & = 0.01 \\
@@ -68,17 +68,17 @@ P(D_\text{yes}|\text{Test}_+)
 &= \frac{ (0.8)(0.01) }{ (0.8)(0.01) + (0.1)(0.99)  }
 \text{.}
 \end{align*}
-We need an easy way to evaluate this without a calculator, so factorise it as
+You need an easy way to evaluate this without a calculator, so factorise it as
 \begin{align*}
 \frac{ (0.8)(0.01) }{ (0.8)(0.01) + (0.1)(0.99)  }
 &= \frac{ (8)(1) }{ (8)(1) + (1)(99)  } \left( \frac{1000}{1000}  \right) \\
 &= \frac{8}{107}
 \end{align*}
-and the denominator is a prime number so we can't simplify further.
+and the denominator is a prime number so you can't simplify further.
 Thus, the answer is a bit less than 8\%.
 (The exact answer is $0.07476636$.)
 
-We can represent the situation in a picture to get an intuitive understanding.
+You can represent the situation in a picture to get an intuitive understanding.
 In the unit square below, the shaded area represents everyone who tested positive for the disease.
 The people in the little square on the bottom left (which is 1\% of the square's area) are the ones who actually have the disease.
 If you tested positive, you fall in the shaded area.
@@ -107,8 +107,8 @@ As a fraction, that is
 &= \frac{ (0.8)(0.01) }{ (0.8)(0.01) + (0.1)(0.99)  }
 \end{align*}
 which is the same as before.
-The picture reveals the nuance in Bayes' law questions and the reason for their unintuitive answers.
-We have a low prevalence of the disease, together with a high false-positive rate.
+The picture reveals the nuances in Bayes' law questions and the reason for their unintuitive answers.
+There is a low prevalence of the disease, together with a high false-positive rate.
 Ten percent might not seem high for a false-positive rate, but it results in a large section of the non-diseased population testing positive relative to the few people who actually have the disease.
 
 

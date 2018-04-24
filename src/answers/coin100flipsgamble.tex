@@ -1,11 +1,12 @@
 \begin{answer}{coin100flipsgamble}
-This can be solved by using the Central Limit Theorem, or the normal approximation the binomial distribution.
+This can be solved by using the Central Limit Theorem, or the normal approximation to the binomial distribution.
 \index{tricks!Central Limit Theorem}
-We have
+You have
 \begin{align*}
   Y \sim \text{Binomial}(p=0.5, n=100)
 \end{align*}
-and for large $n$ we can approximate the binomial distribution through the normal distribution, \begin{align*}
+and for large $n$ you can approximate the binomial distribution through the normal distribution,
+\begin{align*}
   Y &\stackrel{\sim}{\text{\tiny approx}}  \text{Normal}(np, np(1-p))
   \text{.}
 \end{align*}
@@ -21,26 +22,25 @@ resulting in
   \text{Normal}\left( 50, (5)^2 \right)
   \text{.}
 \end{align*}
-
-In order to evaluate whether the gamble is worthwhile we have to calculate its expected return:
+In order to evaluate whether the gamble is worthwhile you have to calculate its expected return:
 \begin{align*}
   \E(\text{Gamble}) &= -1 + (10)P(\text{Win})  + (0)P(\text{Lose}) \\
                     &= -1 + (10)P(Y>60)
                     \text{.}
 \end{align*}
-Since we are in an interview, we need to evaluate $P(Y>60)$ without a calculator.
+Given that you are in an interview, you need to evaluate $P(Y>60)$ without a calculator.
 \index{tricks!normal probabilities in your head}
 With the normal distribution, approximately 95\% of the data lies within two standard deviations of the mean.
-For our problem, two standard deviations from the mean is conveniently located at 60, as the following graph indicates:
+For the current problem, two standard deviations from the mean is conveniently located at 60, as the following graph indicates:
 \begin{center}
   \includegraphics[width=0.8\textwidth]{./plots/prettynorm/prettynorm.pdf}
 \end{center}
-The probability of interest is $P(Y>60 = 0.025)$ and thus the expected value of our gamble is
+The probability of interest is $P(Y>60 = 0.025)$ and thus the expected value of the gamble is
 \[
   \E(\text{Gamble}) = -1 + (10)(0.025) = 1 - 0.25 = -0.75
   \text{.}
 \]
-On average we lose 75 pence for playing the game so it is not worthwhile.
+On average you lose 75 pence for playing the game so it is not worthwhile.
 The fair price, denoted $\pounds_{\text{fair}}$, occurs where the gamble breaks even:
 \begin{align*}
   \E(\text{Gamble})     &=  0    \\
@@ -50,7 +50,7 @@ The fair price, denoted $\pounds_{\text{fair}}$, occurs where the gamble breaks 
 and this is the highest price at which a
 rational and risk-neutral person should start agreeing to play.
 The assumptions of rationality and risk neutrality are very important.
-If a billionaire gets immeasurable physical pleasure from engaging in risky gambles---and therefore are not risk neutral---the rational course of action is probably to spend all of their excess money on unfair gambles.
+If a billionaire gets immeasurable physical pleasure from engaging in risky gambles---and therefore is not risk neutral---the rational course of action is probably to spend all of their excess money on unfair gambles.
 Conversely, risk-neutral people might not always act rationally.
 
 \end{answer}

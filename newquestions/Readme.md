@@ -1,6 +1,7 @@
 # New questions
 
 This is the staging area for new questions.
+Once there are enough, they will be added to the main text under a separate section.
 To add a question, create a folder with a descriptive name of your question (no spaces).
 You are welcome to copy the `examplequestion` folder, which includes a minimum working example.
 
