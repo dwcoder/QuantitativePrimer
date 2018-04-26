@@ -4,17 +4,17 @@ If you have an estimator for the parameter, and you draw repeated samples from t
 Note that the question isn't Bayesian, since you aren't assuming random parameters, but merely that the estimator will have a distribution due to the random sampling of the values it depends on.
 The right way to estimate the parameters using the samples are through the sample mean and variance,
 \begin{align*}
-  \tilde{\mu}_i &= \frac{1}{n}\sum_{j=1}^{n}{y_{ij}} \\
-  \tilde{\sigma}_i &=
- \sqrt{ \frac{1}{n-1} \sum_{j=1}^{n}{(y_{ij} - \tilde{\mu}_i)^2} }
+  \tilde{\mu}_i &= \bar{y}_i =  \frac{1}{n}\sum_{j=1}^{n}{y_{ij}} \\
+  \tilde{\sigma}^2_i &=
+  \frac{1}{n-1} \sum_{j=1}^{n}{(y_{ij} - \bar{y}_i)^2}
  \text{.}
 \end{align*}
-If you draw histograms of these values, the distribution of the
+If you draw histograms of these values, the distribution of
 $\tilde{\mu}_i$
 will be normal,
 because it is the sum of normal random variables $y_{ij}$ and thus also normal.
-The distribution of the
-$\tilde{\sigma}_i$
+The distribution of
+$\tilde{\sigma}^2_i$
 will be chi-squared, because it is the sum of a bunch of squared normal random variables.
 The way to prove this is to use the formula for random variable transformation.
 If $Z = g(X)$
