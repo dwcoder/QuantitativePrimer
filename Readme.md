@@ -1,4 +1,4 @@
-# A Primer of Interviewing for Quantitative Finance
+# An Interview Primer for Quantitative Finance
 
 This book is written for candidates preparing for interviews in quantitative finance.
 It contains a deep-dive on answering technical questions from actual interviews.
