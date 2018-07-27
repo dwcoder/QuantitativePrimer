@@ -1,0 +1,77 @@
+\begin{answer}{drop20cards}
+The fact that 20 cards were randomly discarded before you got to draw two has no influence on your probability of drawing aces.
+This is not obvious from the way the question is framed.
+Getting this question over the phone may be a hint that the answer can't be too complicated, but this is not a rule you can rely on.
+
+
+One way to think about it is to pretend we are randomly dealing the deck into two groups: one group has two cards, and one group has 20.
+The fact that I deal the 20 cards first doesn't affect the probability of the second group.
+Another way to think about it is from the perspective of a poker game, like Texas Hold'em, where each player gets 2 cards.
+You can calculate the probability of getting two aces before the cards are dealt.
+Whether you are playing against two or ten other players, it doesn't affect \emph{your} probability of getting two aces on the deal.
+Consider the 20 cards that are randomly being discarded in this question as the ones given to your opponents in a game.
+You wouldn't think it was unfair if your opponents got their cards \emph{before} you receive yours, because it is still dealt random and thus your intuition doesn't trigger alarms.
+The way the question is worded expresses this scenario as something less intuitive and you'll need to reason it out before answering.
+
+
+Questions about card drawing should be done using the combination formula.
+It is a useful technique , since you can answer very complicated card-related questions with it.
+For instance, if I draw 6 cards, what is the probability of drawing exactly two aces and one king?
+The answer is
+\begin{align}
+ \frac{\binom{4}{2} \binom{4}{1} \binom{44}{3} }{\binom{52}{6} }
+\end{align}
+where
+\begin{align*}
+\binom{4}{2}&
+  \text{ is the number of ways to draw 2 aces from the 4 in the deck,} \\
+\binom{4}{1}&
+  \text{ is the number of ways to draw 2 kings from the 4 in the deck,} \\
+\binom{44}{3}&
+  \text{ is the number of ways to draw  any 3 cards from remaining 44 in the deck,} \\
+\binom{52}{6}&
+  \text{ is the number of ways to draw any 6 cards from a deck of 52.}
+\end{align*}
+Review the probabilities of card drawing as part of interview preparation; they aren't difficult but require some practise.
+For the current question you only draw two cards, and seek the probability that they both are aces:
+\begin{align}
+ \label{eq:drop20cards:cardmath}
+P(\text{Drawing two aces})
+&= \frac{\binom{4}{2} }{\binom{52}{2} } \\
+&= \frac{ \frac{4!}{(2!)(2!)}  }{ \frac{52!}{ (50!) (2!) } } \nonumber \\
+&= \frac{ 4 \times 3  }{ 52 \times 51 } \nonumber
+\text{.}
+\end{align}
+But this is not the answer the interviewer wants.
+They want you to use the following, simpler method:
+\begin{align*}
+P(\text{Drawing two aces})
+&=
+P(\text{First card is an ace})
+\times
+P(\text{Second card is an ace})
+\\
+&=
+\frac{4}{52}
+\times
+\frac{3}{51}
+\end{align*}
+and then they want you to simplify the fraction in your head, \emph{quickly}:
+\begin{align*}
+\frac{4}{52}
+\times
+\frac{3}{51}
+=
+\frac{1}{13}
+\times
+\frac{1}{17}
+=
+\frac{1}{221}
+\text{.}
+\end{align*}
+During my interview, I first tried to use the method in
+\eqref{eq:drop20cards:cardmath},
+but from the incredulity in my interviewer's voice he probably was not familiar with the technique.
+Many interviewers who ask statistics and probability only took one brief statistics course and---outside of some brainteasers they looked up---aren't aware of all the techniques and nuances, nor the differences in jargon.\footnote{This has been exacerbated by the redefinition of many statistical concepts within Machine Learning.}
+Fortunately I knew how to use the simpler method, but under pressure I was unable to perform the mental arithmetic fast enough.
+\end{answer}
