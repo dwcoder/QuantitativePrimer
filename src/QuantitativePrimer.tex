@@ -1,8 +1,14 @@
 \documentclass[a4paper]{article}
 \usepackage{qabook}
 
-
-\newcommand{\docversion}{V1.1}
+% Version number policy:
+% Should be of the format V<A>.<B>.<C>
+% A: Increment with major changes in layouts, large new sections added.
+% B: Increment when new questions are added
+% C: Increment with minor error corrections.
+% When B is incrememted, C is reset to zero
+% When A is incrememted, B and C is reset to zero
+\newcommand{\docversion}{V1.1.1}
 \begin{document}
 
 %\doublespacing
@@ -54,14 +60,14 @@ Under the following terms:
 For errors, comments, or suggestions, contact Dirk Bester\\
 \href{mailto:bester.dirkw@gmail.com}{bester.dirkw@gmail.com}\\
 \href{https://www.linkedin.com/in/dwbester}{www.linkedin.com/in/dwbester}.\\
-Visit the GitHub page to contribute and to find the latest version \\
+Visit the GitHub page to ensure you are reading the latest version \\
 \href{https://github.com/dwcoder/QuantitativePrimer}{github.com/dwcoder/QuantitativePrimer}.\\
-\texttt{Last updated on \moddate{\jobname.tex}.} \\
+\texttt{This pdf was compiled on \moddate{\jobname.tex}.} \\
 \end{center}
 
 \vfill
 \noindent
-Special thanks to Luke Miller for some clever solutions, Iztok Pizorn for corrections in the code, Nita Bester for proofreading and support, and Joshua Curk for editing.
+Special thanks to Luke Miller for some clever solutions, William Xing for catching typos and suggestions on soft questions,  Iztok Pizorn for corrections in the code, Nita Bester for proofreading and support, and Joshua Curk for editing.
 
 
 \clearpage
@@ -1623,6 +1629,7 @@ I've seen interviewing guides online suggest questions like
 In my opinion this question feels rehearsed---don't bother with it.
 Here are some questions you can ask, which are also relevant to the job:
 \begin{itemize}
+  \item Why is your team looking to hire at the moment? (Is it because of expansion, or to replace someone who recently left? This is important to know before accepting a position.)
   \item What operating systems do the team use?
   What are the proportions of Windows, Apple, GNU/Linux?
   \item  What does the team use for technical documentation? LaTeX, Wiki, Word, or nothing? (Don't say ``knowledge management'', you aren't interviewing to become a management consultant.)

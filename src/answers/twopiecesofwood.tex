@@ -25,17 +25,17 @@ by measuring the sum of the two sticks, $s = a+b$, and the difference between th
 \end{center}
 Solve for $a$ and $b$ in terms of $s$ and $d$, and see what the mean and variance of the estimates are.
 \begin{align*}
-a   &= \frac{s - d}{2} \\
-\E(a)  &= \E\left(\frac{s - d}{2}\right)
+a   &= \frac{s + d}{2} \\
+\E(a)  &= \E\left(\frac{s + d}{2}\right)
         =  a \\
-\Var(a) &= \Var\left(\frac{s - d}{2} \right) \\
+\Var(a) &= \Var\left(\frac{s + d}{2} \right) \\
         &= \frac{1}{4}(\Var(s) + \Var(d)) \\
         &= \frac{1}{2}\sigma^2 \\
         & \quad \text{Likewise, for } b \\
-b   &= \frac{s + d}{2} \\
-\E(b)  &= \E\left(\frac{s + d}{2}\right)
+b   &= \frac{s - d}{2} \\
+\E(b)  &= \E\left(\frac{s - d}{2}\right)
         =  b \\
-\Var(b) &= \Var\left(\frac{s + d}{2} \right) \\
+\Var(b) &= \Var\left(\frac{s - d}{2} \right) \\
         &= \frac{1}{2}\sigma^2
 \end{align*}
 Using \pounds 2 and the new strategy, you've measured each stick with an error of $\nicefrac{\sigma^2}{2}$.
