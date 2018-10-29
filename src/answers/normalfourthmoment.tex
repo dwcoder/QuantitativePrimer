@@ -217,6 +217,37 @@ The fourth moment is used to measure kurtosis,
 the third moment is related to the skewness,
 the second moment to the variance, and the first moment is the mean.
 
+Robert Tillman suggested the following clever solution, which is the shortest method to derive $E\left( X^4 \right)$ for the given normal distribution.
+Recognise
+\begin{align*}
+\Var(X^2) &= \E\left((X^2)^2\right) - \E\left( X^2 \right)^2  \\
+          &= \E\left(X^4\right) - \E\left( X^2 \right)^2  \\
+\E\left(X^4\right)
+&=  \Var(X^2) + \E\left( X^2 \right)^2
+\end{align*}
+and that
+\begin{align*}
+\frac{X^2}{\sigma^2} \sim \chi^2_{1}
+\text{.}
+\end{align*}
+The $\chi^2_k$ distribution has a mean of $k$ and variance of $2k$.
+Define a random variable
+$Z \sim \chi^2_{1}$
+and write
+\begin{align*}
+X^2 &= {\sigma^2} Z \\
+\E\left(X^2 \right) &= {\sigma^2} \E( Z ) \\
+                    &= {\sigma^2} (1) \\
+\Var\left(X^2 \right) &= (\sigma^2)^2 \Var( Z ) \\
+                    &= {\sigma^4} (2) \\
+\end{align*}
+giving the same answer as above,
+\begin{align*}
+\E\left(X^4\right) &= 2 \sigma^4 + \sigma^4 \\
+                   &= 3 \sigma^4
+\text{.}
+\end{align*}
+
 
 In my experience, interviewers from investment banks love questions about the normal distribution.
 This might be in response to interview solution manuals like
