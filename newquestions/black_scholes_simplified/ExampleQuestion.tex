@@ -1,0 +1,219 @@
+\documentclass[11pt]{article}
+
+\usepackage[round]{natbib}
+% for tikz pic
+\usepackage{tikz}
+\usetikzlibrary{
+  decorations.pathreplacing,
+  calc,
+  patterns,
+  math,
+  external,
+  spy}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\usepackage{standalone}
+
+
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,mleftright}
+\usepackage{mathtools} % For cases environment
+\usepackage{microtype}
+
+
+\usepackage[british]{babel}
+
+% Make a title for your question and provide your name (or a pseudonymn)
+\title{Black-Scholes simplified}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Question}
+
+Consider an at the money call option, expiring in one month.
+It has a strike price of $K$, and the current price of the underling is $S$, where $S \approx K$.
+The value of this option, using Black-Scholes and assuming that the risk-free rate of return is small and no dividents are due, is
+\begin{align*}
+S N(d_1)
+- K e^{-r(T-t)} N(d_2)
+\end{align*}
+where
+\begin{align*}
+ d_1 =
+ \frac{
+      \log\left( \frac{S}{K} \right)
+      + \left( r + \frac{1}{2}\sigma^2  \right)(T - t)
+ }{
+ \sigma \sqrt{T - t}
+ }
+\end{align*}
+and
+\begin{align*}
+ d_2 = d_1 - \sigma \sqrt{T - t}
+ \text{.}
+\end{align*}
+Given the special case where $S \approx K$ and one month to expiry, $(T-t) = 1/12$, how can we simplify this equation into something that can be quickly done on the back of an envelope by traders?
+
+
+\section{Answer}
+
+This question is asking you to prove that the price of a call option can be approximated by
+\begin{align*}
+  S \sigma \sqrt{\frac{T - t}{2\pi} }
+\text{.}
+\end{align*}
+We don't require rigour, a heuristic proof will do.
+Start with the price of a call option
+\begin{align}
+\label{eq:calloption:price}
+S N(d_1)
+- K e^{-r(T-t)} N(d_2)
+\end{align}
+and note that $e^{-r(T-t)} \approx 1$ when $r \approx 0$ and $(T-t)$, the time-to-expiry, are small.
+Also substitute $K$ with $S$, leaving
+\begin{align} \label{eq:approxfun:1}
+S \times ( N(d_1) -  N(d_2) )
+\text{.}
+\end{align}
+Next, consider $d_1$, and again use $K \approx S$ and $r \approx 0$, then
+\begin{align*}
+ d_1
+ &=
+ \frac{
+      \log\left( \frac{S}{S} \right)
+      + \left( 0 + \frac{1}{2}\sigma^2  \right)(T - t)
+ }{
+ \sigma \sqrt{T - t}
+ } \\
+ &=
+ \frac{
+      \left(\frac{1}{2}\sigma^2  \right)(T - t)
+ }{
+ \sigma \sqrt{T - t}
+ } \\
+ &=
+ \frac{1}{2} \sigma \sqrt{T - t}
+\\
+ &= d_1^*
+\text{.}
+\end{align*}
+Then you have
+\begin{align*}
+ d_2^* &= d_1^* - \sigma \sqrt{T - t} \\
+       &=  -  \frac{1}{2} \sigma \sqrt{T - t} \\
+       &=  - d_1^*
+\end{align*}
+which reduces
+\eqref{eq:approxfun:1} to
+\begin{align} \label{eq:approxfun:2}
+S \times ( N(d_1^*) -  N(-d_1^*) )
+\text{.}
+\end{align}
+Consider the function $N(x)$; the cumulative density function of the standard normal distribution.
+We can approximate it using the Taylor series.
+Let $N'(x) = f(x)$ be the probability density function of the standard normal distribution, then
+\begin{align*}
+N(x - a) = N(a)
+          + f(a)(x - a)
+          + \frac{1}{2!}f'(a)(x - a)^2
+          + \frac{1}{3!}f''(a)(x - a)^3
+\text{.}
+\end{align*}
+Only consider the first order approximation:
+\begin{align*}
+N(x - a) = N(a)
+          + f(a)(x - a)
+\end{align*}
+and since
+\begin{align*}
+f(x) =
+     \frac{1}{ \sqrt{ 2\pi } }
+     e^{ - \frac{1}{2} (x)^2 }
+\end{align*}
+you have
+\begin{align*}
+N(d_1^*)&= N(d_1^* - 0) \\
+            &= N(0) + f(0)(d_1^* - 0) \\
+            &= \frac{1}{2} +  \frac{1}{ \sqrt{ 2\pi } }
+            (d_1^* )
+\end{align*}
+and
+\begin{align*}
+N(-d_1^*) &= \frac{1}{2} +  \frac{1}{ \sqrt{ 2\pi } } (- d_1^* )
+\text{.}
+\end{align*}
+Putting this into \eqref{eq:approxfun:2} yields
+\begin{align*}
+&\phantom{{}={}}
+S \times \left(
+\frac{1}{2} +  \frac{1}{ \sqrt{ 2\pi } } ( d_1^* ) -
+\left(
+\frac{1}{2} +  \frac{1}{ \sqrt{ 2\pi } } (- d_1^* )
+\right)
+\right)
+\\
+&=
+S \times \left(
+    \frac{2}{ \sqrt{ 2\pi } } ( d_1^* )
+\right)
+\\
+&=
+S \times \left(
+    \frac{ 2 }{ \sqrt{ 2 \pi } }
+    \left(
+    \frac{1}{2} \sigma \sqrt{T - t}
+    \right)
+\right)
+\\
+&=
+S \times \left(
+     \sigma
+    \sqrt{\frac{ T - t }{  2 \pi  }}
+\right)
+\text{,}
+\end{align*}
+which is what we can let the traders use to quickly approximate the price of a call option.
+The accuracy of this approximation is shown in the figure below, drawn using
+the values
+$K = 80$,
+$r = 0$,
+$T-t = 30/365$, and
+$\sigma=0.2$.
+%
+\begin{figure}[!htb]
+\begin{center}
+\input{plot/CallOption}
+%\caption{The approximation to the price of the call option. The dotted line is the approximation, and the solid black line is the call price.}
+\end{center}
+\end{figure}
+%
+%
+The approximation is only accurate when the difference between the stock price and the strike price is small, and accuracy rapidly deteriorates as this difference grows.
+The approximation, however, is so useful that traders know it by heart and are expected to calculate it in their heads (noting that $1/\sqrt{2\pi} \approx 0.4$).
+This approximation is also derived in Question 2.20 of \citet{HeardOnTheStreet}, but with more rigour by assuming that the stock price follows arithmetic Brownian motion instead of geometric Brownian motion.
+After the derivation, \citet{HeardOnTheStreet} then uses it to answer questions 2.21, 2.22, and 2.23.
+
+In all my interviews, I didn't get many questions about Black and Scholes, stochastic calculus, and derivative pricing.
+This is partly because I applied for roles leaning more towards statistics instead of pricing, but it also has to do with the type of jobs advertised at the time of writing.
+While there is still work for pricing quants, there has been a stronger focus on modelling roles, helped along by the hype generated by rebranding statistics as machine learning.
+There has also been more roles focused on software development, under the label of strategists or \emph{strats}.
+Your mileage may vary, I suggest interviewing for some roles, and then to adjust your preparatory material according to what you are tested against.
+The classic interview texts,
+\cite{HeardOnTheStreet},
+\cite{WilmottFAQ}, and
+\citet{JoshiQA}
+feature plenty of material for derivative pricing roles.
+
+
+
+%% Uncomment this if you need references
+\bibliography{references,../../src/books}
+\bibliographystyle{chicago}
+
+
+\end{document}
