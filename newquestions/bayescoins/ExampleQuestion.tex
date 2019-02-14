@@ -1,0 +1,168 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+
+
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,mleftright}
+\usepackage{mathtools} % For cases environment
+\usepackage[round]{natbib}
+\usepackage{microtype}
+\usepackage{xcolor}
+
+\usepackage[british]{babel}
+
+% Make a title for your question and provide your name (or a pseudonymn)
+\title{Bayes and 1000 coins}
+\author{D. Bester}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Question}
+
+You have a bag with 1000 coins in it.
+One of them is a double headed coin, the other 999 are fair coins.
+I pick one coin from the bag at random, and flip it ten times.
+It comes up heads all ten times.
+What is the probability that I have selected the double headed coin?
+
+\section{Answer}
+This is another question about Bayes' law.
+Let's make some notation to use, define
+$H$ as the event that a coin comes up head, and $T$ that a coin comes up tails, and let $10H$ denote getting ten heads from ten coin flips.
+Let $C_{F}$ be the event where we select the fair coin from the bag, and $C_{R}$ the event that we select the rigged coin.
+This is one of the simplest questions about Bayes' law as there is not much to unpack.
+You want to know the probability of the rigged coin being selected, given you saw ten heads.
+By rote application of Bayes' law:
+\begin{align}
+\label{eq:1000coins:bayeslaw1}
+ P( C_{R} \vert 10H)
+ &=
+ \frac{
+    P( 10H \vert C_{R} )
+    P( C_{R} )
+ }{
+    P( 10H \vert C_{R} )
+    P( C_{R} )
+    +
+    P( 10H \vert C_{F} )
+    P( C_{F} )
+ }
+ \text{.}
+\end{align}
+Consider
+$P( 10H \vert C_{R} )$, the probability of getting ten heads in a row with the rigged coin.
+Since this will happen with certainty
+$P( 10H \vert C_{R} ) = 1$.
+For the fair coin each flip is independent, so you have
+$P( 10H \vert C_{F} )=P( 10 \vert C_{F} )^{10}= ({1}/{2})^{10} = {1}/{1024}$.
+Since you picked te coin out of a bag of 1000 coins, the probability that you selected the rigged coin is
+$P(C_{R}) = 1/1000$ and the probability that the coin you selected is fair is
+$P(C_{F}) = 999/1000$.
+You can substitute
+\begin{align*}
+ P( C_{R} \vert 10H)
+ &=
+ \frac{
+    (1)
+   \left( \frac{1}{1000} \right)
+ }{
+    (1)
+   \left( \frac{1}{1000} \right)
+    +
+    \left(\frac{1}{1024}\right)
+    \left(\frac{999}{1000}\right)
+ }
+ \\
+ &=
+ \frac{
+    1
+ }{
+    1
+    +
+    \left(\frac{999}{1024}\right)
+ }
+ \\
+ &=
+ \frac{
+    1
+ }{
+    \left(\frac{2023}{1024}\right)
+ }
+ \\
+ &=
+    \frac{1024}{2023}
+ \text{,}
+\end{align*}
+which is slightly more than $1/2$.
+
+This question is so well known that your interviewer likely won't even let you finish it.
+Once they see you can answer it they will move on to the next question.
+My interviewer didn't care about the answer, but he wanted me to describe \eqref{eq:1000coins:bayeslaw1} in detail.
+Since Bayes' law is just the application of conditional probability, you can derive it from first principles:
+\begin{align}
+\label{eq:1000coins:bayesexplain}
+ P( C_{R} \vert 10H)
+ &=
+ \frac{
+    P( 10H , C_{R} )
+ }{
+    P( 10H )
+ }
+\end{align}
+and even a frequentist will agree with you here.
+The nominator is the joint probability of ten heads and the rigged coin, and it is easier to split this into another conditional probability:
+\begin{align*}
+    P( 10H , C_{R} )
+    =
+    P( 10H \vert C_{R} ) p( C_{R} )
+    \text{.}
+\end{align*}
+Technically, we can also say
+\begin{align*}
+    P( 10H , C_{R} )
+    =
+    P( C_{R} \vert 10H  ) p( 10H  )
+    \text{,}
+\end{align*}
+but since this contains the probability we are trying to solve, so this line of thinking will lead to circular reasoning and is not helpful.
+
+You can expand denominator in
+\eqref{eq:1000coins:bayesexplain}
+using the law of total probability and considering all the possible ways you can see ten heads.
+Since you only have two types of coins---either a fair coin or a rigged one---there are only two ways ten heads can happen:
+\begin{align*}
+    P( 10H ) =
+    P( 10H \vert C_{R} )p(C_{R})
+    +
+    P( 10H \vert C_{F} )p(C_{F})
+    \text{.}
+\end{align*}
+If the interviewer wants you to explain even further, you can note that this is derived form the marginal probability
+\begin{align*}
+    P( 10H ) =
+    P( 10H , C_{R} )
+    +
+    P( 10H , C_{F} )
+    \text{,}
+\end{align*}
+by applying the law of conditional probability to each of the terms.
+Combining the nominator and the denominator yields \eqref{eq:1000coins:bayeslaw1}.
+You could also opt for a visual explanation of Bayes' Law, such as the one in question \textcolor{red} {TODO: ref question}.
+
+This question uses Bayes' law as a starting to point to test your handle on important probability concepts and your ability to grapple with notation on-the-spot.
+It is easy to confuse the basic concepts or to forget some useful rules, which is another reason for doing proper interview preparation, no matter how smart you think you are.
+
+
+
+
+
+%% Uncomment this if you need references
+%\bibliography{references.bib}
+%\bibliographystyle{chicago}
+
+
+\end{document}

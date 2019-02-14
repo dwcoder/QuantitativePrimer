@@ -1,0 +1,12 @@
+*
+!.gitignore
+
+!*.tex
+!*.bib
+
+# This whitelists the folder
+# It applies the same rules as above inside this folder
+!/plot/
+
+
+
