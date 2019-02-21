@@ -14,8 +14,8 @@ You wouldn't think it was unfair if your opponents got their cards \emph{before}
 The way the question is worded expresses this scenario as something less intuitive and you'll need to reason it out before answering.
 
 
-Questions about card drawing should be done using the combination formula.
-It is a useful technique , since you can answer very complicated card-related questions with it.
+Questions about card drawing should be answered using the combination formula.
+It is a useful technique since you can answer very complicated card-related questions with it.
 For instance, if I draw 6 cards, what is the probability of drawing exactly two aces and one king?
 The answer is
 \begin{align}
@@ -42,8 +42,7 @@ P(\text{Drawing two aces})
 &= \frac{ 4 \times 3  }{ 52 \times 51 } \nonumber
 \text{.}
 \end{align}
-But this is not the answer the interviewer wants.
-They want you to use the following, simpler method:
+For this question, there is another method:
 \begin{align*}
 P(\text{Drawing two aces})
 &=
@@ -56,7 +55,7 @@ P(\text{Second card is an ace})
 \times
 \frac{3}{51}
 \end{align*}
-and then they want you to simplify the fraction in your head, \emph{quickly}:
+and then you need to simplify the fraction in your head, \emph{quickly}:
 \begin{align*}
 \frac{4}{52}
 \times
@@ -71,7 +70,7 @@ and then they want you to simplify the fraction in your head, \emph{quickly}:
 \end{align*}
 During my interview, I first tried to use the method in
 \eqref{eq:drop20cards:cardmath},
-but from the incredulity in my interviewer's voice he probably was not familiar with the technique.
+but from the incredulity and confusion in my interviewer's voice he probably was not familiar with the technique.
 Many interviewers who ask statistics and probability only took one brief statistics course and---outside of some brainteasers they looked up---aren't aware of all the techniques and nuances, nor the differences in jargon.\footnote{This has been exacerbated by the redefinition of many statistical concepts within Machine Learning.}
-Fortunately I knew how to use the simpler method, but under pressure I was unable to perform the mental arithmetic fast enough.
+Fortunately I knew about both methods, but under pressure I was unable to perform the mental arithmetic fast enough.
 \end{answer}
