@@ -128,11 +128,11 @@ Technically, we can also say
     P( C_{R} \vert 10H  ) p( 10H  )
     \text{,}
 \end{align*}
-but since this contains the probability we are trying to solve, so this line of thinking will lead to circular reasoning and is not helpful.
+but this is not helpful, as it contains the probability we are trying to determine and will lead to circular reasoning.
 
 You can expand denominator in
 \eqref{eq:1000coins:bayesexplain}
-using the law of total probability and considering all the possible ways you can see ten heads.
+using the law of total probability to consider all the possible ways you can see ten heads.
 Since you only have two types of coins---either a fair coin or a rigged one---there are only two ways ten heads can happen:
 \begin{align*}
     P( 10H ) =
@@ -151,11 +151,19 @@ If the interviewer wants you to explain even further, you can note that this is 
 \end{align*}
 by applying the law of conditional probability to each of the terms.
 Combining the nominator and the denominator yields \eqref{eq:1000coins:bayeslaw1}.
-You could also opt for a visual explanation of Bayes' Law, such as the one in question \textcolor{red} {TODO: ref question}.
 
-This question uses Bayes' law as a starting to point to test your handle on important probability concepts and your ability to grapple with notation on-the-spot.
-It is easy to confuse the basic concepts or to forget some useful rules, which is another reason for doing proper interview preparation, no matter how smart you think you are.
-
+My interviewer used this Bayes' law question to test my handle on probability concepts.
+It is easy to confuse these basic concepts, which is another reason for doing proper interview preparation.
+Some interviewers ask this question and demand an ``intuitive'' solution that doesn't rely on algebraic manipulation.
+In this case, you could opt for a visual explanation of Bayes' Law, like that of answer \ref{a:bayeslawdisease}.
+If that's not what your interviewer wants, use the following argument.
+You know the probability of choosing the rigged coin is $1/1000$.
+You also know the probability of getting ten heads from a fair coin is $1/2^{10} = 1/1024$.
+These two events are about equally likely, meaning the probability that we have the double headed coin is about a half.
+If you only had nine heads in a row, the fair coin would give a probability of $1/512 = 2/1024$.
+That means the outcome of nine heads is about twice as likely with the fair coin as the probability of selecting the rigged coin.
+So the odds of ${fair}{:}{rigged}$ are $2{:}1$, leading you to assign a probability of about $1/3$ to the rigged coin being selected.
+%TODO: could link this up to section on gambling mathematics
 
 
 
