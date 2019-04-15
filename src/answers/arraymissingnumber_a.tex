@@ -44,8 +44,25 @@ For the theoretical values, use Faulhaber's formula:
 \]
 where $B_j$ represents the Bernoulli numbers, or calculate them numerically.
 
+An alternative way to answer this question was suggested by Jonathan Hon.
+It involves initialising a boolean array of size $n$, with all the elements set to \verb+false+.
+Then you loop over the array of integers and use each integer to set the value in the corresponding position (or position minus one for zero-indexed arrays) in the boolean array to \verb+true+.
+Now you can loop over the boolean array and look for the values that are \verb+false+, revealing the missing numbers.
+
+The difference between the two approaches is the complexity.
+The first approach has space complexity of $O(k)$ since you only have to store the $k$ equations, but you also have to solve them.
+The computational complexity of solving them is difficult to calculate, and it will depend on the algorithm you use.
+Worst case scenario is the brute-force approach, where you try all the possible values,
+which will have a worst-case complexity of $O(n!/((n-k)!k!))$, as we have to try all the combinations of $k$ integers.
+The second approach has a space complexity of $O(n)$, since you have to store the boolean array, and a computational complexity of $O(n)$.
+There is, however, more nuance to this method. If, instead of using a boolean array, you use an integer array and put the integers in their corresponding places, you will end up sorting the numbers.
+The best sorting algorithms require $O(n \log(n))$ operations.
+Have you cheated?
+Kind of, but that is because you have more information than you would when sorting an arbitrary list of numbers; you know that the numbers are the integers from 1 to $n$, and you know there are only $k$ missing.
+This is something that you may have to debate with the interviewer, but usually discussions like these are a sign that the interview is going well.
+A question may have a \emph{best} or \emph{right} answer, but this isn't necessarily the answer the interviewer wants to hear.
+Often you have to allow the interviewer to guide you to the answer they want.
+
 
 \end{subanswer}
-
-
 
